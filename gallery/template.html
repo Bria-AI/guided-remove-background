@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guided Remove Background — Benchmark</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       background: #f8fafc; color: #1e293b; line-height: 1.5; }
+.container { max-width: 1600px; margin: 0 auto; padding: 24px; }
+h1 { font-size: 1.75rem; margin-bottom: 8px; }
+.subtitle { color: #64748b; margin-bottom: 24px; }
+
+.scoreboard { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.score-card { background: white; border-radius: 12px; padding: 20px;
+              flex: 1; min-width: 280px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.score-card h3 { font-size: 0.9rem; color: #64748b; margin-bottom: 8px; }
+.big-score { font-size: 2.2rem; font-weight: 700; margin-bottom: 8px; }
+.score-details { font-size: 0.82rem; color: #64748b; }
+.score-details div { margin: 2px 0; }
+
+.controls { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+             align-items: center; }
+.controls select, .controls input { padding: 6px 12px; border: 1px solid #cbd5e1;
+                                     border-radius: 6px; font-size: 0.85rem; }
+.controls label { font-size: 0.85rem; color: #64748b; }
+
+.charts-section { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+.chart-box { background: white; border-radius: 12px; padding: 20px; flex: 1;
+             min-width: 300px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.chart-box h3 { font-size: 0.95rem; margin-bottom: 12px; color: #475569; }
+.bar-group { margin: 6px 0; }
+.bar-label { font-size: 0.8rem; color: #64748b; margin-bottom: 2px; }
+.bar-track { background: #e2e8f0; border-radius: 4px; height: 22px; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center;
+            padding-left: 8px; font-size: 0.75rem; color: white; font-weight: 600;
+            min-width: 40px; transition: width 0.3s; }
+
+table { width: 100%; border-collapse: collapse; background: white;
+        border-radius: 12px; overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+th { background: #f1f5f9; padding: 10px 12px; text-align: left;
+     font-size: 0.8rem; color: #64748b; text-transform: uppercase;
+     letter-spacing: 0.5px; position: sticky; top: 0; }
+td { padding: 8px 12px; border-top: 1px solid #f1f5f9; vertical-align: middle; }
+.case-row { cursor: pointer; transition: background 0.15s; }
+.case-row:hover { background: #f8fafc; }
+.img-cell img { width: 140px; height: 95px; object-fit: cover; border-radius: 6px;
+                display: block; }
+.guidance-cell { min-width: 180px; max-width: 250px; }
+.guidance-cell .prompt { font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+.guidance-cell .rmbg-would { font-size: 0.78rem; color: #94a3b8; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 10px;
+       font-size: 0.72rem; font-weight: 600; }
+.scen-ambiguous { background: #e0e7ff; color: #3730a3; }
+.scen-adjustable { background: #fef3c7; color: #92400e; }
+.diff-easy { background: #dcfce7; color: #15803d; }
+.diff-medium { background: #fef3c7; color: #92400e; }
+.diff-hard { background: #fee2e2; color: #991b1b; }
+.na { color: #94a3b8; font-style: italic; }
+
+.detail-row { display: none; }
+.detail-row.open { display: table-row; }
+.detail-content { display: flex; gap: 16px; padding: 16px; flex-wrap: wrap; }
+.detail-mode { background: #f8fafc; border-radius: 8px; padding: 12px; flex: 1;
+               min-width: 250px; }
+.detail-mode h4 { font-size: 0.85rem; margin-bottom: 6px; color: #334155; }
+.detail-scores { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.8rem;
+                 margin-bottom: 8px; }
+.detail-scores span { background: #e2e8f0; padding: 2px 8px; border-radius: 4px; }
+.reasoning { font-size: 0.82rem; color: #475569; margin-top: 4px; }
+.issues { font-size: 0.78rem; color: #dc2626; margin-top: 4px; }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Guided Remove Background — Benchmark</h1>
+<p class="subtitle">Guided background removal: does user guidance improve over plain RMBG?</p>
+
+<div class="scoreboard"><!-- SCOREBOARD --></div>
+
+<div class="charts-section" id="charts"></div>
+
+<div class="controls">
+  <label>Scenario:</label>
+  <select id="filterScen" onchange="applyFilters()">
+    <option value="">All</option>
+    <!-- SCEN_OPTIONS -->
+  </select>
+  <label>Difficulty:</label>
+  <select id="filterDiff" onchange="applyFilters()">
+    <option value="">All</option>
+    <!-- DIFF_OPTIONS -->
+  </select>
+  <label>Min score:</label>
+  <input type="number" id="filterMinScore" min="0" max="1" step="0.1" value="0"
+         onchange="applyFilters()" style="width:70px" />
+  <label>Sort by:</label>
+  <select id="sortBy" onchange="applyFilters()">
+    <option value="default">Default</option>
+    <option value="score_asc">Score (low first)</option>
+    <option value="score_desc">Score (high first)</option>
+    <option value="scenario">Scenario</option>
+    <option value="difficulty">Difficulty</option>
+  </select>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>Original</th>
+  <th>User Guidance</th>
+  <th>Plain RMBG<br/><small>(baseline)</small></th>
+  <th>Guided RMBG<br/><small>(with prompt)</small></th>
+  <th>Baseline<br/>Score</th>
+  <th>Guided<br/>Score</th>
+</tr>
+</thead>
+<tbody id="resultsBody">
+<!-- ROWS -->
+</tbody>
+</table>
+</div>
+
+<script>
+const CHART_DATA = /* CHART_DATA_JSON */null;
+
+function toggleDetail(row) {
+  const id = row.getAttribute('data-id');
+  const detail = document.getElementById('detail_' + id);
+  if (detail) detail.classList.toggle('open');
+}
+
+function applyFilters() {
+  const scen = document.getElementById('filterScen').value;
+  const diff = document.getElementById('filterDiff').value;
+  const minScore = parseFloat(document.getElementById('filterMinScore').value) || 0;
+  const sortBy = document.getElementById('sortBy').value;
+
+  const rows = document.querySelectorAll('.case-row');
+  const pairs = [];
+
+  rows.forEach(row => {
+    const rScen = row.getAttribute('data-scenario');
+    const rDiff = row.getAttribute('data-difficulty');
+    const id = row.getAttribute('data-id');
+    const detail = document.getElementById('detail_' + id);
+    const guidedScore = parseFloat(row.getAttribute('data-guided-score')) || 0;
+
+    let show = true;
+    if (scen && rScen !== scen) show = false;
+    if (diff && rDiff !== diff) show = false;
+    if (guidedScore < minScore) show = false;
+
+    row.style.display = show ? '' : 'none';
+    if (detail) {
+      if (!show) detail.classList.remove('open');
+      detail.style.display = show && detail.classList.contains('open') ? '' : 'none';
+    }
+    if (show) pairs.push({ row, detail, scen: rScen, diff: rDiff, score: guidedScore });
+  });
+
+  if (sortBy !== 'default') {
+    const tbody = document.getElementById('resultsBody');
+    const diffOrder = { easy: 0, medium: 1, hard: 2 };
+    pairs.sort((a, b) => {
+      if (sortBy === 'score_asc') return a.score - b.score;
+      if (sortBy === 'score_desc') return b.score - a.score;
+      if (sortBy === 'scenario') return a.scen.localeCompare(b.scen);
+      if (sortBy === 'difficulty') return (diffOrder[a.diff]||0) - (diffOrder[b.diff]||0);
+      return 0;
+    });
+    pairs.forEach(p => {
+      tbody.appendChild(p.row);
+      if (p.detail) tbody.appendChild(p.detail);
+    });
+  }
+}
+
+function renderCharts() {
+  const container = document.getElementById('charts');
+  if (!CHART_DATA || !CHART_DATA.modes || CHART_DATA.modes.length === 0) return;
+
+  let overallHtml = '<div class="chart-box"><h3>Overall Score: Guided vs Plain RMBG</h3>';
+  CHART_DATA.modes.forEach((mode, i) => {
+    const s = CHART_DATA.stats[mode];
+    if (!s) return;
+    const pct = (s.avg_overall * 100).toFixed(1);
+    overallHtml += '<div class="bar-group">' +
+      '<div class="bar-label">' + CHART_DATA.labels[i] + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + pct +
+      '%;background:' + CHART_DATA.colors[i] + '">' + pct + '%</div></div></div>';
+  });
+  overallHtml += '</div>';
+
+  let scenHtml = '<div class="chart-box"><h3>Score by Scenario</h3>';
+  if (CHART_DATA.scenarios) {
+    CHART_DATA.scenarios.forEach(scen => {
+      scenHtml += '<div style="margin-bottom:12px"><div class="bar-label" style="font-weight:600">' +
+        scen.charAt(0).toUpperCase() + scen.slice(1) + ' foreground</div>';
+      CHART_DATA.modes.forEach((mode, i) => {
+        const val = (CHART_DATA.scenario_stats[scen] || {})[mode] || 0;
+        const pct = (val * 100).toFixed(1);
+        scenHtml += '<div class="bar-group"><div class="bar-label" style="font-size:0.72rem">' +
+          CHART_DATA.labels[i] + '</div>' +
+          '<div class="bar-track"><div class="bar-fill" style="width:' + pct +
+          '%;background:' + CHART_DATA.colors[i] + '">' + pct + '%</div></div></div>';
+      });
+      scenHtml += '</div>';
+    });
+  }
+  scenHtml += '</div>';
+
+  container.innerHTML = overallHtml + scenHtml;
+}
+
+renderCharts();
+</script>
+</body>
+</html>

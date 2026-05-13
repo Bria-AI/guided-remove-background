@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+benchmark/images/
+benchmark/results/
+gallery.html
+dist/
+build/

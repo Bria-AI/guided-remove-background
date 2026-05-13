@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "guided-remove-background"
+version = "0.1.0"
+description = "Guided background removal: VLM intent classification + SAM 3.1 segmentation + Bria RMBG-2.0 edges"
+requires-python = ">=3.10"
+dependencies = [
+    "requests",
+    "fal-client",
+    "Pillow",
+    "numpy",
+    "scipy",
+    "python-dotenv",
+    "anthropic",
+]
+
+[project.scripts]
+guided-remove-background = "guided_remove_background.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

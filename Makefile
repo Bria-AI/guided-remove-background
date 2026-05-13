@@ -13,8 +13,11 @@ run: images ## Run all 58 benchmark cases (requires API keys in .env)
 	uv run python benchmark/runner.py --mode guided -v
 
 serve: ## Start the live dashboard at http://localhost:8899
-	@echo "\n  Dashboard → http://localhost:8899/live.html\n"
-	uv run python benchmark/feedback_server.py
+	@echo ""
+	@echo "  Dashboard → http://localhost:8899/live.html"
+	@echo "  Press Ctrl+C to stop"
+	@echo ""
+	@uv run python benchmark/feedback_server.py || true
 
 benchmark: setup run serve ## Full pipeline: install → fetch images → run benchmark → open dashboard
 

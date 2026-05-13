@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guided Remove Background — Live Benchmark</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       background: #0f172a; color: #e2e8f0; line-height: 1.5; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+h1 { font-size: 1.5rem; margin-bottom: 4px; }
+.subtitle { color: #64748b; margin-bottom: 16px; font-size: 0.9rem; }
+
+.status-bar { display: flex; gap: 16px; align-items: center; margin-bottom: 20px;
+              padding: 12px 16px; background: #1e293b; border-radius: 10px; flex-wrap: wrap; }
+.status-item { font-size: 0.85rem; }
+.status-item b { color: #38bdf8; }
+.progress-track { flex: 1; min-width: 200px; height: 8px; background: #334155;
+                  border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #2563eb, #38bdf8);
+                 border-radius: 4px; transition: width 0.5s ease; }
+.pulse { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+         background: #22c55e; animation: pulse 1.5s infinite; }
+.pulse.done { background: #64748b; animation: none; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-chip { padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 500;
+               cursor: pointer; border: 1px solid #334155; background: #1e293b; color: #94a3b8;
+               transition: all 0.2s; user-select: none; }
+.filter-chip:hover { border-color: #475569; color: #e2e8f0; }
+.filter-chip.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+.filter-chip .chip-count { font-size: 0.7rem; opacity: 0.7; margin-left: 4px; }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 16px; }
+.card { background: #1e293b; border-radius: 12px; overflow: hidden;
+        border: 1px solid #334155; transition: border-color 0.3s; cursor: pointer; }
+.card:hover { border-color: #475569; }
+.card.new { border-color: #38bdf8; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.card-header { padding: 10px 14px; border-bottom: 1px solid #334155; }
+.card-header .prompt-text { font-size: 0.82rem; color: #38bdf8; font-style: italic;
+                            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+                            display: block; }
+.card-images { display: flex; gap: 2px; }
+.img-wrap { position: relative; width: 50%; }
+.img-wrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.img-wrap .label { position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem;
+                   background: rgba(0,0,0,0.7); padding: 1px 6px; border-radius: 4px; }
+.card-footer { padding: 8px 14px; font-size: 0.78rem; color: #94a3b8;
+               display: flex; justify-content: space-between; }
+.card-footer .time { color: #64748b; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 8px;
+       font-size: 0.72rem; font-weight: 600; }
+.tag-scenario { background: #1e3a5f; color: #38bdf8; }
+.tag-difficulty { background: #422006; color: #fbbf24; }
+.err { color: #f87171; font-size: 0.78rem; padding: 12px 14px; }
+
+/* Full-screen modal — never scroll, fit to viewport */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+                 z-index: 1000; }
+.modal-overlay.open { display: flex; justify-content: center; align-items: center;
+                      padding: 16px 64px; }
+.modal { background: #1e293b; border-radius: 16px; width: 100%; max-width: 1400px;
+         max-height: 100%; overflow: hidden; border: 1px solid #334155; position: relative;
+         display: flex; flex-direction: column; }
+.modal-close { position: absolute; top: 12px; right: 16px; background: none; border: none;
+               color: #94a3b8; font-size: 1.8rem; cursor: pointer; z-index: 10; }
+.modal-close:hover { color: #e2e8f0; }
+
+.nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(15,23,42,0.85);
+             border: 1px solid #334155; color: #e2e8f0; font-size: 2rem; width: 48px; height: 48px;
+             border-radius: 50%; cursor: pointer; display: flex; align-items: center;
+             justify-content: center; z-index: 1010; transition: all 0.2s; }
+.nav-arrow:hover { background: #2563eb; border-color: #2563eb; }
+.nav-arrow.prev { left: 12px; }
+.nav-arrow.next { right: 12px; }
+.nav-counter { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+               font-size: 0.78rem; color: #64748b; z-index: 10; }
+
+.modal-header { padding: 16px 32px 12px; text-align: center; position: relative;
+                border-bottom: 1px solid #334155; flex-shrink: 0; }
+.modal-header h2 { font-size: 1.4rem; color: #38bdf8; font-style: italic; margin-bottom: 6px; }
+.modal-header .meta-row { display: flex; justify-content: center; gap: 12px; align-items: center;
+                          font-size: 0.82rem; color: #94a3b8; flex-wrap: wrap; }
+
+.score-badge { position: absolute; top: 12px; right: 52px; background: #0f172a;
+               border: 2px solid #22c55e; border-radius: 10px; padding: 4px 12px;
+               text-align: center; min-width: 64px; }
+.score-badge .score-value { font-size: 1.1rem; font-weight: 700; color: #22c55e; }
+.score-badge .score-label { font-size: 0.6rem; color: #64748b; text-transform: uppercase;
+                            letter-spacing: 0.5px; }
+
+.expectation-bar { margin-top: 8px; display: inline-flex; align-items: center; gap: 8px;
+                   background: #1a1a2e; border: 1px solid #3b3b5c; border-radius: 8px;
+                   padding: 4px 12px; }
+.expectation-bar .exp-label { font-size: 0.7rem; color: #a78bfa; text-transform: uppercase;
+                              font-weight: 700; letter-spacing: 0.5px; }
+.vlm-bar { margin-top: 8px; display: inline-flex; align-items: center; gap: 8px;
+           background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px;
+           padding: 4px 12px; font-size: 0.8rem; flex-wrap: wrap; }
+.vlm-bar .vlm-label { font-size: 0.7rem; color: #38bdf8; text-transform: uppercase;
+                      font-weight: 700; letter-spacing: 0.5px; flex-shrink: 0; }
+.expectation-bar .exp-text { font-size: 0.82rem; color: #c4b5fd; }
+
+.modal-body { padding: 16px 24px 20px; flex: 1; min-height: 0;
+              display: flex; flex-direction: column; }
+
+.flow-steps { display: flex; gap: 8px; align-items: stretch; flex: 1; min-height: 0;
+             overflow-x: auto; }
+.flow-step { background: #0f172a; border-radius: 12px; padding: 8px; text-align: center;
+             flex: 1; min-width: 120px; display: flex; flex-direction: column;
+             min-height: 0; overflow: hidden; }
+.flow-step img { width: 100%; flex: 1; min-height: 0; object-fit: contain;
+                 border-radius: 8px; margin-bottom: 4px; }
+.flow-step .step-name { font-size: 0.75rem; font-weight: 600; flex-shrink: 0; }
+.flow-step .step-time { font-size: 0.68rem; color: #64748b; margin-top: 1px; flex-shrink: 0; }
+.flow-step.highlight { border: 2px solid #2563eb; }
+.flow-step.step-dim { opacity: 0.4; }
+.flow-arrow { color: #475569; font-size: 1.4rem; flex-shrink: 0;
+              display: flex; align-items: center; }
+
+/* Vote badge on cards */
+.vote-badge { position: absolute; top: 6px; right: 6px; width: 22px; height: 22px;
+              border-radius: 50%; display: flex; align-items: center; justify-content: center;
+              font-size: 0.7rem; font-weight: 700; z-index: 5; }
+.vote-badge.liked { background: #166534; color: #4ade80; }
+.vote-badge.disliked { background: #7f1d1d; color: #f87171; }
+.vote-badge.pending { background: #7f1d1d; color: #f87171; animation: pulse 1.5s infinite; }
+.card-header { position: relative; }
+
+/* Feedback bar in modal */
+.feedback-bar { display: flex; align-items: center; gap: 12px; padding: 12px 24px;
+                border-top: 1px solid #334155; flex-shrink: 0; }
+.vote-btn { padding: 8px 20px; border-radius: 8px; border: 1px solid #334155;
+            background: #0f172a; color: #e2e8f0; cursor: pointer; font-size: 0.85rem;
+            font-weight: 600; display: flex; align-items: center; gap: 6px;
+            transition: all 0.2s; }
+.vote-btn:hover { border-color: #475569; }
+.vote-btn.like:hover { background: #166534; border-color: #22c55e; }
+.vote-btn.dislike:hover { background: #7f1d1d; border-color: #f87171; }
+.vote-btn.active-like { background: #166534; border-color: #22c55e; color: #4ade80; }
+.vote-btn.active-dislike { background: #7f1d1d; border-color: #f87171; color: #fca5a5; }
+.comment-area { flex: 1; display: none; align-items: center; gap: 8px; }
+.comment-area.open { display: flex; }
+.comment-input { flex: 1; background: #0f172a; border: 1px solid #334155; border-radius: 8px;
+                 color: #e2e8f0; padding: 8px 12px; font-size: 0.82rem; resize: none;
+                 height: 38px; font-family: inherit; }
+.comment-input:focus { outline: none; border-color: #f87171; }
+.comment-submit { padding: 8px 16px; border-radius: 8px; border: none;
+                  background: #dc2626; color: #fff; cursor: pointer; font-size: 0.82rem;
+                  font-weight: 600; transition: background 0.2s; }
+.comment-submit:hover { background: #b91c1c; }
+.feedback-status { font-size: 0.78rem; color: #64748b; margin-left: auto; }
+
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Guided Remove Background — Live Benchmark</h1>
+  <p class="subtitle">Click any card for detailed comparison. Auto-refreshes every 3s.</p>
+
+  <div class="status-bar">
+    <span class="pulse" id="pulseIndicator"></span>
+    <span class="status-item"><b id="completed">0</b> / <span id="total">?</span></span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <span class="status-item"><b id="succeeded">0</b> OK</span>
+    <span class="status-item" style="color:#f87171"><b id="failed">0</b> err</span>
+    <span class="status-item">Elapsed: <b id="elapsed">0s</b></span>
+  </div>
+
+  <div class="filter-bar" id="filterBar"></div>
+
+  <div class="results-grid" id="grid"></div>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+let knownIds = new Set();
+let allResults = [];
+let isDone = false;
+let activeFilters = new Set();
+let currentCaseIds = [];
+let currentModalIdx = -1;
+let feedbackMap = {};
+
+async function loadFeedback() {
+  try {
+    const r = await fetch('/api/feedback?' + Date.now());
+    if (!r.ok) return;
+    const entries = await r.json();
+    feedbackMap = {};
+    for (const e of entries) {
+      feedbackMap[e.case_id] = e;
+    }
+  } catch(e) {}
+}
+
+async function sendVote(caseId, vote, comment) {
+  try {
+    await fetch('/api/feedback', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({case_id: caseId, vote, comment: comment || ''}),
+    });
+    feedbackMap[caseId] = {case_id: caseId, vote, comment: comment || '', resolved: false};
+    renderCards();
+    if (document.getElementById('modal').classList.contains('open')) {
+      openModal(caseId);
+    }
+  } catch(e) { console.error('Vote failed:', e); }
+}
+
+function getVote(caseId) {
+  return feedbackMap[caseId] || null;
+}
+
+const SCENARIO_LABELS = {
+  include: 'Include',
+  exclude: 'Exclude',
+  narrow: 'Narrow',
+};
+
+function promptText(r) {
+  return (r.prompts || []).join(', ');
+}
+
+function buildFilterChips() {
+  const counts = {};
+  for (const r of allResults) {
+    if (r.mode === 'guided' || !allResults.find(x => x.mode === 'guided' && x.image === r.image && x.foreground === r.foreground)) {
+      counts[r.scenario] = (counts[r.scenario] || 0) + 1;
+    }
+  }
+  const bar = document.getElementById('filterBar');
+  const allCount = Object.values(counts).reduce((a,b) => a+b, 0);
+  let html = `<span class="filter-chip ${activeFilters.size === 0 ? 'active' : ''}" onclick="toggleFilter('')">All<span class="chip-count">${allCount}</span></span>`;
+  for (const [key, label] of Object.entries(SCENARIO_LABELS)) {
+    const c = counts[key] || 0;
+    html += `<span class="filter-chip ${activeFilters.has(key) ? 'active' : ''}" onclick="toggleFilter('${key}')">${label}<span class="chip-count">${c}</span></span>`;
+  }
+  bar.innerHTML = html;
+}
+
+function toggleFilter(scenario) {
+  if (!scenario) {
+    activeFilters.clear();
+  } else {
+    if (activeFilters.has(scenario)) activeFilters.delete(scenario);
+    else activeFilters.add(scenario);
+  }
+  buildFilterChips();
+  renderCards();
+}
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function fixPaths(r) {
+  for (const key of ['output_png', 'preview_jpg']) {
+    if (r[key] && r[key].includes('/benchmark/')) {
+      r[key] = r[key].substring(r[key].indexOf('/benchmark/') + '/benchmark/'.length);
+    }
+  }
+  return r;
+}
+
+function groupByCase(results) {
+  const map = new Map();
+  for (const r of results) {
+    const key = r.image + '__' + r.foreground;
+    if (!map.has(key)) map.set(key, { guided: null, baseline: null, key });
+    if (r.mode === 'guided') map.get(key).guided = r;
+    else map.get(key).baseline = r;
+  }
+  return [...map.values()];
+}
+
+function scoreColor(score) {
+  if (score >= 0.8) return '#22c55e';
+  if (score >= 0.5) return '#fbbf24';
+  return '#f87171';
+}
+
+async function poll() {
+  try {
+    const r = await fetch('results/run_meta.json?' + Date.now());
+    if (!r.ok) return;
+    const data = await r.json();
+
+    document.getElementById('completed').textContent = data.completed || 0;
+    document.getElementById('total').textContent = data.total_cases || '?';
+    document.getElementById('succeeded').textContent = data.succeeded || 0;
+    document.getElementById('failed').textContent = data.failed || 0;
+    document.getElementById('elapsed').textContent = (data.total_elapsed_s || 0).toFixed(1) + 's';
+
+    const pct = data.total_cases ? ((data.completed / data.total_cases) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+
+    if (data.done) {
+      isDone = true;
+      document.getElementById('pulseIndicator').classList.add('done');
+    }
+    allResults = (data.results || []).map(fixPaths);
+    buildFilterChips();
+    renderCards();
+  } catch(e) {}
+}
+
+function renderCards() {
+  const grid = document.getElementById('grid');
+
+  let filtered = allResults;
+  if (activeFilters.size > 0) filtered = filtered.filter(r => activeFilters.has(r.scenario));
+
+  const groups = groupByCase(filtered);
+  currentCaseIds = groups.map(g => { const r = g.guided || g.baseline; return r ? r.image + '__' + r.foreground : null; }).filter(Boolean);
+
+  grid.innerHTML = groups.map(g => {
+    const r = g.guided || g.baseline;
+    if (!r) return '';
+    const id = r.image + '__' + r.foreground;
+    const isNew = !knownIds.has(id);
+    if (isNew) knownIds.add(id);
+    const prompt = promptText(r);
+    const guidedSrc = g.guided ? (g.guided.preview_jpg || g.guided.output_png || '') : '';
+    const origSrc = 'images/' + r.image;
+
+    if (r.error) {
+      return `<div class="card ${isNew?'new':''}" onclick='openModal("${esc(id)}")'>
+        <div class="card-header">
+          <span class="prompt-text">"${esc(prompt)}"</span>
+        </div>
+        <div class="err">${esc(r.error).slice(0,100)}</div>
+        <div class="card-footer"><span>${esc(r.image)}</span></div>
+      </div>`;
+    }
+
+    const resultSrc = guidedSrc || (g.baseline ? (g.baseline.preview_jpg || g.baseline.output_png) : origSrc);
+
+    const fb = getVote(id);
+    const voteBadge = fb
+      ? (fb.vote === 'like'
+        ? '<span class="vote-badge liked">&#10003;</span>'
+        : `<span class="vote-badge ${fb.resolved?'disliked':'pending'}">&#10007;</span>`)
+      : '';
+
+    return `<div class="card ${isNew?'new':''}" onclick='openModal("${esc(id)}")'>
+      <div class="card-header">
+        ${voteBadge}
+        <span class="prompt-text">"${esc(prompt)}"</span>
+      </div>
+      <div class="card-images">
+        <div class="img-wrap">
+          <img src="${origSrc}" loading="lazy" />
+          <span class="label">Original</span>
+        </div>
+        <div class="img-wrap">
+          <img src="${resultSrc}" loading="lazy" />
+          <span class="label">${g.guided ? 'Guided' : 'RMBG'}</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span>${esc(r.image)} · <span class="tag tag-scenario">${r.scenario||''}</span></span>
+        <span class="time">${g.guided ? (g.guided.elapsed_s||0).toFixed(1)+'s' : ''}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function navigateModal(delta) {
+  if (currentCaseIds.length === 0) return;
+  let next = currentModalIdx + delta;
+  if (next < 0) next = currentCaseIds.length - 1;
+  if (next >= currentCaseIds.length) next = 0;
+  openModal(currentCaseIds[next]);
+}
+
+function openModal(caseId) {
+  currentModalIdx = currentCaseIds.indexOf(caseId);
+  if (currentModalIdx === -1) currentModalIdx = 0;
+
+  const guided = allResults.find(r => r.mode === 'guided' && (r.image+'__'+r.foreground) === caseId);
+  const baseline = allResults.find(r => r.mode === 'rmbg-only' && (r.image+'__'+r.foreground) === caseId);
+  const r = guided || baseline;
+  if (!r) return;
+  const fb = getVote(caseId);
+
+  const origSrc = 'images/' + r.image;
+  const guidedSrc = guided ? (guided.preview_jpg || guided.output_png || '') : '';
+  const baselineSrc = baseline ? (baseline.preview_jpg || baseline.output_png || '') : '';
+  const prompt = promptText(r);
+
+  const rmbgWould = r.rmbg_would || '';
+
+  let scoreBadge = '';
+  if (guided && guided.sam_scores && Object.keys(guided.sam_scores).length > 0) {
+    const vals = Object.values(guided.sam_scores).filter(v => typeof v === 'number');
+    if (vals.length > 0) {
+      const avg = vals.reduce((a,b) => a+b, 0) / vals.length;
+      const color = scoreColor(avg);
+      scoreBadge = `
+        <div class="score-badge" style="border-color:${color}">
+          <div class="score-value" style="color:${color}">${avg.toFixed(2)}</div>
+          <div class="score-label">SAM Score</div>
+        </div>`;
+    }
+  }
+
+  let expectationHtml = '';
+  if (rmbgWould) {
+    expectationHtml = `
+      <div class="expectation-bar">
+        <span class="exp-label">Without guidance</span>
+        <span class="exp-text">${esc(rmbgWould)}</span>
+      </div>`;
+  }
+
+  let vlmHtml = '';
+  const vlm = guided && guided.vlm_decompose;
+  if (vlm && !vlm.error) {
+    const vlmMode = vlm.mode || 'add';
+    const targets = vlm.targets || [];
+    const modeColors = {add: '#22c55e', remove: '#f87171', narrow: '#a78bfa'};
+    const modeColor = modeColors[vlmMode] || '#64748b';
+    const modeBadge = `<span style="background:${modeColor}22;color:${modeColor};padding:2px 8px;border-radius:6px;font-weight:700;font-size:0.75rem;text-transform:uppercase">${vlmMode}</span>`;
+    const targetList = targets.length
+      ? targets.map(s => `<span style="color:${modeColor}">${esc(s)}</span>`).join(', ')
+      : '<span style="color:#64748b">no targets (RMBG is correct)</span>';
+    vlmHtml = `<div class="vlm-bar">${modeBadge} <span class="vlm-label">→</span> ${targetList}</div>`;
+  }
+
+  const steps = (guided && guided.step_images) || {};
+  const hasSteps = Object.keys(steps).length > 0;
+
+  function stepImg(key, label, highlight) {
+    const src = steps[key];
+    if (!src) return `<div class="flow-step step-dim"><div style="flex:1;display:flex;align-items:center;justify-content:center;color:#475569;font-size:0.7rem">—</div><div class="step-name">${label}</div></div>`;
+    return `<div class="flow-step${highlight?' highlight':''}""><img src="${src}" /><div class="step-name">${label}</div></div>`;
+  }
+
+  let flowHtml;
+  if (hasSteps) {
+    flowHtml = `
+      <div class="flow-step">
+        <img src="${origSrc}" />
+        <div class="step-name">Original</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      ${stepImg('step1_rmbg', 'RMBG Baseline')}
+      <div class="flow-arrow">→</div>
+      ${(() => {
+        const samKey = steps['step3_sam_add'] ? 'step3_sam_add'
+          : steps['step3_sam_remove'] ? 'step3_sam_remove'
+          : steps['step3_sam_narrow'] ? 'step3_sam_narrow'
+          : steps['step3_sam_include'] ? 'step3_sam_include'
+          : steps['step3_sam_exclude'] ? 'step3_sam_exclude'
+          : null;
+        const samLabels = {step3_sam_add:'SAM Add',step3_sam_remove:'SAM Remove',step3_sam_narrow:'SAM Narrow',step3_sam_include:'SAM Include',step3_sam_exclude:'SAM Exclude'};
+        return samKey ? stepImg(samKey, samLabels[samKey]) : '';
+      })()}
+      <div class="flow-arrow">→</div>
+      ${stepImg('step4_combined_mask', 'Final Mask')}
+      <div class="flow-arrow">→</div>
+      ${stepImg('step5_edge_refined', 'Alpha')}
+      <div class="flow-arrow">→</div>
+      ${stepImg('step6_final', 'Final', true)}`;
+  } else {
+    flowHtml = `
+      <div class="flow-step">
+        <img src="${origSrc}" />
+        <div class="step-name">Original</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        ${baselineSrc
+          ? `<img src="${baselineSrc}" />`
+          : `<img src="${origSrc}" style="opacity:0.2" />`}
+        <div class="step-name">Plain RMBG</div>
+        <div class="step-time">${baseline ? (baseline.elapsed_s||0).toFixed(1)+'s' : 'pending'}</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step highlight">
+        ${guidedSrc
+          ? `<img src="${guidedSrc}" />`
+          : `<img src="${origSrc}" style="opacity:0.2" />`}
+        <div class="step-name">Guided RMBG</div>
+        <div class="step-time">${guided ? (guided.elapsed_s||0).toFixed(1)+'s' : 'pending'}</div>
+      </div>`;
+  }
+
+  document.getElementById('modalContent').innerHTML = `
+    <button class="nav-arrow prev" onclick="event.stopPropagation();navigateModal(-1)">&#8249;</button>
+    <button class="nav-arrow next" onclick="event.stopPropagation();navigateModal(1)">&#8250;</button>
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="nav-counter">${currentModalIdx + 1} / ${currentCaseIds.length}</div>
+    ${scoreBadge}
+    <div class="modal-header">
+      <h2>"${esc(prompt)}"</h2>
+      <div class="meta-row">
+        <span>${esc(r.image)}</span>
+        <span class="tag tag-scenario">${r.scenario}</span>
+        <span class="tag tag-difficulty">${r.difficulty}</span>
+      </div>
+      ${expectationHtml}
+      ${vlmHtml}
+    </div>
+    <div class="modal-body">
+      <div class="flow-steps">
+        ${flowHtml}
+      </div>
+    </div>
+    <div class="feedback-bar" id="feedbackBar">
+      <button class="vote-btn like ${fb && fb.vote==='like'?'active-like':''}"
+              onclick="event.stopPropagation();sendVote('${esc(caseId)}','like')">
+        &#9650; Like</button>
+      <button class="vote-btn dislike ${fb && fb.vote==='dislike'?'active-dislike':''}"
+              onclick="event.stopPropagation();toggleCommentArea()">
+        &#9660; Dislike</button>
+      <div class="comment-area" id="commentArea">
+        <input class="comment-input" id="commentInput" placeholder="What's wrong with this result?"
+               onkeydown="if(event.key==='Enter'){event.stopPropagation();submitDislike('${esc(caseId)}')}" />
+        <button class="comment-submit"
+                onclick="event.stopPropagation();submitDislike('${esc(caseId)}')">Send</button>
+      </div>
+      ${fb ? `<span class="feedback-status">${fb.vote === 'like' ? 'Approved' : (fb.resolved ? 'Fixed' : 'Pending agent review')}</span>` : ''}
+    </div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+function toggleCommentArea() {
+  const area = document.getElementById('commentArea');
+  area.classList.toggle('open');
+  if (area.classList.contains('open')) {
+    document.getElementById('commentInput').focus();
+  }
+}
+
+function submitDislike(caseId) {
+  const input = document.getElementById('commentInput');
+  const comment = (input ? input.value : '').trim();
+  if (!comment) { input && input.focus(); return; }
+  sendVote(caseId, 'dislike', comment);
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (!document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') navigateModal(-1);
+  if (e.key === 'ArrowRight') navigateModal(1);
+});
+
+async function init() {
+  await loadFeedback();
+  await poll();
+}
+setInterval(() => { if (!isDone) poll(); loadFeedback(); }, 3000);
+init();
+</script>
+</body>
+</html>

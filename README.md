@@ -61,41 +61,53 @@ uv run guided-remove-background \
   --mode rmbg-only
 ```
 
+## Quickstart
+
+```bash
+git clone https://github.com/Bria-AI/guided-remove-background.git
+cd guided-remove-background
+cp .env.example .env   # add your API keys
+make benchmark         # install → fetch images → run 58 cases → open dashboard
+```
+
+The dashboard opens at **http://localhost:8899/live.html** — browse every case with full pipeline step visualization, VLM reasoning, and interactive feedback.
+
+### Step by step
+
+```bash
+make setup             # install dependencies
+make images            # download 15 test images from Pexels
+make run               # run all 58 benchmark cases (~8 min)
+make serve             # start dashboard at localhost:8899
+make grade             # auto-grade results with VLM (optional)
+make help              # show all available commands
+```
+
 ## Setup
 
 ```bash
 cd guided-remove-background
 uv sync
+```
 
-# Set API keys in .env
-# BRIA_API_KEY=...        (Bria.ai — background removal)
-# FAL_KEY=...             (Fal.ai — SAM 3.1 segmentation)
-# ANTHROPIC_API_KEY=...   (VLM decomposition + grading)
-# OPENAI_API_KEY=...      (VLM decomposition + grading, alternative)
+Create a `.env` file (or copy `.env.example`) with your API keys:
+
+```
+BRIA_API_KEY=...        # Bria.ai — background removal
+FAL_KEY=...             # Fal.ai — SAM 3.1 segmentation
+ANTHROPIC_API_KEY=...   # VLM decomposition + grading
 ```
 
 ## Benchmark
 
-The benchmark tests 58 guided cases across 15 images in two scenario types:
+58 test cases across 15 images in two scenario types:
 
 1. **Ambiguous foreground** — scenes with no clear single subject (interiors, table settings, workspaces). The user's guidance defines the foreground.
 2. **Adjustable foreground** — scenes with a clear default subject (a person, a group), but the user wants to adjust scope (add the yoga mat, remove the dog, keep only the laptop).
 
 Each case has a scenario type (`include`, `exclude`, `narrow`) and a user prompt.
 
-```bash
-uv run python benchmark/fetch_images.py          # download test images
-uv run python benchmark/runner.py                 # run all cases
-uv run python benchmark/grader/run_grader.py      # auto-grade with VLM
-```
-
 ### Live Dashboard
-
-The benchmark includes a live-updating HTML dashboard with pipeline step visualization and interactive feedback:
-
-```bash
-uv run python benchmark/feedback_server.py        # serve at http://localhost:8899/live.html
-```
 
 The dashboard shows for each case: the original image, RMBG baseline, VLM mode + targets, SAM masks, combined mask, alpha refinement, and final result. Each case has like/dislike buttons with comment support for iterative improvement.
 

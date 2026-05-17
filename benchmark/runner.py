@@ -31,6 +31,7 @@ log = logging.getLogger(__name__)
 CASES_CSV = Path(__file__).parent / "data" / "cases.csv"
 IMAGES_DIR = Path(__file__).parent / "images"
 RESULTS_DIR = Path(__file__).parent / "results"
+JUDGE_MODEL = "opus"
 
 
 def load_cases(filter_str: str | None = None) -> list[dict]:
@@ -62,7 +63,7 @@ def run_one(case: dict, mode: str) -> dict:
     try:
         result = remove_bg(
             image=image_path, prompts=prompts, output=output_path, mode=mode,
-            save_steps=(mode == "guided"),
+            save_steps=(mode == "guided"), judge_model=JUDGE_MODEL,
         )
         vlm_data = None
         if result.vlm_decompose:
@@ -118,8 +119,13 @@ def main() -> None:
     parser.add_argument("--mode", choices=MODES, help="Run only this mode (default: all)")
     parser.add_argument("--filter", default=None, help="Substring filter on image column")
     parser.add_argument("--concurrency", type=int, default=2)
+    parser.add_argument("--judge-model", default="opus", choices=["sonnet", "opus"],
+                        help="Judge VLM model (default: sonnet)")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
+
+    global JUDGE_MODEL
+    JUDGE_MODEL = args.judge_model
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -154,6 +160,7 @@ def main() -> None:
             "failed": sum(1 for r in all_raw if r.get("error")),
             "done": done,
             "total_elapsed_s": elapsed,
+            "judge_model": JUDGE_MODEL,
             "results": sorted_results,
         }
         meta_path.write_text(json.dumps(meta, indent=2, default=str))

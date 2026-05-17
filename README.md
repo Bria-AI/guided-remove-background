@@ -11,7 +11,7 @@ The pipeline has four layers, each with a single responsibility:
 1. **RMBG** (Bria RMBG-2.0) — produces a baseline foreground mask with sub-pixel alpha edges. This is the starting point: the "obvious foreground."
 2. **VLM** (Vision-Language Model) — reads the user's prompt and classifies their *intent* into a mode (`add`, `remove`, `narrow`, or `add_remove`) plus a list of target descriptions for SAM to find.
 3. **SAM** (Segment Anything Model) — a dumb segmentation tool. Given text descriptions, it returns object masks. It has no concept of modes — it doesn't know or care what we do with its masks afterward.
-4. **Judge** (VLM-based) — an agentic verification loop that evaluates the final result against the user's prompt. If it finds issues (missing items, unwanted items, mask artifacts), it triggers automated corrections (re-run SAM with better prompts, fill holes) for up to 2 retries. If corrections make things worse, it reverts to the pre-judge result.
+4. **Judge** (VLM-based, Claude Opus) — an agentic verification loop that evaluates the final result against the user's prompt. Uses chain-of-thought reasoning: first inventories every object visible in the result, then compares against the prompt. If it finds issues (missing items, unwanted items, mask artifacts), it triggers automated corrections (re-run SAM with better prompts, fill holes) for up to 2 retries. Duplicate detection breaks hallucination loops early. If corrections make things worse, it reverts to the pre-judge result.
 
 The mode logic lives entirely in our pipeline, which combines the RMBG baseline with SAM masks differently depending on the VLM's classification:
 
@@ -64,15 +64,17 @@ This is where the mode formulas are applied, with morphological post-processing:
 **Step 5 — Alpha channel construction** (local)
 Where the final mask overlaps RMBG, we use RMBG's original sub-pixel alpha (best edge quality). Where the mask extends beyond RMBG (SAM-only zones), we build feathered alpha using distance transforms + Gaussian blur. For ADD/ADD_REMOVE modes, we bridge pixel-thin seam gaps between RMBG and SAM zones.
 
-**Step 6 — Agentic judge** (1-3 vision LLM calls)
-A VLM receives the original image, the final result (on checkerboard), and the user prompt. It evaluates whether the result matches user intent, looking for three specific problems:
+**Step 6 — Agentic judge** (1-3 vision LLM calls, Claude Opus)
+The judge receives the original image, the final result (composited on a white background as lossless PNG for visual clarity), and the user prompt. It uses **chain-of-thought reasoning**: first it inventories every object visible in the result image, then compares that inventory against the user's prompt. This two-step process reduces hallucination — the VLM must ground its judgment in what it actually sees rather than what it expects from the original photo.
+
+The judge looks for three specific problems:
 - **Missing items** — a discrete object the user explicitly asked for is completely absent.
-- **Unwanted items** — an object the user asked to remove is still fully present.
+- **Unwanted items** — an object the user asked to remove (or didn't ask to keep in NARROW mode) is still fully present.
 - **Mask artifacts** — large holes inside foreground objects.
 
-If issues are found, the judge suggests fixes (`re-sam` with a better prompt, `fill-holes`). The pipeline applies the fix and re-evaluates, up to 2 retries. Safety guards prevent over-correction: a mask floor (20% of original size) stops excessive removal, and `shrink-mask`/`expand-mask` fixes are disabled. If all retries fail, the pipeline **reverts to the pre-judge result** rather than returning a broken correction.
+If issues are found, the judge suggests fixes (`re-sam` with a better prompt, `fill-holes`). The pipeline applies the fix and re-evaluates, up to 2 retries. Safety guards prevent over-correction: a mask floor (20% of original size) stops excessive removal, `shrink-mask`/`expand-mask` fixes are disabled, and **duplicate detection** auto-passes if the judge returns the same issue twice (hallucination loop). If all retries fail, the pipeline **reverts to the pre-judge result** rather than returning a broken correction.
 
-**Cost per image**: 1 RMBG call + 1 vision LLM call + 0-1 validation LLM call + N SAM calls + 1-3 judge LLM calls. Total: 4-9 API calls.
+**Cost per image**: 1 RMBG call + 1 vision LLM call + 0-1 validation LLM call + N SAM calls + 1-3 judge LLM calls (Opus). Total: 4-9 API calls.
 
 ## Examples
 

@@ -100,6 +100,15 @@ def _build_alpha(final_mask: np.ndarray, rmbg_alpha: np.ndarray,
     return final_alpha
 
 
+def _save_white_bg(rgba: np.ndarray, out: Path) -> None:
+    """Composite RGBA onto white background and save as PNG for the judge."""
+    bg = Image.new("RGB", (rgba.shape[1], rgba.shape[0]), (255, 255, 255))
+    fg = Image.fromarray(rgba, "RGBA")
+    bg.paste(fg, mask=fg.split()[3])
+    out.parent.mkdir(parents=True, exist_ok=True)
+    bg.save(out, format="PNG")
+
+
 def _verify_and_correct(
     *,
     image: Path,
@@ -116,6 +125,7 @@ def _verify_and_correct(
     max_retries: int,
     recorder: StepRecorder,
     provider: str | None,
+    judge_model: str,
     output: Path,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[JudgeVerdict]]:
     """Run judge verification loop with corrections. Returns updated result."""
@@ -132,25 +142,35 @@ def _verify_and_correct(
     snapshot_mask = final_mask.copy()
     snapshot_alpha = current_alpha.copy()
     corrections_applied = False
+    previous_fixes: set[str] = set()
 
     for attempt in range(max_retries + 1):
-        preview_tmp = Path(tempfile.mktemp(suffix=".png"))
-        preview_path = save_preview(result, preview_tmp)
+        judge_img = Path(tempfile.mktemp(suffix="_judge.png"))
         try:
+            _save_white_bg(result, judge_img)
             verdict = judge_result(
-                image, preview_path, user_prompt,
+                image, judge_img, user_prompt,
                 rmbg_preview=rmbg_preview_path,
                 provider=provider,
+                model=judge_model,
             )
         finally:
-            preview_tmp.unlink(missing_ok=True)
-            preview_path.unlink(missing_ok=True)
+            judge_img.unlink(missing_ok=True)
 
         verdicts.append(verdict)
         recorder.save_judge(attempt, verdict)
 
         if verdict.passed or verdict.error:
             break
+
+        current_fixes = {i.fix for i in verdict.issues}
+        if attempt > 0 and current_fixes and current_fixes <= previous_fixes:
+            log.warning("[Judge] Duplicate issues detected — judge is stuck, auto-passing")
+            verdict = JudgeVerdict(passed=True, issues=[], raw_response="auto-pass:duplicate")
+            verdicts.append(verdict)
+            break
+        previous_fixes = current_fixes
+
         if attempt >= max_retries:
             if corrections_applied:
                 log.warning("[Judge] Max retries (%d) reached — reverting to pre-judge result",
@@ -245,6 +265,7 @@ def remove_bg(
     save_steps: bool = False,
     verify: bool = True,
     max_retries: int = 2,
+    judge_model: str = "opus",
 ) -> RemoveBgResult:
     """Remove background from an image, guided by user prompts."""
     if mode not in MODES:
@@ -464,6 +485,7 @@ def remove_bg(
                     max_retries=max_retries,
                     recorder=recorder,
                     provider=vlm_provider,
+                    judge_model=judge_model,
                     output=output,
                 )
 

@@ -5,6 +5,8 @@ __pycache__/
 .venv/
 benchmark/images/
 benchmark/results/
+benchmark/benchmark_report.html
 gallery.html
 dist/
 build/
+.DS_Store

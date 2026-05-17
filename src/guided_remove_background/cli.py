@@ -32,6 +32,8 @@ def main() -> None:
     parser.add_argument("--dilation", type=int, default=5)
     parser.add_argument("--blur", type=float, default=1.0)
     parser.add_argument("--min-score", type=float, default=0.0)
+    parser.add_argument("--no-verify", action="store_true",
+                        help="Skip judge verification loop")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -55,6 +57,7 @@ def main() -> None:
         dilation=args.dilation,
         blur=args.blur,
         min_score=args.min_score,
+        verify=not args.no_verify,
     )
     print(f"Result: {result.output_path}")
     print(f"Preview: {result.preview_path}")

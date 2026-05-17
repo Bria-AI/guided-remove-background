@@ -89,15 +89,8 @@ class StepRecorder:
         self._save(prefix, result)
 
     def save_combined_mask(self, original: np.ndarray, mask: np.ndarray) -> None:
-        """Step 4: Final adjusted mask (RMBG + SAM add - SAM remove) as green overlay."""
-        base = Image.fromarray(original[:, :, :3]).convert("RGBA")
-        mask_u8 = (mask.astype(np.uint8) * 255)
-        mask_pil = Image.fromarray(mask_u8, "L")
-        if mask_pil.size != base.size:
-            mask_pil = mask_pil.resize(base.size, Image.NEAREST)
-        fill = Image.new("RGBA", base.size, (34, 197, 94, 0))
-        fill.putalpha(mask_pil.point(lambda v: 140 if v > 0 else 0))
-        result = Image.alpha_composite(base, fill)
+        """Step 4: Final adjusted mask as green overlay."""
+        result = rmbg_overlay(original, mask)
         self._save("step4_combined_mask", result)
 
     def save_edge_refined(self, original: np.ndarray, alpha: np.ndarray) -> None:
@@ -111,6 +104,40 @@ class StepRecorder:
         """Step 6: Final result on checkerboard."""
         img = _checker_composite(rgba)
         self._save("step6_final", img)
+
+    def save_judge(self, attempt: int, verdict) -> None:
+        """Step 7: Judge verification verdict."""
+        if not self.enabled:
+            return
+        key = f"step7_judge_{attempt}"
+        data = {
+            "attempt": attempt,
+            "passed": verdict.passed,
+            "error": verdict.error,
+            "issues": [
+                {"type": i.type, "description": i.description, "fix": i.fix}
+                for i in verdict.issues
+            ],
+        }
+        path = self.output_dir / f"{key}.json"
+        path.write_text(json.dumps(data, indent=2))
+        self.paths[key] = str(path)
+        log.debug("[Step] Saved judge verdict %d -> %s", attempt, path)
+
+
+def rmbg_overlay(original: np.ndarray, rmbg_mask: np.ndarray) -> Image.Image:
+    """Generate a green-highlighted overlay showing RMBG's foreground regions.
+
+    Used to give the VLM visual context about what RMBG considers foreground.
+    """
+    base = Image.fromarray(original[:, :, :3]).convert("RGBA")
+    mask_u8 = (rmbg_mask.astype(np.uint8) * 255)
+    mask_pil = Image.fromarray(mask_u8, "L")
+    if mask_pil.size != base.size:
+        mask_pil = mask_pil.resize(base.size, Image.NEAREST)
+    fill = Image.new("RGBA", base.size, (34, 197, 94, 0))
+    fill.putalpha(mask_pil.point(lambda v: 140 if v > 0 else 0))
+    return Image.alpha_composite(base, fill)
 
 
 def _checker_composite(rgba: np.ndarray) -> Image.Image:

@@ -1,0 +1,390 @@
+[
+  {
+    "ok": true,
+    "preview_url": "results/playground/living_room__214010_7468_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the circular patterned area rug"
+    ],
+    "sam_scores": {
+      "the circular patterned area rug": 0.9296875
+    },
+    "elapsed_s": 135.8,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/living_room__214010_7468/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/living_room__214010_7468/step2_vlm.json",
+      "step3_sam_add": "results/playground/steps/living_room__214010_7468/step3_sam_add.jpg",
+      "step4_combined_mask": "results/playground/steps/living_room__214010_7468/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/living_room__214010_7468/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/living_room__214010_7468/step6_final.jpg"
+    },
+    "image": "living_room.jpg",
+    "prompt": "with the rug",
+    "timestamp": "2026-05-14T14:42:26.729269+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/living_room__214227_7348_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the wooden media console on the right side"
+    ],
+    "sam_scores": {
+      "the wooden media console on the right side": 0.0,
+      "right side": 0.0
+    },
+    "elapsed_s": 70.3,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/living_room__214227_7348/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/living_room__214227_7348/step2_vlm.json",
+      "step4_combined_mask": "results/playground/steps/living_room__214227_7348/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/living_room__214227_7348/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/living_room__214227_7348/step6_final.jpg"
+    },
+    "image": "living_room.jpg",
+    "prompt": "With the tv shelf on the right side of the image",
+    "timestamp": "2026-05-14T14:43:38.105552+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/kids_room__214339_1182_preview.jpg",
+    "vlm_mode": "remove",
+    "vlm_targets": [
+      "the dark blue tree wall decal",
+      "the teal leaf shapes on the wall",
+      "the white wall sconces"
+    ],
+    "sam_scores": {
+      "excl:the teal leaf shapes on the wall": 0.828125,
+      "excl:the white wall sconces": 0.8828125,
+      "excl:the dark blue tree wall decal": 0.93359375
+    },
+    "elapsed_s": 48.4,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/kids_room__214339_1182/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/kids_room__214339_1182/step2_vlm.json",
+      "step3_sam_remove": "results/playground/steps/kids_room__214339_1182/step3_sam_remove.jpg",
+      "step4_combined_mask": "results/playground/steps/kids_room__214339_1182/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/kids_room__214339_1182/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/kids_room__214339_1182/step6_final.jpg"
+    },
+    "image": "kids_room.jpg",
+    "prompt": "Without anything on the wall or any art",
+    "timestamp": "2026-05-14T14:44:27.585185+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/plant_shelf__214428_5935_preview.jpg",
+    "vlm_mode": "narrow",
+    "vlm_targets": [
+      "the large terracotta pot on the left with the tall leafy plant",
+      "the large terracotta pot next to it with the bushy green plant"
+    ],
+    "sam_scores": {
+      "the large terracotta pot next to it with the bushy green plant": 0.74609375,
+      "the large terracotta pot on the left with the tall leafy plant": 0.80859375
+    },
+    "elapsed_s": 49.1,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/plant_shelf__214428_5935/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/plant_shelf__214428_5935/step2_vlm.json",
+      "step3_sam_narrow": "results/playground/steps/plant_shelf__214428_5935/step3_sam_narrow.jpg",
+      "step4_combined_mask": "results/playground/steps/plant_shelf__214428_5935/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/plant_shelf__214428_5935/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/plant_shelf__214428_5935/step6_final.jpg"
+    },
+    "image": "plant_shelf.jpg",
+    "prompt": "Only the two biggest pots and their plants and leaves.",
+    "timestamp": "2026-05-14T14:45:17.718505+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cooking_scene__214518_7246_preview.jpg",
+    "vlm_mode": "narrow",
+    "vlm_targets": [
+      "the chef in the white shirt and apron",
+      "the metal pot on the stove he is stirring"
+    ],
+    "sam_scores": {
+      "the chef in the white shirt and apron": 0.96484375,
+      "the metal pot on the stove he is stirring": 0.6484375
+    },
+    "elapsed_s": 50.9,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cooking_scene__214518_7246/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cooking_scene__214518_7246/step2_vlm.json",
+      "step3_sam_narrow": "results/playground/steps/cooking_scene__214518_7246/step3_sam_narrow.jpg",
+      "step4_combined_mask": "results/playground/steps/cooking_scene__214518_7246/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cooking_scene__214518_7246/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cooking_scene__214518_7246/step6_final.jpg"
+    },
+    "image": "cooking_scene.jpg",
+    "prompt": "Only the chef and the pot being cooked, nothing else",
+    "timestamp": "2026-05-14T14:46:09.798888+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cooking_scene__214610_8116_preview.jpg",
+    "vlm_mode": "narrow",
+    "vlm_targets": [
+      "the chef in the apron and cap",
+      "the metal pot on the stove",
+      "the food cooking inside the pot"
+    ],
+    "sam_scores": {
+      "the metal pot on the stove": 0.890625,
+      "the chef in the apron and cap": 0.96875,
+      "the food cooking inside the pot": 0.87109375
+    },
+    "elapsed_s": 52.9,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cooking_scene__214610_8116/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cooking_scene__214610_8116/step2_vlm.json",
+      "step3_sam_narrow": "results/playground/steps/cooking_scene__214610_8116/step3_sam_narrow.jpg",
+      "step4_combined_mask": "results/playground/steps/cooking_scene__214610_8116/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cooking_scene__214610_8116/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cooking_scene__214610_8116/step6_final.jpg"
+    },
+    "image": "cooking_scene.jpg",
+    "prompt": "Only the chef and the pot being cooked with the food inside the pot, nothing else",
+    "timestamp": "2026-05-14T14:47:03.869575+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/smoothie_bowl__214704_8765_preview.jpg",
+    "vlm_mode": "add_remove",
+    "vlm_targets": [],
+    "sam_scores": {
+      "the blueberries on the white surface": 0.0,
+      "the blackberries scattered on the white surface": 0.0,
+      "the whole strawberries on the white surface": 0.0,
+      "the strawberry slices on the white surface": 0.0,
+      "the fresh dill sprigs around the bowl": 0.84765625,
+      "the diced mango pieces on top of the smoothie bowl": 0.828125
+    },
+    "elapsed_s": 61.1,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/smoothie_bowl__214704_8765/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/smoothie_bowl__214704_8765/step2_vlm.json",
+      "step3_sam": "results/playground/steps/smoothie_bowl__214704_8765/step3_sam.jpg",
+      "step4_combined_mask": "results/playground/steps/smoothie_bowl__214704_8765/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/smoothie_bowl__214704_8765/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/smoothie_bowl__214704_8765/step6_final.jpg"
+    },
+    "image": "smoothie_bowl.jpg",
+    "prompt": "With all the berries, strawberries and anything around it but without the mango",
+    "timestamp": "2026-05-14T14:48:06.049573+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/smoothie_bowl__214807_0618_preview.jpg",
+    "vlm_mode": "remove",
+    "vlm_targets": [
+      "the diced mango pieces on the white surface to the left of the bowl",
+      "the diced mango pieces on the white surface to the upper left of the bowl"
+    ],
+    "sam_scores": {
+      "excl:the diced mango pieces on the white surface to the upper left of the bowl": 0.0,
+      "excl:the diced mango pieces on the white surface to the left of the bowl": 0.0
+    },
+    "elapsed_s": 41.2,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/smoothie_bowl__214807_0618/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/smoothie_bowl__214807_0618/step2_vlm.json",
+      "step4_combined_mask": "results/playground/steps/smoothie_bowl__214807_0618/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/smoothie_bowl__214807_0618/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/smoothie_bowl__214807_0618/step6_final.jpg"
+    },
+    "image": "smoothie_bowl.jpg",
+    "prompt": "Remove the yellow mango around the smoothie ball",
+    "timestamp": "2026-05-14T14:48:48.353768+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/smoothie_bowl__214849_3650_preview.jpg",
+    "vlm_mode": "remove",
+    "vlm_targets": [
+      "the mango pieces on the white surface to the left of the bowl",
+      "the mango piece on the surface above the bowl"
+    ],
+    "sam_scores": {
+      "excl:the mango pieces on the white surface to the left of the bowl": 0.0,
+      "excl:the mango piece on the surface above the bowl": 0.84375
+    },
+    "elapsed_s": 68.1,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/smoothie_bowl__214849_3650/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/smoothie_bowl__214849_3650/step2_vlm.json",
+      "step3_sam_remove": "results/playground/steps/smoothie_bowl__214849_3650/step3_sam_remove.jpg",
+      "step4_combined_mask": "results/playground/steps/smoothie_bowl__214849_3650/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/smoothie_bowl__214849_3650/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/smoothie_bowl__214849_3650/step6_final.jpg"
+    },
+    "image": "smoothie_bowl.jpg",
+    "prompt": "Remove the yellow mango around the smoothie ball, one is on the left side of the bowl and one is straight above the bowl.",
+    "timestamp": "2026-05-14T14:49:57.501180+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cafe_interior__214958_5098_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the blue surfboard leaning against the window"
+    ],
+    "sam_scores": {
+      "the blue surfboard leaning against the window": 0.0,
+      "the window": 0.51171875
+    },
+    "elapsed_s": 54.9,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cafe_interior__214958_5098/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cafe_interior__214958_5098/step2_vlm.json",
+      "step4_combined_mask": "results/playground/steps/cafe_interior__214958_5098/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cafe_interior__214958_5098/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cafe_interior__214958_5098/step6_final.jpg"
+    },
+    "image": "cafe_interior.jpg",
+    "prompt": "The dining table with its 4 chairs around it, include also the surfboard",
+    "timestamp": "2026-05-14T14:50:53.466016+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cafe_interior__215054_4758_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the blue surfboard"
+    ],
+    "sam_scores": {
+      "the blue surfboard": 0.9375
+    },
+    "elapsed_s": 46.8,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cafe_interior__215054_4758/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cafe_interior__215054_4758/step2_vlm.json",
+      "step3_sam_add": "results/playground/steps/cafe_interior__215054_4758/step3_sam_add.jpg",
+      "step4_combined_mask": "results/playground/steps/cafe_interior__215054_4758/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cafe_interior__215054_4758/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cafe_interior__215054_4758/step6_final.jpg"
+    },
+    "image": "cafe_interior.jpg",
+    "prompt": "With the surfboard",
+    "timestamp": "2026-05-14T14:51:41.387839+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cafe_interior__215142_3925_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the blue surfboard leaning against the window"
+    ],
+    "sam_scores": {
+      "the blue surfboard leaning against the window": 0.0,
+      "the window": 0.51171875
+    },
+    "elapsed_s": 100.1,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cafe_interior__215142_3925/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cafe_interior__215142_3925/step2_vlm.json",
+      "step4_combined_mask": "results/playground/steps/cafe_interior__215142_3925/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cafe_interior__215142_3925/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cafe_interior__215142_3925/step6_final.jpg"
+    },
+    "image": "cafe_interior.jpg",
+    "prompt": "Add the surfboard",
+    "timestamp": "2026-05-14T14:53:22.569161+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/cafe_interior__215323_5748_preview.jpg",
+    "vlm_mode": "add_remove",
+    "vlm_targets": [],
+    "sam_scores": {
+      "the wooden chair in the back right corner": 0.0,
+      "the blue surfboard": 0.9375,
+      "the wooden chair on the far right": 0.0
+    },
+    "elapsed_s": 208.3,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/cafe_interior__215323_5748/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/cafe_interior__215323_5748/step2_vlm.json",
+      "step3_sam": "results/playground/steps/cafe_interior__215323_5748/step3_sam.jpg",
+      "step4_combined_mask": "results/playground/steps/cafe_interior__215323_5748/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/cafe_interior__215323_5748/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/cafe_interior__215323_5748/step6_final.jpg"
+    },
+    "image": "cafe_interior.jpg",
+    "prompt": "Remove the further chairs the are on the right side of the picture. Add the surfboard",
+    "timestamp": "2026-05-14T14:56:51.975424+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/office_meeting__215624_5892_preview.jpg",
+    "vlm_mode": "narrow",
+    "vlm_targets": [
+      "the woman with curly hair standing",
+      "the man in glasses on the right"
+    ],
+    "sam_scores": {
+      "the woman with curly hair standing": 0.8984375,
+      "the man in glasses on the right": 0.84765625
+    },
+    "elapsed_s": 155.2,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/office_meeting__215624_5892/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/office_meeting__215624_5892/step2_vlm.json",
+      "step3_sam_narrow": "results/playground/steps/office_meeting__215624_5892/step3_sam_narrow.jpg",
+      "step4_combined_mask": "results/playground/steps/office_meeting__215624_5892/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/office_meeting__215624_5892/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/office_meeting__215624_5892/step6_final.jpg"
+    },
+    "image": "office_meeting.jpg",
+    "prompt": "The two people shaking hands",
+    "timestamp": "2026-05-14T14:58:59.819741+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/office_meeting__215900_8342_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the cork board with sticky notes on the wall"
+    ],
+    "sam_scores": {
+      "the cork board with sticky notes on the wall": 0.953125
+    },
+    "elapsed_s": 82.7,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/office_meeting__215900_8342/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/office_meeting__215900_8342/step2_vlm.json",
+      "step3_sam_add": "results/playground/steps/office_meeting__215900_8342/step3_sam_add.jpg",
+      "step4_combined_mask": "results/playground/steps/office_meeting__215900_8342/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/office_meeting__215900_8342/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/office_meeting__215900_8342/step6_final.jpg"
+    },
+    "image": "office_meeting.jpg",
+    "prompt": "With the board behind the meeting on the wall",
+    "timestamp": "2026-05-14T15:00:23.545963+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results/playground/office_meeting__220024_5610_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the cork board with sticky notes on the wall"
+    ],
+    "sam_scores": {
+      "the cork board with sticky notes on the wall": 0.953125
+    },
+    "elapsed_s": 39.9,
+    "step_images": {
+      "step1_rmbg": "results/playground/steps/office_meeting__220024_5610/step1_rmbg.jpg",
+      "step2_vlm": "results/playground/steps/office_meeting__220024_5610/step2_vlm.json",
+      "step3_sam_add": "results/playground/steps/office_meeting__220024_5610/step3_sam_add.jpg",
+      "step4_combined_mask": "results/playground/steps/office_meeting__220024_5610/step4_combined_mask.jpg",
+      "step5_edge_refined": "results/playground/steps/office_meeting__220024_5610/step5_edge_refined.jpg",
+      "step6_final": "results/playground/steps/office_meeting__220024_5610/step6_final.jpg"
+    },
+    "image": "office_meeting.jpg",
+    "prompt": "Add the board behind the meeting on the wall",
+    "timestamp": "2026-05-14T15:01:04.474436+00:00"
+  }
+]

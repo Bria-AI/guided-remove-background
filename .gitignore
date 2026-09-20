@@ -10,3 +10,4 @@ gallery.html
 dist/
 build/
 .DS_Store
+!benchmark/results/may-2026/

@@ -1,0 +1,4492 @@
+{
+  "total_cases": 116,
+  "completed": 116,
+  "succeeded": 116,
+  "failed": 0,
+  "done": true,
+  "total_elapsed_s": 2375.3660448330047,
+  "judge_model": "sonnet",
+  "results": [
+    {
+      "image": "art_table.jpg",
+      "foreground": "full_art_setup",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything on the table",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the complete art setup with canvas and all tools"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 21.824502000003122,
+      "output_png": "results/guided/art_table__full_art_setup.png",
+      "preview_jpg": "results/guided/art_table__full_art_setup_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [],
+        "include": [],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/art_table__full_art_setup/step1_rmbg.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "just_the_palette",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to single item",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the paint palette"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 43.903422667004634,
+      "output_png": "results/guided/art_table__just_the_palette.png",
+      "preview_jpg": "results/guided/art_table__just_the_palette_preview.jpg",
+      "sam_scores": {
+        "the wooden paint palette with mixed colors": 0.87109375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the wooden paint palette with mixed colors"
+        ],
+        "include": [
+          "the wooden paint palette with mixed colors"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/art_table__just_the_palette/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/art_table__just_the_palette/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/art_table__just_the_palette/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/art_table__just_the_palette/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/art_table__just_the_palette/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/art_table__just_the_palette/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/art_table__just_the_palette/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "glass jar with paintbrushes should be removed for 'only the paint palette' request",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "paint tubes should be removed for 'only the paint palette' request",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "other art supplies should be removed for 'only the paint palette' request",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "painting_tools",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the two main painting tools",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the palette and the brushes"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 61.33043391699903,
+      "output_png": "results/guided/art_table__painting_tools.png",
+      "preview_jpg": "results/guided/art_table__painting_tools_preview.jpg",
+      "sam_scores": {
+        "the paintbrushes in the glass jar": 0.0,
+        "the wooden paint palette with mixed colors": 0.87109375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the wooden paint palette with mixed colors",
+          "the paintbrushes in the glass jar"
+        ],
+        "include": [
+          "the wooden paint palette with mixed colors",
+          "the paintbrushes in the glass jar"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/art_table__painting_tools/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/art_table__painting_tools/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/art_table__painting_tools/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/art_table__painting_tools/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/art_table__painting_tools/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/art_table__painting_tools/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/art_table__painting_tools/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "white paper present but user only asked for palette and brushes",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "pencil present but user only asked for palette and brushes",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "paint tubes present but user only asked for palette and brushes",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "without_pastels",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one tool category",
+      "should_exclude": "pastel set|pastels",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the pastel set"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 62.46024704098818,
+      "output_png": "results/guided/art_table__without_pastels.png",
+      "preview_jpg": "results/guided/art_table__without_pastels_preview.jpg",
+      "sam_scores": {
+        "excl:the colorful pastel stick set": 0.87890625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the colorful pastel stick set"
+        ],
+        "include": [],
+        "exclude": [
+          "the colorful pastel stick set"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/art_table__without_pastels/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/art_table__without_pastels/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/art_table__without_pastels/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/art_table__without_pastels/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/art_table__without_pastels/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/art_table__without_pastels/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/art_table__without_pastels/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/art_table__without_pastels/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "pastel set is still visible in the image when user asked for everything except the pastel set",
+              "fix": "re-sam: colorful pastel stick set"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "pastel set is still visible in the image when user asked for everything except the pastel set",
+              "fix": "re-sam: colorful pastel stick set"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "just_the_seating",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the seating area only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "just the dining table and chairs"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 52.70031137499609,
+      "output_png": "results/guided/cafe_interior__just_the_seating.png",
+      "preview_jpg": "results/guided/cafe_interior__just_the_seating_preview.jpg",
+      "sam_scores": {
+        "the wooden dining table": 0.92578125,
+        "the wooden chair closest to camera": 0.0,
+        "the wooden chair on the right side": 0.734375,
+        "the wooden chair on the left side": 0.93359375,
+        "the wooden chair at the back": 0.7734375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the wooden dining table",
+          "the wooden chair closest to camera",
+          "the wooden chair on the left side",
+          "the wooden chair on the right side",
+          "the wooden chair at the back"
+        ],
+        "include": [
+          "the wooden dining table",
+          "the wooden chair closest to camera",
+          "the wooden chair on the left side",
+          "the wooden chair on the right side",
+          "the wooden chair at the back"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_interior__just_the_seating/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_interior__just_the_seating/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/cafe_interior__just_the_seating/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_interior__just_the_seating/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_interior__just_the_seating/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_interior__just_the_seating/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_interior__just_the_seating/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "tablet/device on table not requested in narrow prompt",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "teal cup/container on table not requested in narrow prompt",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "seating_with_surfboard",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include seating plus wall decor",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the seating area with the surfboard on the wall"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 133.201246334007,
+      "output_png": "results/guided/cafe_interior__seating_with_surfboard.png",
+      "preview_jpg": "results/guided/cafe_interior__seating_with_surfboard_preview.jpg",
+      "sam_scores": {
+        "the blue surfboard on the wall": 0.9453125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the blue surfboard on the wall"
+        ],
+        "include": [
+          "the blue surfboard on the wall"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_interior__seating_with_surfboard/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_interior__seating_with_surfboard/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/cafe_interior__seating_with_surfboard/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_interior__seating_with_surfboard/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_interior__seating_with_surfboard/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_interior__seating_with_surfboard/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_interior__seating_with_surfboard/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "without_bar",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the service zone",
+      "should_exclude": "bar counter|bottles|drinks display",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the bar counter area"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 45.39276720798807,
+      "output_png": "results/guided/cafe_interior__without_bar.png",
+      "preview_jpg": "results/guided/cafe_interior__without_bar_preview.jpg",
+      "sam_scores": {
+        "excl:the coffee equipment on the counter": 0.0,
+        "excl:the glass display cases on the counter": 0.88671875,
+        "excl:the bottles on the shelves behind the counter": 0.65234375,
+        "excl:the black marble bar counter": 0.921875,
+        "excl:the refrigerated display case": 0.828125,
+        "excl:the menu boards above the counter": 0.5234375
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the black marble bar counter",
+          "the glass display cases on the counter",
+          "the coffee equipment on the counter",
+          "the bottles on the shelves behind the counter",
+          "the refrigerated display case",
+          "the menu boards above the counter"
+        ],
+        "include": [],
+        "exclude": [
+          "the black marble bar counter",
+          "the glass display cases on the counter",
+          "the coffee equipment on the counter",
+          "the bottles on the shelves behind the counter",
+          "the refrigerated display case",
+          "the menu boards above the counter"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_interior__without_bar/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_interior__without_bar/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/cafe_interior__without_bar/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_interior__without_bar/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_interior__without_bar/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_interior__without_bar/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_interior__without_bar/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "drinks_only",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude food keep drinks",
+      "should_exclude": "cookies|fruit|pastries",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the drinks without the food items"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 105.09242891598842,
+      "output_png": "results/guided/cafe_table__drinks_only.png",
+      "preview_jpg": "results/guided/cafe_table__drinks_only_preview.jpg",
+      "sam_scores": {
+        "excl:the cookies in the turquoise bowl": 0.0,
+        "excl:the three pastries on the white plate": 0.0,
+        "excl:the cookie near the bottom right coffee cup": 0.65234375,
+        "excl:the pastry on the wooden board": 0.515625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the cookies in the turquoise bowl",
+          "the three pastries on the white plate",
+          "the pastry on the wooden board",
+          "the cookie near the bottom right coffee cup"
+        ],
+        "include": [],
+        "exclude": [
+          "the cookies in the turquoise bowl",
+          "the three pastries on the white plate",
+          "the pastry on the wooden board",
+          "the cookie near the bottom right coffee cup"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_table__drinks_only/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_table__drinks_only/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/cafe_table__drinks_only/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_table__drinks_only/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_table__drinks_only/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_table__drinks_only/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_table__drinks_only/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/cafe_table__drinks_only/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "food items still present - cookies, pastries, and marshmallows visible",
+              "fix": "re-sam: drinks beverages coffee tea"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "cookies are still present but user asked for drinks without food items",
+              "fix": "re-sam: cookies in blue bowl"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "pastries on plate are still present but user asked for drinks without food items",
+              "fix": "re-sam: pastries on white plate"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "bowl with food is still present but user asked for drinks without food items",
+              "fix": "re-sam: bowl with marshmallows"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "just_the_teapots",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to specific drinkware",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the glass teapots"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 55.87561099999584,
+      "output_png": "results/guided/cafe_table__just_the_teapots.png",
+      "preview_jpg": "results/guided/cafe_table__just_the_teapots_preview.jpg",
+      "sam_scores": {
+        "the glass teapot with metal lid": 0.51171875,
+        "the clear glass teapot on the right": 0.640625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the glass teapot with metal lid",
+          "the clear glass teapot on the right"
+        ],
+        "include": [
+          "the glass teapot with metal lid",
+          "the clear glass teapot on the right"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_table__just_the_teapots/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_table__just_the_teapots/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/cafe_table__just_the_teapots/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_table__just_the_teapots/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_table__just_the_teapots/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_table__just_the_teapots/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_table__just_the_teapots/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/cafe_table__just_the_teapots/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "dark teapot/coffee pot present when user asked for only glass teapots",
+              "fix": "re-sam: clear glass teapot only"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "hand is present but user asked for only glass teapots",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "dark teapot/coffee pot is present but user asked for only glass teapots",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "teapots_and_book",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to specific items from cluttered table",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the glass teapots with the open book"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 61.30563675001031,
+      "output_png": "results/guided/cafe_table__teapots_and_book.png",
+      "preview_jpg": "results/guided/cafe_table__teapots_and_book_preview.jpg",
+      "sam_scores": {
+        "the open book on the left": 0.97265625,
+        "the glass teapot on the lower right": 0.71484375,
+        "the glass teapot on the upper left": 0.87109375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the glass teapot on the upper left",
+          "the glass teapot on the lower right",
+          "the open book on the left"
+        ],
+        "include": [
+          "the glass teapot on the upper left",
+          "the glass teapot on the lower right",
+          "the open book on the left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cafe_table__teapots_and_book/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cafe_table__teapots_and_book/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/cafe_table__teapots_and_book/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/cafe_table__teapots_and_book/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cafe_table__teapots_and_book/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cafe_table__teapots_and_book/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cafe_table__teapots_and_book/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "Multiple coffee cups, pastries, cookies, and other cafe items are present when user only asked for glass teapots and open book",
+              "fix": "re-sam: glass teapot and book"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_dish",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to person plus their immediate task",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "just the chef and the dish being prepared"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 40.12789954201435,
+      "output_png": "results/guided/cooking_scene__chef_and_dish.png",
+      "preview_jpg": "results/guided/cooking_scene__chef_and_dish_preview.jpg",
+      "sam_scores": {
+        "the metal pan with food on the stove": 0.66015625,
+        "the chef in white shirt and apron": 0.95703125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the chef in white shirt and apron",
+          "the metal pan with food on the stove"
+        ],
+        "include": [
+          "the chef in white shirt and apron",
+          "the metal pan with food on the stove"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cooking_scene__chef_and_dish/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cooking_scene__chef_and_dish/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/cooking_scene__chef_and_dish/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/cooking_scene__chef_and_dish/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cooking_scene__chef_and_dish/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cooking_scene__chef_and_dish/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cooking_scene__chef_and_dish/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "multiple kitchen items and cookware present when prompt asks for just chef and dish being prepared",
+              "fix": "re-sam: chef and cooking pot"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_stove",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include person plus their active workspace",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef with the stove and pots"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 31.784785583004123,
+      "output_png": "results/guided/cooking_scene__chef_and_stove.png",
+      "preview_jpg": "results/guided/cooking_scene__chef_and_stove_preview.jpg",
+      "sam_scores": {
+        "the metal cooking pots on the stove": 0.90234375,
+        "the black gas stove": 0.82421875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the black gas stove",
+          "the metal cooking pots on the stove"
+        ],
+        "include": [
+          "the black gas stove",
+          "the metal cooking pots on the stove"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cooking_scene__chef_and_stove/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cooking_scene__chef_and_stove/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/cooking_scene__chef_and_stove/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/cooking_scene__chef_and_stove/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cooking_scene__chef_and_stove/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cooking_scene__chef_and_stove/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cooking_scene__chef_and_stove/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_with_countertop",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include surface RMBG would likely drop",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef with the countertop"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 27.47996991701075,
+      "output_png": "results/guided/cooking_scene__chef_with_countertop.png",
+      "preview_jpg": "results/guided/cooking_scene__chef_with_countertop_preview.jpg",
+      "sam_scores": {
+        "the dark granite countertop": 0.84375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the dark granite countertop"
+        ],
+        "include": [
+          "the dark granite countertop"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cooking_scene__chef_with_countertop/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cooking_scene__chef_with_countertop/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/cooking_scene__chef_with_countertop/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/cooking_scene__chef_with_countertop/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cooking_scene__chef_with_countertop/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cooking_scene__chef_with_countertop/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cooking_scene__chef_with_countertop/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_without_pans",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude specific cooking equipment from foreground",
+      "should_exclude": "pans|skillets on stove",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef without the stove pans"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 72.00668595798197,
+      "output_png": "results/guided/cooking_scene__chef_without_pans.png",
+      "preview_jpg": "results/guided/cooking_scene__chef_without_pans_preview.jpg",
+      "sam_scores": {
+        "excl:the metal pan with yellow contents on the stove": 0.0,
+        "excl:the larger metal pot on the stove": 0.92578125
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the metal pan with yellow contents on the stove",
+          "the larger metal pot on the stove"
+        ],
+        "include": [],
+        "exclude": [
+          "the metal pan with yellow contents on the stove",
+          "the larger metal pot on the stove"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/cooking_scene__chef_without_pans/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/cooking_scene__chef_without_pans/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/cooking_scene__chef_without_pans/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/cooking_scene__chef_without_pans/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/cooking_scene__chef_without_pans/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/cooking_scene__chef_without_pans/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/cooking_scene__chef_without_pans/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/cooking_scene__chef_without_pans/step7_judge_1.json",
+        "step7_judge_2": "results/guided/steps/cooking_scene__chef_without_pans/step7_judge_2.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "cooking pot and saucepan are still present but user asked for chef without the stove pans",
+              "fix": "re-sam: cooking pots and pans"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "stove pans are still present when user asked for chef without the stove pans",
+              "fix": "re-sam: metal cooking pots pans"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "stove pans are still present when user asked for chef without the stove pans",
+              "fix": "re-sam: metal cooking pots pans"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "full_desk_setup",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include all items as a group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the entire desk setup including glasses and notebook"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 28.117506416980177,
+      "output_png": "results/guided/desk_setup__full_desk_setup.png",
+      "preview_jpg": "results/guided/desk_setup__full_desk_setup_preview.jpg",
+      "sam_scores": {
+        "the white notebook": 0.7578125,
+        "the black-rimmed glasses": 0.9140625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the black-rimmed glasses",
+          "the white notebook"
+        ],
+        "include": [
+          "the black-rimmed glasses",
+          "the white notebook"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/desk_setup__full_desk_setup/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/desk_setup__full_desk_setup/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/desk_setup__full_desk_setup/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/desk_setup__full_desk_setup/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/desk_setup__full_desk_setup/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/desk_setup__full_desk_setup/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/desk_setup__full_desk_setup/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "just_the_laptop",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the obvious main object",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the laptop"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 56.53661874998943,
+      "output_png": "results/guided/desk_setup__just_the_laptop.png",
+      "preview_jpg": "results/guided/desk_setup__just_the_laptop_preview.jpg",
+      "sam_scores": {
+        "the Dell laptop": 0.90234375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the Dell laptop"
+        ],
+        "include": [
+          "the Dell laptop"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/desk_setup__just_the_laptop/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/desk_setup__just_the_laptop/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/desk_setup__just_the_laptop/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/desk_setup__just_the_laptop/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/desk_setup__just_the_laptop/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/desk_setup__just_the_laptop/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/desk_setup__just_the_laptop/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "green plant in red pot is present but user asked for only the laptop",
+              "fix": "re-sam: laptop computer only"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "eyeglasses are present but user asked for only the laptop",
+              "fix": "re-sam: laptop computer only"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "white notebook/paper is present but user asked for only the laptop",
+              "fix": "re-sam: laptop computer only"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "laptop_and_plant",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include two main items together",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the laptop with the potted plant"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 30.870484124985524,
+      "output_png": "results/guided/desk_setup__laptop_and_plant.png",
+      "preview_jpg": "results/guided/desk_setup__laptop_and_plant_preview.jpg",
+      "sam_scores": {
+        "the potted plant in red terracotta pot": 0.93359375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the potted plant in red terracotta pot"
+        ],
+        "include": [
+          "the potted plant in red terracotta pot"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/desk_setup__laptop_and_plant/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/desk_setup__laptop_and_plant/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/desk_setup__laptop_and_plant/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/desk_setup__laptop_and_plant/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/desk_setup__laptop_and_plant/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/desk_setup__laptop_and_plant/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/desk_setup__laptop_and_plant/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one peripheral item",
+      "should_exclude": "smartphone|phone",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the smartphone"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 37.91534358300851,
+      "output_png": "results/guided/desk_setup__without_phone.png",
+      "preview_jpg": "results/guided/desk_setup__without_phone_preview.jpg",
+      "sam_scores": {
+        "excl:the black smartphone": 0.91796875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the black smartphone"
+        ],
+        "include": [],
+        "exclude": [
+          "the black smartphone"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/desk_setup__without_phone/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/desk_setup__without_phone/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/desk_setup__without_phone/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/desk_setup__without_phone/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/desk_setup__without_phone/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/desk_setup__without_phone/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/desk_setup__without_phone/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "smartphone is still present in the result when user asked for everything except the smartphone",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "full_patio_scene",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything including furniture and decor",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the complete patio scene with the lantern and chairs"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 207.7779821669974,
+      "output_png": "results/guided/garden_patio__full_patio_scene.png",
+      "preview_jpg": "results/guided/garden_patio__full_patio_scene_preview.jpg",
+      "sam_scores": {
+        "the wooden dining chairs": 0.0,
+        "the decorative metal lantern hanging from the pergola": 0.8984375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the decorative metal lantern hanging from the pergola",
+          "the wooden dining chairs"
+        ],
+        "include": [
+          "the decorative metal lantern hanging from the pergola",
+          "the wooden dining chairs"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/garden_patio__full_patio_scene/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/garden_patio__full_patio_scene/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/garden_patio__full_patio_scene/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/garden_patio__full_patio_scene/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/garden_patio__full_patio_scene/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/garden_patio__full_patio_scene/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/garden_patio__full_patio_scene/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_with_food",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the table contents",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the table setup with the food and drinks"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 301.70098754100036,
+      "output_png": "results/guided/garden_patio__table_with_food.png",
+      "preview_jpg": "results/guided/garden_patio__table_with_food_preview.jpg",
+      "sam_scores": {
+        "the green glass": 0.90625,
+        "the purple glass goblet": 0.609375,
+        "the wooden bowl with fruit": 0.7421875,
+        "the dark plums or olives": 0.87109375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the wooden bowl with fruit",
+          "the green glass",
+          "the purple glass goblet",
+          "the dark plums or olives"
+        ],
+        "include": [
+          "the wooden bowl with fruit",
+          "the green glass",
+          "the purple glass goblet",
+          "the dark plums or olives"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/garden_patio__table_with_food/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/garden_patio__table_with_food/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/garden_patio__table_with_food/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/garden_patio__table_with_food/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/garden_patio__table_with_food/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/garden_patio__table_with_food/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/garden_patio__table_with_food/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_without_chairs",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow the patio to table only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the table without the chairs"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 94.89547037502052,
+      "output_png": "results/guided/garden_patio__table_without_chairs.png",
+      "preview_jpg": "results/guided/garden_patio__table_without_chairs_preview.jpg",
+      "sam_scores": {
+        "excl:the wooden chair with floral cushion": 0.87890625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the wooden chair with floral cushion"
+        ],
+        "include": [],
+        "exclude": [
+          "the wooden chair with floral cushion"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/garden_patio__table_without_chairs/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/garden_patio__table_without_chairs/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/garden_patio__table_without_chairs/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/garden_patio__table_without_chairs/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/garden_patio__table_without_chairs/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/garden_patio__table_without_chairs/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/garden_patio__table_without_chairs/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "Chair is present but user requested only the table without chairs",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "without_pergola",
+      "scenario": "exclude",
+      "difficulty": "hard",
+      "description": "Exclude the architectural canopy",
+      "should_exclude": "pergola|overhead structure",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the table and chairs without the overhead pergola"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 213.84960108299856,
+      "output_png": "results/guided/garden_patio__without_pergola.png",
+      "preview_jpg": "results/guided/garden_patio__without_pergola_preview.jpg",
+      "sam_scores": {
+        "the wooden dining table": 0.0,
+        "the wooden pergola structure": 0.6328125,
+        "the pink flowering vines on the pergola": 0.57421875,
+        "the wooden chair with floral cushion": 0.87890625
+      },
+      "vlm_decompose": {
+        "mode": "add_remove",
+        "targets": [],
+        "include": [
+          "the wooden dining table",
+          "the wooden chair with floral cushion"
+        ],
+        "exclude": [
+          "the wooden pergola structure",
+          "the pink flowering vines on the pergola"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/garden_patio__without_pergola/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/garden_patio__without_pergola/step2_vlm.json",
+        "step3_sam": "results/guided/steps/garden_patio__without_pergola/step3_sam.jpg",
+        "step4_combined_mask": "results/guided/steps/garden_patio__without_pergola/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/garden_patio__without_pergola/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/garden_patio__without_pergola/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/garden_patio__without_pergola/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "overhead pergola with flowering vines is still present but user explicitly asked for table and chairs without the pergola",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "with_laptop",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include one item RMBG might drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the laptop"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 28.325896709022345,
+      "output_png": "results/guided/home_office__with_laptop.png",
+      "preview_jpg": "results/guided/home_office__with_laptop_preview.jpg",
+      "sam_scores": {
+        "the silver laptop computer": 0.953125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the silver laptop computer"
+        ],
+        "include": [
+          "the silver laptop computer"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/home_office__with_laptop/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/home_office__with_laptop/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/home_office__with_laptop/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/home_office__with_laptop/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/home_office__with_laptop/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/home_office__with_laptop/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/home_office__with_laptop/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a peripheral element RMBG would include",
+      "should_exclude": "lamp",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman at her desk without the lamp behind her"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 29.479739999980666,
+      "output_png": "results/guided/home_office__without_lamp.png",
+      "preview_jpg": "results/guided/home_office__without_lamp_preview.jpg",
+      "sam_scores": {
+        "excl:the floor lamp behind the desk": 0.73828125
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the floor lamp behind the desk"
+        ],
+        "include": [],
+        "exclude": [
+          "the floor lamp behind the desk"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/home_office__without_lamp/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/home_office__without_lamp/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/home_office__without_lamp/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/home_office__without_lamp/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/home_office__without_lamp/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/home_office__without_lamp/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/home_office__without_lamp/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "woman_with_rug",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include person plus background surface RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the rug on the floor"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 25.009145916003035,
+      "output_png": "results/guided/home_office__woman_with_rug.png",
+      "preview_jpg": "results/guided/home_office__woman_with_rug_preview.jpg",
+      "sam_scores": {
+        "the woven area rug on the wooden floor": 0.92578125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the woven area rug on the wooden floor"
+        ],
+        "include": [
+          "the woven area rug on the wooden floor"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/home_office__woman_with_rug/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/home_office__woman_with_rug/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/home_office__woman_with_rug/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/home_office__woman_with_rug/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/home_office__woman_with_rug/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/home_office__woman_with_rug/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/home_office__woman_with_rug/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "workspace_setup",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the furniture arrangement around the person",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the desk setup with the chair"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 24.6792023749731,
+      "output_png": "results/guided/home_office__workspace_setup.png",
+      "preview_jpg": "results/guided/home_office__workspace_setup_preview.jpg",
+      "sam_scores": {
+        "the black wooden chair": 0.8828125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the black wooden chair"
+        ],
+        "include": [
+          "the black wooden chair"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/home_office__workspace_setup/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/home_office__workspace_setup/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/home_office__workspace_setup/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/home_office__workspace_setup/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/home_office__workspace_setup/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/home_office__workspace_setup/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/home_office__workspace_setup/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_and_toys",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the sleep area with toys",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the daybed with the stuffed animals"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 38.00121191699873,
+      "output_png": "results/guided/kids_room__bed_and_toys.png",
+      "preview_jpg": "results/guided/kids_room__bed_and_toys_preview.jpg",
+      "sam_scores": {
+        "the orange fox stuffed animal": 0.68359375,
+        "the white rabbit stuffed animal": 0.8515625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the orange fox stuffed animal",
+          "the white rabbit stuffed animal"
+        ],
+        "include": [
+          "the orange fox stuffed animal",
+          "the white rabbit stuffed animal"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/kids_room__bed_and_toys/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/kids_room__bed_and_toys/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/kids_room__bed_and_toys/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/kids_room__bed_and_toys/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/kids_room__bed_and_toys/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/kids_room__bed_and_toys/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/kids_room__bed_and_toys/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_without_desk",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the bed zone only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bed area without the desk and computer"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 42.02274312500958,
+      "output_png": "results/guided/kids_room__bed_without_desk.png",
+      "preview_jpg": "results/guided/kids_room__bed_without_desk_preview.jpg",
+      "sam_scores": {
+        "excl:the white desk": 0.9140625,
+        "excl:the computer mouse": 0.625,
+        "excl:the computer keyboard": 0.8515625,
+        "excl:the computer monitor": 0.91015625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white desk",
+          "the computer monitor",
+          "the computer keyboard",
+          "the computer mouse"
+        ],
+        "include": [],
+        "exclude": [
+          "the white desk",
+          "the computer monitor",
+          "the computer keyboard",
+          "the computer mouse"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/kids_room__bed_without_desk/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/kids_room__bed_without_desk/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/kids_room__bed_without_desk/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/kids_room__bed_without_desk/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/kids_room__bed_without_desk/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/kids_room__bed_without_desk/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/kids_room__bed_without_desk/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "without_desk_area",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the work/study zone",
+      "should_exclude": "desk|iMac|computer",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the desk and computer"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 77.45731704201899,
+      "output_png": "results/guided/kids_room__without_desk_area.png",
+      "preview_jpg": "results/guided/kids_room__without_desk_area_preview.jpg",
+      "sam_scores": {
+        "excl:the white desk": 0.9140625,
+        "excl:the computer monitor": 0.91015625,
+        "excl:the computer mouse": 0.625,
+        "excl:the computer keyboard": 0.8515625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white desk",
+          "the computer monitor",
+          "the computer keyboard",
+          "the computer mouse"
+        ],
+        "include": [],
+        "exclude": [
+          "the white desk",
+          "the computer monitor",
+          "the computer keyboard",
+          "the computer mouse"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/kids_room__without_desk_area/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/kids_room__without_desk_area/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/kids_room__without_desk_area/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/kids_room__without_desk_area/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/kids_room__without_desk_area/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/kids_room__without_desk_area/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/kids_room__without_desk_area/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/kids_room__without_desk_area/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "desk is completely absent from the result",
+              "fix": "re-sam: white desk furniture"
+            },
+            {
+              "type": "missing_item",
+              "description": "computer is completely absent from the result",
+              "fix": "re-sam: computer monitor screen"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "everything_minus_kitchen",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the kitchen zone",
+      "should_exclude": "kitchen",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the kitchen area"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 184.9756676669931,
+      "output_png": "results/guided/living_room__everything_minus_kitchen.png",
+      "preview_jpg": "results/guided/living_room__everything_minus_kitchen_preview.jpg",
+      "sam_scores": {
+        "excl:the kitchen island": 0.0,
+        "excl:the kitchen backsplash": 0.0,
+        "excl:the white kitchen cabinets": 0.50390625,
+        "excl:the stainless steel range hood": 0.5859375,
+        "excl:the built-in oven": 0.71875,
+        "excl:the dining chairs": 0.0,
+        "excl:the dining table": 0.76953125
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white kitchen cabinets",
+          "the kitchen island",
+          "the stainless steel range hood",
+          "the built-in oven",
+          "the kitchen backsplash",
+          "the dining table",
+          "the dining chairs"
+        ],
+        "include": [],
+        "exclude": [
+          "the white kitchen cabinets",
+          "the kitchen island",
+          "the stainless steel range hood",
+          "the built-in oven",
+          "the kitchen backsplash",
+          "the dining table",
+          "the dining chairs"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/living_room__everything_minus_kitchen/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/living_room__everything_minus_kitchen/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/living_room__everything_minus_kitchen/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/living_room__everything_minus_kitchen/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/living_room__everything_minus_kitchen/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/living_room__everything_minus_kitchen/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/living_room__everything_minus_kitchen/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "full_furnished_space",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything including structural elements",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "all the furniture including the staircase"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 47.8489830410108,
+      "output_png": "results/guided/living_room__full_furnished_space.png",
+      "preview_jpg": "results/guided/living_room__full_furnished_space_preview.jpg",
+      "sam_scores": {
+        "the wooden floating staircase": 0.78515625,
+        "the round glass coffee table": 0.9609375,
+        "the dining table": 0.76953125,
+        "the kitchen island": 0.0,
+        "the round patterned area rug": 0.9140625,
+        "the dining chairs": 0.0,
+        "the white kitchen cabinets": 0.50390625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the wooden floating staircase",
+          "the round patterned area rug",
+          "the round glass coffee table",
+          "the dining table",
+          "the dining chairs",
+          "the kitchen island",
+          "the white kitchen cabinets"
+        ],
+        "include": [
+          "the wooden floating staircase",
+          "the round patterned area rug",
+          "the round glass coffee table",
+          "the dining table",
+          "the dining chairs",
+          "the kitchen island",
+          "the white kitchen cabinets"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/living_room__full_furnished_space/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/living_room__full_furnished_space/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/living_room__full_furnished_space/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/living_room__full_furnished_space/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/living_room__full_furnished_space/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/living_room__full_furnished_space/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/living_room__full_furnished_space/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "just_the_sofa_area",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to just the main seating",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the sofa and its cushions"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 56.34528729200247,
+      "output_png": "results/guided/living_room__just_the_sofa_area.png",
+      "preview_jpg": "results/guided/living_room__just_the_sofa_area_preview.jpg",
+      "sam_scores": {
+        "the sofa cushions": 0.86328125,
+        "the gray sectional sofa": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the gray sectional sofa",
+          "the sofa cushions"
+        ],
+        "include": [
+          "the gray sectional sofa",
+          "the sofa cushions"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/living_room__just_the_sofa_area/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/living_room__just_the_sofa_area/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/living_room__just_the_sofa_area/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/living_room__just_the_sofa_area/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/living_room__just_the_sofa_area/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/living_room__just_the_sofa_area/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/living_room__just_the_sofa_area/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "coffee table present when user asked for only sofa and cushions",
+              "fix": "re-sam: gray sectional sofa cushions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "living_area_furniture",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include specific furniture group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the sofa and coffee table with the rug"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 204.44815137499245,
+      "output_png": "results/guided/living_room__living_area_furniture.png",
+      "preview_jpg": "results/guided/living_room__living_area_furniture_preview.jpg",
+      "sam_scores": {
+        "the circular patterned area rug": 0.9296875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the circular patterned area rug"
+        ],
+        "include": [
+          "the circular patterned area rug"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/living_room__living_area_furniture/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/living_room__living_area_furniture/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/living_room__living_area_furniture/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/living_room__living_area_furniture/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/living_room__living_area_furniture/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/living_room__living_area_furniture/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/living_room__living_area_furniture/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "just_the_handshake",
+      "scenario": "narrow",
+      "difficulty": "hard",
+      "description": "Narrow to specific people in the group",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "only the two people shaking hands"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 29.78449616598664,
+      "output_png": "results/guided/office_meeting__just_the_handshake.png",
+      "preview_jpg": "results/guided/office_meeting__just_the_handshake_preview.jpg",
+      "sam_scores": {
+        "the man in glasses on the right side of the table": 0.609375,
+        "the woman with curly hair standing and reaching across the table": 0.68359375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the woman with curly hair standing and reaching across the table",
+          "the man in glasses on the right side of the table"
+        ],
+        "include": [
+          "the woman with curly hair standing and reaching across the table",
+          "the man in glasses on the right side of the table"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/office_meeting__just_the_handshake/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/office_meeting__just_the_handshake/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/office_meeting__just_the_handshake/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/office_meeting__just_the_handshake/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/office_meeting__just_the_handshake/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/office_meeting__just_the_handshake/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/office_meeting__just_the_handshake/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "Three other people are visible when prompt asks for only the two shaking hands",
+              "fix": "re-sam: two people shaking hands"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "people_and_table",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include people plus furniture and tech",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people with the table and laptops"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 61.54096516701975,
+      "output_png": "results/guided/office_meeting__people_and_table.png",
+      "preview_jpg": "results/guided/office_meeting__people_and_table_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [],
+        "include": [],
+        "exclude": [],
+        "error": "HTTPSConnectionPool(host='api.anthropic.com', port=443): Read timed out. (read timeout=30)"
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/office_meeting__people_and_table/step1_rmbg.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "with_cork_board",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include background element RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people with the cork board behind them"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 26.251205416978337,
+      "output_png": "results/guided/office_meeting__with_cork_board.png",
+      "preview_jpg": "results/guided/office_meeting__with_cork_board_preview.jpg",
+      "sam_scores": {
+        "the cork board with sticky notes on the wall": 0.953125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the cork board with sticky notes on the wall"
+        ],
+        "include": [
+          "the cork board with sticky notes on the wall"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/office_meeting__with_cork_board/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/office_meeting__with_cork_board/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/office_meeting__with_cork_board/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/office_meeting__with_cork_board/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/office_meeting__with_cork_board/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/office_meeting__with_cork_board/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/office_meeting__with_cork_board/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "without_tech",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude tech items from the scene",
+      "should_exclude": "laptops|phones",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people without any technology"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 43.67176691701752,
+      "output_png": "results/guided/office_meeting__without_tech.png",
+      "preview_jpg": "results/guided/office_meeting__without_tech_preview.jpg",
+      "sam_scores": {
+        "excl:the white smartphone": 0.0,
+        "excl:the black laptop": 0.0,
+        "excl:the black camera": 0.0
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the black laptop",
+          "the white smartphone",
+          "the black camera"
+        ],
+        "include": [],
+        "exclude": [
+          "the black laptop",
+          "the white smartphone",
+          "the black camera"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/office_meeting__without_tech/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/office_meeting__without_tech/step2_vlm.json",
+        "step4_combined_mask": "results/guided/steps/office_meeting__without_tech/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/office_meeting__without_tech/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/office_meeting__without_tech/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/office_meeting__without_tech/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/office_meeting__without_tech/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "laptop computer is present but user asked for people without any technology",
+              "fix": "re-sam: laptop computer"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "smartphone is present but user asked for people without any technology",
+              "fix": "re-sam: smartphone"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "laptop computer is present but user asked for people without any technology",
+              "fix": "no-fix"
+            },
+            {
+              "type": "unwanted_item",
+              "description": "smartphone is present but user asked for people without any technology",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "friends_with_drinks",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include people plus table and drinks",
+      "should_exclude": "",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the friends with their beer glasses and the table"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 20.78357858399977,
+      "output_png": "results/guided/patio_bar__friends_with_drinks.png",
+      "preview_jpg": "results/guided/patio_bar__friends_with_drinks_preview.jpg",
+      "sam_scores": {
+        "the wooden picnic table": 0.0,
+        "the beer glasses": 0.921875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the beer glasses",
+          "the wooden picnic table"
+        ],
+        "include": [
+          "the beer glasses",
+          "the wooden picnic table"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/patio_bar__friends_with_drinks/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/patio_bar__friends_with_drinks/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/patio_bar__friends_with_drinks/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/patio_bar__friends_with_drinks/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/patio_bar__friends_with_drinks/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/patio_bar__friends_with_drinks/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/patio_bar__friends_with_drinks/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "with_bench",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include seating RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the friends with the wooden bench"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 20.744831292016897,
+      "output_png": "results/guided/patio_bar__with_bench.png",
+      "preview_jpg": "results/guided/patio_bar__with_bench_preview.jpg",
+      "sam_scores": {
+        "the wooden picnic bench": 0.51171875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the wooden picnic bench"
+        ],
+        "include": [
+          "the wooden picnic bench"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/patio_bar__with_bench/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/patio_bar__with_bench/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/patio_bar__with_bench/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/patio_bar__with_bench/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/patio_bar__with_bench/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/patio_bar__with_bench/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/patio_bar__with_bench/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_background",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the commercial background",
+      "should_exclude": "bar shelves|background|store",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the people without the bar interior"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 20.995926791016245,
+      "output_png": "results/guided/patio_bar__without_background.png",
+      "preview_jpg": "results/guided/patio_bar__without_background_preview.jpg",
+      "sam_scores": {
+        "excl:the wooden picnic table": 0.0,
+        "excl:the pendant lights": 0.0,
+        "excl:the bar shelving with bottles": 0.0,
+        "excl:the bar counter": 0.0,
+        "excl:the interior ceiling structure": 0.0,
+        "excl:the wooden bench seating": 0.8671875,
+        "excl:the glass display case": 0.0
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the wooden picnic table",
+          "the wooden bench seating",
+          "the bar shelving with bottles",
+          "the pendant lights",
+          "the bar counter",
+          "the glass display case",
+          "the interior ceiling structure"
+        ],
+        "include": [],
+        "exclude": [
+          "the wooden picnic table",
+          "the wooden bench seating",
+          "the bar shelving with bottles",
+          "the pendant lights",
+          "the bar counter",
+          "the glass display case",
+          "the interior ceiling structure"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/patio_bar__without_background/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/patio_bar__without_background/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/patio_bar__without_background/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/patio_bar__without_background/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/patio_bar__without_background/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/patio_bar__without_background/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/patio_bar__without_background/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_third_person",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude peripheral person from edge",
+      "should_exclude": "third person|background person",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the two friends without the third person"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 24.310323541023536,
+      "output_png": "results/guided/patio_bar__without_third_person.png",
+      "preview_jpg": "results/guided/patio_bar__without_third_person_preview.jpg",
+      "sam_scores": {
+        "excl:the person in white on the left": 0.0
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the person in white on the left"
+        ],
+        "include": [],
+        "exclude": [
+          "the person in white on the left"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/patio_bar__without_third_person/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/patio_bar__without_third_person/step2_vlm.json",
+        "step4_combined_mask": "results/guided/steps/patio_bar__without_third_person/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/patio_bar__without_third_person/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/patio_bar__without_third_person/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/patio_bar__without_third_person/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "partial third person in white shirt still visible on left edge",
+              "fix": "re-sam: two women friends only"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "just_the_dog",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to one foreground subject",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "only the dog"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 78.49260912500904,
+      "output_png": "results/guided/person_dog__just_the_dog.png",
+      "preview_jpg": "results/guided/person_dog__just_the_dog_preview.jpg",
+      "sam_scores": {
+        "the golden dog": 0.0
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the golden dog"
+        ],
+        "include": [
+          "the golden dog"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/person_dog__just_the_dog/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/person_dog__just_the_dog/step2_vlm.json",
+        "step4_combined_mask": "results/guided/steps/person_dog__just_the_dog/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/person_dog__just_the_dog/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/person_dog__just_the_dog/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/person_dog__just_the_dog/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/person_dog__just_the_dog/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "woman in blue jacket present when prompt asks for only the dog",
+              "fix": "re-sam: light colored dog only"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "woman in blue jacket present when prompt asks for only the dog",
+              "fix": "re-sam: light colored dog only"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "walk_scene",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include subjects plus their walking surface",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person and dog with the path"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 34.48338129199692,
+      "output_png": "results/guided/person_dog__walk_scene.png",
+      "preview_jpg": "results/guided/person_dog__walk_scene_preview.jpg",
+      "sam_scores": {
+        "the dirt walking path": 0.63671875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the dirt walking path"
+        ],
+        "include": [
+          "the dirt walking path"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/person_dog__walk_scene/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/person_dog__walk_scene/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/person_dog__walk_scene/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/person_dog__walk_scene/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/person_dog__walk_scene/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/person_dog__walk_scene/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/person_dog__walk_scene/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "with_autumn_leaves",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include surrounding scenery RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person and dog with the autumn leaves around them"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 41.85070795798674,
+      "output_png": "results/guided/person_dog__with_autumn_leaves.png",
+      "preview_jpg": "results/guided/person_dog__with_autumn_leaves_preview.jpg",
+      "sam_scores": {
+        "the fallen autumn leaves on the path around the woman and dog": 0.80078125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the fallen autumn leaves on the path around the woman and dog"
+        ],
+        "include": [
+          "the fallen autumn leaves on the path around the woman and dog"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/person_dog__with_autumn_leaves/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/person_dog__with_autumn_leaves/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/person_dog__with_autumn_leaves/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/person_dog__with_autumn_leaves/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/person_dog__with_autumn_leaves/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/person_dog__with_autumn_leaves/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/person_dog__with_autumn_leaves/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "without_dog",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Remove part of foreground pair",
+      "should_exclude": "dog",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person walking without the dog"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 64.98961108300136,
+      "output_png": "results/guided/person_dog__without_dog.png",
+      "preview_jpg": "results/guided/person_dog__without_dog_preview.jpg",
+      "sam_scores": {
+        "excl:the golden retriever walking beside the woman": 0.0
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the golden retriever walking beside the woman"
+        ],
+        "include": [],
+        "exclude": [
+          "the golden retriever walking beside the woman"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/person_dog__without_dog/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/person_dog__without_dog/step2_vlm.json",
+        "step4_combined_mask": "results/guided/steps/person_dog__without_dog/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/person_dog__without_dog/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/person_dog__without_dog/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/person_dog__without_dog/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/person_dog__without_dog/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "dog is present but user asked for person without the dog",
+              "fix": "re-sam: person in blue jacket"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "dog is present but user requested person without the dog",
+              "fix": "re-sam: person in blue jacket"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "just_the_large_pots",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the two tallest herb pots",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the two largest pots"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 34.76357808301691,
+      "output_png": "results/guided/plant_shelf__just_the_large_pots.png",
+      "preview_jpg": "results/guided/plant_shelf__just_the_large_pots_preview.jpg",
+      "sam_scores": {
+        "the leftmost terracotta pot with tall leafy plant": 0.8984375,
+        "the second terracotta pot with large leafy plant": 0.80859375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the leftmost terracotta pot with tall leafy plant",
+          "the second terracotta pot with large leafy plant"
+        ],
+        "include": [
+          "the leftmost terracotta pot with tall leafy plant",
+          "the second terracotta pot with large leafy plant"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/plant_shelf__just_the_large_pots/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/plant_shelf__just_the_large_pots/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/plant_shelf__just_the_large_pots/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/plant_shelf__just_the_large_pots/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/plant_shelf__just_the_large_pots/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/plant_shelf__just_the_large_pots/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/plant_shelf__just_the_large_pots/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "mint_and_basil",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to two specific named herbs",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the mint and basil pots with their labels"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 44.712584916997,
+      "output_png": "results/guided/plant_shelf__mint_and_basil.png",
+      "preview_jpg": "results/guided/plant_shelf__mint_and_basil_preview.jpg",
+      "sam_scores": {
+        "the white label on the mint pot": 0.95703125,
+        "the leftmost terracotta pot with mint plant": 0.92578125,
+        "the second terracotta pot with basil plant": 0.90234375,
+        "the white label on the basil pot": 0.95703125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the leftmost terracotta pot with mint plant",
+          "the second terracotta pot with basil plant",
+          "the white label on the mint pot",
+          "the white label on the basil pot"
+        ],
+        "include": [
+          "the leftmost terracotta pot with mint plant",
+          "the second terracotta pot with basil plant",
+          "the white label on the mint pot",
+          "the white label on the basil pot"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/plant_shelf__mint_and_basil/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/plant_shelf__mint_and_basil/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/plant_shelf__mint_and_basil/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/plant_shelf__mint_and_basil/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/plant_shelf__mint_and_basil/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/plant_shelf__mint_and_basil/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/plant_shelf__mint_and_basil/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "Three additional potted plants with labels are missing from the result",
+              "fix": "re-sam: mint basil herb pots"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "pepper_and_mint",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to two specific pots from the row",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the pepper and mint pots"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 54.3030027920031,
+      "output_png": "results/guided/plant_shelf__pepper_and_mint.png",
+      "preview_jpg": "results/guided/plant_shelf__pepper_and_mint_preview.jpg",
+      "sam_scores": {
+        "the terracotta pot with mint plant second from left": 0.0,
+        "the terracotta pot with pepper plant on the left": 0.9140625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the terracotta pot with pepper plant on the left",
+          "the terracotta pot with mint plant second from left"
+        ],
+        "include": [
+          "the terracotta pot with pepper plant on the left",
+          "the terracotta pot with mint plant second from left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/plant_shelf__pepper_and_mint/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/plant_shelf__pepper_and_mint/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/plant_shelf__pepper_and_mint/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/plant_shelf__pepper_and_mint/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/plant_shelf__pepper_and_mint/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/plant_shelf__pepper_and_mint/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/plant_shelf__pepper_and_mint/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/plant_shelf__pepper_and_mint/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "mint pot is missing - only one pot visible instead of the requested pepper and mint pots",
+              "fix": "re-sam: mint pot plant"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "mint pot is missing - only one pot visible instead of the requested pepper and mint pots",
+              "fix": "re-sam: mint pot plant"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "without_small_pots",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the two smallest pots on the right",
+      "should_exclude": "basil|oregano",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the herb pots without the two smallest ones"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 33.292607332987245,
+      "output_png": "results/guided/plant_shelf__without_small_pots.png",
+      "preview_jpg": "results/guided/plant_shelf__without_small_pots_preview.jpg",
+      "sam_scores": {
+        "excl:the small potted plant with purple leaves on the right": 0.65625,
+        "excl:the smallest herb pot on the far right": 0.6171875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the small potted plant with purple leaves on the right",
+          "the smallest herb pot on the far right"
+        ],
+        "include": [],
+        "exclude": [
+          "the small potted plant with purple leaves on the right",
+          "the smallest herb pot on the far right"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/plant_shelf__without_small_pots/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/plant_shelf__without_small_pots/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/plant_shelf__without_small_pots/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/plant_shelf__without_small_pots/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/plant_shelf__without_small_pots/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/plant_shelf__without_small_pots/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/plant_shelf__without_small_pots/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "wooden table/surface is still present when user only wanted herb pots",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_and_mango",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include bowl plus specific surrounding items",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bowl with the mango halves"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 67.05345883299015,
+      "output_png": "results/guided/smoothie_bowl__bowl_and_mango.png",
+      "preview_jpg": "results/guided/smoothie_bowl__bowl_and_mango_preview.jpg",
+      "sam_scores": {
+        "the sliced mango halves on the white surface": 0.0,
+        "white surface": 0.95703125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the sliced mango halves on the white surface"
+        ],
+        "include": [
+          "the sliced mango halves on the white surface"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/smoothie_bowl__bowl_and_mango/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/smoothie_bowl__bowl_and_mango/step2_vlm.json",
+        "step4_combined_mask": "results/guided/steps/smoothie_bowl__bowl_and_mango/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/smoothie_bowl__bowl_and_mango/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/smoothie_bowl__bowl_and_mango/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/smoothie_bowl__bowl_and_mango/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": "500 Server Error: Internal Server Error for url: https://api.anthropic.com/v1/messages",
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_with_toppings",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include bowl plus its surrounding fruit scatter",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the smoothie bowl with the scattered berries around it"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 61.21182804199634,
+      "output_png": "results/guided/smoothie_bowl__bowl_with_toppings.png",
+      "preview_jpg": "results/guided/smoothie_bowl__bowl_with_toppings_preview.jpg",
+      "sam_scores": {
+        "the blueberries scattered on the white surface": 0.0,
+        "the whole strawberries on the white surface": 0.0,
+        "the blackberries scattered on the white surface": 0.0,
+        "the strawberry pieces scattered on the white surface": 0.90234375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the blackberries scattered on the white surface",
+          "the blueberries scattered on the white surface",
+          "the strawberry pieces scattered on the white surface",
+          "the whole strawberries on the white surface"
+        ],
+        "include": [
+          "the blackberries scattered on the white surface",
+          "the blueberries scattered on the white surface",
+          "the strawberry pieces scattered on the white surface",
+          "the whole strawberries on the white surface"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/smoothie_bowl__bowl_with_toppings/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_without_herbs",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a specific ingredient type",
+      "should_exclude": "herbs|dill|parsley",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bowl and fruits without the green herbs"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 55.14918512501754,
+      "output_png": "results/guided/smoothie_bowl__bowl_without_herbs.png",
+      "preview_jpg": "results/guided/smoothie_bowl__bowl_without_herbs_preview.jpg",
+      "sam_scores": {
+        "excl:the herb sprigs on the white surface around the bowl": 0.9140625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the herb sprigs on the white surface around the bowl"
+        ],
+        "include": [],
+        "exclude": [
+          "the herb sprigs on the white surface around the bowl"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/smoothie_bowl__bowl_without_herbs/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "green herbs are present but user explicitly asked for fruits without the green herbs",
+              "fix": "no-fix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "just_the_bowl",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to just the central bowl",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the smoothie bowl"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 64.36606812500395,
+      "output_png": "results/guided/smoothie_bowl__just_the_bowl.png",
+      "preview_jpg": "results/guided/smoothie_bowl__just_the_bowl_preview.jpg",
+      "sam_scores": {
+        "the white smoothie bowl": 0.9453125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the white smoothie bowl"
+        ],
+        "include": [
+          "the white smoothie bowl"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/smoothie_bowl__just_the_bowl/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/smoothie_bowl__just_the_bowl/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/smoothie_bowl__just_the_bowl/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/smoothie_bowl__just_the_bowl/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/smoothie_bowl__just_the_bowl/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/smoothie_bowl__just_the_bowl/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/smoothie_bowl__just_the_bowl/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "unwanted_item",
+              "description": "scattered fruits and herbs around the bowl should be removed for 'only the smoothie bowl'",
+              "fix": "re-sam: smoothie bowl only"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "just_the_person",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to just the person (RMBG default)",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "just the person in the yoga pose"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 19.652677042002324,
+      "output_png": "results/guided/yoga_studio__just_the_person.png",
+      "preview_jpg": "results/guided/yoga_studio__just_the_person_preview.jpg",
+      "sam_scores": {
+        "the woman in the yoga pose": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the woman in the yoga pose"
+        ],
+        "include": [
+          "the woman in the yoga pose"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/yoga_studio__just_the_person/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/yoga_studio__just_the_person/step2_vlm.json",
+        "step3_sam_narrow": "results/guided/steps/yoga_studio__just_the_person/step3_sam_narrow.jpg",
+        "step4_combined_mask": "results/guided/steps/yoga_studio__just_the_person/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/yoga_studio__just_the_person/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/yoga_studio__just_the_person/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/yoga_studio__just_the_person/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_candles",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include mat plus nearby props",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the candles"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 22.751110915996833,
+      "output_png": "results/guided/yoga_studio__with_mat_and_candles.png",
+      "preview_jpg": "results/guided/yoga_studio__with_mat_and_candles_preview.jpg",
+      "sam_scores": {
+        "the white candles on the floor": 0.82421875,
+        "the purple galaxy-patterned yoga mat": 0.97265625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the purple galaxy-patterned yoga mat",
+          "the white candles on the floor"
+        ],
+        "include": [
+          "the purple galaxy-patterned yoga mat",
+          "the white candles on the floor"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/yoga_studio__with_mat_and_candles/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/yoga_studio__with_mat_and_candles/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/yoga_studio__with_mat_and_candles/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/yoga_studio__with_mat_and_candles/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/yoga_studio__with_mat_and_candles/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/yoga_studio__with_mat_and_candles/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/yoga_studio__with_mat_and_candles/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_plant",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include multiple surrounding items RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the plant"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 38.07798691699281,
+      "output_png": "results/guided/yoga_studio__with_mat_and_plant.png",
+      "preview_jpg": "results/guided/yoga_studio__with_mat_and_plant_preview.jpg",
+      "sam_scores": {
+        "the potted palm plant": 0.9375,
+        "the galaxy-patterned yoga mat": 0.97265625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the galaxy-patterned yoga mat",
+          "the potted palm plant"
+        ],
+        "include": [
+          "the galaxy-patterned yoga mat",
+          "the potted palm plant"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/yoga_studio__with_mat_and_plant/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/yoga_studio__with_mat_and_plant/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/yoga_studio__with_mat_and_plant/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/yoga_studio__with_mat_and_plant/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/yoga_studio__with_mat_and_plant/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/yoga_studio__with_mat_and_plant/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/yoga_studio__with_mat_and_plant/step7_judge_0.json",
+        "step7_judge_1": "results/guided/steps/yoga_studio__with_mat_and_plant/step7_judge_1.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "plant is completely absent from the result",
+              "fix": "re-sam: potted palm plant"
+            }
+          ]
+        },
+        {
+          "passed": false,
+          "error": null,
+          "issues": [
+            {
+              "type": "missing_item",
+              "description": "plant is completely absent from the result",
+              "fix": "re-sam: potted palm plant"
+            }
+          ]
+        },
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude specific surrounding props",
+      "should_exclude": "candles",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person on the mat without the candles"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 17.131451416993514,
+      "output_png": "results/guided/yoga_studio__without_candles.png",
+      "preview_jpg": "results/guided/yoga_studio__without_candles_preview.jpg",
+      "sam_scores": {
+        "excl:the white candles on the floor beside the mat": 0.76171875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white candles on the floor beside the mat"
+        ],
+        "include": [],
+        "exclude": [
+          "the white candles on the floor beside the mat"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/yoga_studio__without_candles/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/yoga_studio__without_candles/step2_vlm.json",
+        "step3_sam_remove": "results/guided/steps/yoga_studio__without_candles/step3_sam_remove.jpg",
+        "step4_combined_mask": "results/guided/steps/yoga_studio__without_candles/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/yoga_studio__without_candles/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/yoga_studio__without_candles/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/yoga_studio__without_candles/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "yoga_with_mat",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the mat RMBG might or might not keep",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the yoga mat"
+      ],
+      "mode": "guided",
+      "error": null,
+      "elapsed_s": 21.993711541988887,
+      "output_png": "results/guided/yoga_studio__yoga_with_mat.png",
+      "preview_jpg": "results/guided/yoga_studio__yoga_with_mat_preview.jpg",
+      "sam_scores": {
+        "the colorful galaxy-patterned yoga mat": 0.96875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the colorful galaxy-patterned yoga mat"
+        ],
+        "include": [
+          "the colorful galaxy-patterned yoga mat"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results/guided/steps/yoga_studio__yoga_with_mat/step1_rmbg.jpg",
+        "step2_vlm": "results/guided/steps/yoga_studio__yoga_with_mat/step2_vlm.json",
+        "step3_sam_add": "results/guided/steps/yoga_studio__yoga_with_mat/step3_sam_add.jpg",
+        "step4_combined_mask": "results/guided/steps/yoga_studio__yoga_with_mat/step4_combined_mask.jpg",
+        "step5_edge_refined": "results/guided/steps/yoga_studio__yoga_with_mat/step5_edge_refined.jpg",
+        "step6_final": "results/guided/steps/yoga_studio__yoga_with_mat/step6_final.jpg",
+        "step7_judge_0": "results/guided/steps/yoga_studio__yoga_with_mat/step7_judge_0.json"
+      },
+      "judge_verdicts": [
+        {
+          "passed": true,
+          "error": null,
+          "issues": []
+        }
+      ]
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "full_art_setup",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything on the table",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the complete art setup with canvas and all tools"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 41.333178250002675,
+      "output_png": "results/rmbg-only/art_table__full_art_setup.png",
+      "preview_jpg": "results/rmbg-only/art_table__full_art_setup_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "just_the_palette",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to single item",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the paint palette"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.352989042003173,
+      "output_png": "results/rmbg-only/art_table__just_the_palette.png",
+      "preview_jpg": "results/rmbg-only/art_table__just_the_palette_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "painting_tools",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the two main painting tools",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the palette and the brushes"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 30.681206334003946,
+      "output_png": "results/rmbg-only/art_table__painting_tools.png",
+      "preview_jpg": "results/rmbg-only/art_table__painting_tools_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "without_pastels",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one tool category",
+      "should_exclude": "pastel set|pastels",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the pastel set"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 17.19858845800627,
+      "output_png": "results/rmbg-only/art_table__without_pastels.png",
+      "preview_jpg": "results/rmbg-only/art_table__without_pastels_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "just_the_seating",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the seating area only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "just the dining table and chairs"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 38.5197699170094,
+      "output_png": "results/rmbg-only/cafe_interior__just_the_seating.png",
+      "preview_jpg": "results/rmbg-only/cafe_interior__just_the_seating_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "seating_with_surfboard",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include seating plus wall decor",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the seating area with the surfboard on the wall"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 20.933197874983307,
+      "output_png": "results/rmbg-only/cafe_interior__seating_with_surfboard.png",
+      "preview_jpg": "results/rmbg-only/cafe_interior__seating_with_surfboard_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "without_bar",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the service zone",
+      "should_exclude": "bar counter|bottles|drinks display",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the bar counter area"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 36.97573529201327,
+      "output_png": "results/rmbg-only/cafe_interior__without_bar.png",
+      "preview_jpg": "results/rmbg-only/cafe_interior__without_bar_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "drinks_only",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude food keep drinks",
+      "should_exclude": "cookies|fruit|pastries",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the drinks without the food items"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 21.90557833298226,
+      "output_png": "results/rmbg-only/cafe_table__drinks_only.png",
+      "preview_jpg": "results/rmbg-only/cafe_table__drinks_only_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "just_the_teapots",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to specific drinkware",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the glass teapots"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 21.795281291997526,
+      "output_png": "results/rmbg-only/cafe_table__just_the_teapots.png",
+      "preview_jpg": "results/rmbg-only/cafe_table__just_the_teapots_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "teapots_and_book",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to specific items from cluttered table",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the glass teapots with the open book"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 23.015982208016794,
+      "output_png": "results/rmbg-only/cafe_table__teapots_and_book.png",
+      "preview_jpg": "results/rmbg-only/cafe_table__teapots_and_book_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_dish",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to person plus their immediate task",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "just the chef and the dish being prepared"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 12.033454000018537,
+      "output_png": "results/rmbg-only/cooking_scene__chef_and_dish.png",
+      "preview_jpg": "results/rmbg-only/cooking_scene__chef_and_dish_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_stove",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include person plus their active workspace",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef with the stove and pots"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 9.303924584004562,
+      "output_png": "results/rmbg-only/cooking_scene__chef_and_stove.png",
+      "preview_jpg": "results/rmbg-only/cooking_scene__chef_and_stove_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_with_countertop",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include surface RMBG would likely drop",
+      "should_exclude": "",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef with the countertop"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 14.255338250019122,
+      "output_png": "results/rmbg-only/cooking_scene__chef_with_countertop.png",
+      "preview_jpg": "results/rmbg-only/cooking_scene__chef_with_countertop_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_without_pans",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude specific cooking equipment from foreground",
+      "should_exclude": "pans|skillets on stove",
+      "rmbg_would": "the chef",
+      "prompts": [
+        "the chef without the stove pans"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 11.832584584015422,
+      "output_png": "results/rmbg-only/cooking_scene__chef_without_pans.png",
+      "preview_jpg": "results/rmbg-only/cooking_scene__chef_without_pans_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "full_desk_setup",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include all items as a group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the entire desk setup including glasses and notebook"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 13.34860587498406,
+      "output_png": "results/rmbg-only/desk_setup__full_desk_setup.png",
+      "preview_jpg": "results/rmbg-only/desk_setup__full_desk_setup_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "just_the_laptop",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the obvious main object",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the laptop"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 12.187680417002412,
+      "output_png": "results/rmbg-only/desk_setup__just_the_laptop.png",
+      "preview_jpg": "results/rmbg-only/desk_setup__just_the_laptop_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "laptop_and_plant",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include two main items together",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the laptop with the potted plant"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 12.44183808300295,
+      "output_png": "results/rmbg-only/desk_setup__laptop_and_plant.png",
+      "preview_jpg": "results/rmbg-only/desk_setup__laptop_and_plant_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one peripheral item",
+      "should_exclude": "smartphone|phone",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the smartphone"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 13.669957750011235,
+      "output_png": "results/rmbg-only/desk_setup__without_phone.png",
+      "preview_jpg": "results/rmbg-only/desk_setup__without_phone_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "full_patio_scene",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything including furniture and decor",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the complete patio scene with the lantern and chairs"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 49.03698733300553,
+      "output_png": "results/rmbg-only/garden_patio__full_patio_scene.png",
+      "preview_jpg": "results/rmbg-only/garden_patio__full_patio_scene_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_with_food",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the table contents",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the table setup with the food and drinks"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 72.49932129200897,
+      "output_png": "results/rmbg-only/garden_patio__table_with_food.png",
+      "preview_jpg": "results/rmbg-only/garden_patio__table_with_food_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_without_chairs",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow the patio to table only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the table without the chairs"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 43.4181873750058,
+      "output_png": "results/rmbg-only/garden_patio__table_without_chairs.png",
+      "preview_jpg": "results/rmbg-only/garden_patio__table_without_chairs_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "without_pergola",
+      "scenario": "exclude",
+      "difficulty": "hard",
+      "description": "Exclude the architectural canopy",
+      "should_exclude": "pergola|overhead structure",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the table and chairs without the overhead pergola"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 42.89723762497306,
+      "output_png": "results/rmbg-only/garden_patio__without_pergola.png",
+      "preview_jpg": "results/rmbg-only/garden_patio__without_pergola_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "with_laptop",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include one item RMBG might drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the laptop"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.436571458994877,
+      "output_png": "results/rmbg-only/home_office__with_laptop.png",
+      "preview_jpg": "results/rmbg-only/home_office__with_laptop_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a peripheral element RMBG would include",
+      "should_exclude": "lamp",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman at her desk without the lamp behind her"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 7.608180125011131,
+      "output_png": "results/rmbg-only/home_office__without_lamp.png",
+      "preview_jpg": "results/rmbg-only/home_office__without_lamp_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "woman_with_rug",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include person plus background surface RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the rug on the floor"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 7.300744292006129,
+      "output_png": "results/rmbg-only/home_office__woman_with_rug.png",
+      "preview_jpg": "results/rmbg-only/home_office__woman_with_rug_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "workspace_setup",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the furniture arrangement around the person",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the desk setup with the chair"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.960958290990675,
+      "output_png": "results/rmbg-only/home_office__workspace_setup.png",
+      "preview_jpg": "results/rmbg-only/home_office__workspace_setup_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_and_toys",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the sleep area with toys",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the daybed with the stuffed animals"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 17.394031709001865,
+      "output_png": "results/rmbg-only/kids_room__bed_and_toys.png",
+      "preview_jpg": "results/rmbg-only/kids_room__bed_and_toys_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_without_desk",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the bed zone only",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bed area without the desk and computer"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 18.6944155000092,
+      "output_png": "results/rmbg-only/kids_room__bed_without_desk.png",
+      "preview_jpg": "results/rmbg-only/kids_room__bed_without_desk_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "without_desk_area",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the work/study zone",
+      "should_exclude": "desk|iMac|computer",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the desk and computer"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 25.017836125014583,
+      "output_png": "results/rmbg-only/kids_room__without_desk_area.png",
+      "preview_jpg": "results/rmbg-only/kids_room__without_desk_area_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "everything_minus_kitchen",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the kitchen zone",
+      "should_exclude": "kitchen",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the kitchen area"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 20.530257584003266,
+      "output_png": "results/rmbg-only/living_room__everything_minus_kitchen.png",
+      "preview_jpg": "results/rmbg-only/living_room__everything_minus_kitchen_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "full_furnished_space",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Include everything including structural elements",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "all the furniture including the staircase"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.584185666986741,
+      "output_png": "results/rmbg-only/living_room__full_furnished_space.png",
+      "preview_jpg": "results/rmbg-only/living_room__full_furnished_space_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "just_the_sofa_area",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to just the main seating",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the sofa and its cushions"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.575023624987807,
+      "output_png": "results/rmbg-only/living_room__just_the_sofa_area.png",
+      "preview_jpg": "results/rmbg-only/living_room__just_the_sofa_area_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "living_area_furniture",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include specific furniture group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the sofa and coffee table with the rug"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 21.49837166699581,
+      "output_png": "results/rmbg-only/living_room__living_area_furniture.png",
+      "preview_jpg": "results/rmbg-only/living_room__living_area_furniture_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "just_the_handshake",
+      "scenario": "narrow",
+      "difficulty": "hard",
+      "description": "Narrow to specific people in the group",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "only the two people shaking hands"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 7.32893679200788,
+      "output_png": "results/rmbg-only/office_meeting__just_the_handshake.png",
+      "preview_jpg": "results/rmbg-only/office_meeting__just_the_handshake_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "people_and_table",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include people plus furniture and tech",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people with the table and laptops"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 77.28405020799255,
+      "output_png": "results/rmbg-only/office_meeting__people_and_table.png",
+      "preview_jpg": "results/rmbg-only/office_meeting__people_and_table_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "with_cork_board",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include background element RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people with the cork board behind them"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 10.762909874989418,
+      "output_png": "results/rmbg-only/office_meeting__with_cork_board.png",
+      "preview_jpg": "results/rmbg-only/office_meeting__with_cork_board_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "without_tech",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude tech items from the scene",
+      "should_exclude": "laptops|phones",
+      "rmbg_would": "all people + table",
+      "prompts": [
+        "the people without any technology"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 7.868877125001745,
+      "output_png": "results/rmbg-only/office_meeting__without_tech.png",
+      "preview_jpg": "results/rmbg-only/office_meeting__without_tech_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "friends_with_drinks",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include people plus table and drinks",
+      "should_exclude": "",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the friends with their beer glasses and the table"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.851007874996867,
+      "output_png": "results/rmbg-only/patio_bar__friends_with_drinks.png",
+      "preview_jpg": "results/rmbg-only/patio_bar__friends_with_drinks_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "with_bench",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include seating RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the friends with the wooden bench"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 7.961279500013916,
+      "output_png": "results/rmbg-only/patio_bar__with_bench.png",
+      "preview_jpg": "results/rmbg-only/patio_bar__with_bench_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_background",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the commercial background",
+      "should_exclude": "bar shelves|background|store",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the people without the bar interior"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.155489458004013,
+      "output_png": "results/rmbg-only/patio_bar__without_background.png",
+      "preview_jpg": "results/rmbg-only/patio_bar__without_background_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_third_person",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude peripheral person from edge",
+      "should_exclude": "third person|background person",
+      "rmbg_would": "the two women",
+      "prompts": [
+        "the two friends without the third person"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.254579875007039,
+      "output_png": "results/rmbg-only/patio_bar__without_third_person.png",
+      "preview_jpg": "results/rmbg-only/patio_bar__without_third_person_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "just_the_dog",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to one foreground subject",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "only the dog"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 40.46159779201844,
+      "output_png": "results/rmbg-only/person_dog__just_the_dog.png",
+      "preview_jpg": "results/rmbg-only/person_dog__just_the_dog_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "walk_scene",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include subjects plus their walking surface",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person and dog with the path"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 15.440154625015566,
+      "output_png": "results/rmbg-only/person_dog__walk_scene.png",
+      "preview_jpg": "results/rmbg-only/person_dog__walk_scene_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "with_autumn_leaves",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include surrounding scenery RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person and dog with the autumn leaves around them"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 18.677560500014806,
+      "output_png": "results/rmbg-only/person_dog__with_autumn_leaves.png",
+      "preview_jpg": "results/rmbg-only/person_dog__with_autumn_leaves_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "without_dog",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Remove part of foreground pair",
+      "should_exclude": "dog",
+      "rmbg_would": "woman + dog",
+      "prompts": [
+        "the person walking without the dog"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 14.034351250011241,
+      "output_png": "results/rmbg-only/person_dog__without_dog.png",
+      "preview_jpg": "results/rmbg-only/person_dog__without_dog_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "just_the_large_pots",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the two tallest herb pots",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the two largest pots"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 20.5856535420171,
+      "output_png": "results/rmbg-only/plant_shelf__just_the_large_pots.png",
+      "preview_jpg": "results/rmbg-only/plant_shelf__just_the_large_pots_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "mint_and_basil",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to two specific named herbs",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the mint and basil pots with their labels"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 13.545869499997934,
+      "output_png": "results/rmbg-only/plant_shelf__mint_and_basil.png",
+      "preview_jpg": "results/rmbg-only/plant_shelf__mint_and_basil_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "pepper_and_mint",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Narrow to two specific pots from the row",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the pepper and mint pots"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 13.060359875002177,
+      "output_png": "results/rmbg-only/plant_shelf__pepper_and_mint.png",
+      "preview_jpg": "results/rmbg-only/plant_shelf__pepper_and_mint_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "without_small_pots",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the two smallest pots on the right",
+      "should_exclude": "basil|oregano",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the herb pots without the two smallest ones"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 13.215845667000394,
+      "output_png": "results/rmbg-only/plant_shelf__without_small_pots.png",
+      "preview_jpg": "results/rmbg-only/plant_shelf__without_small_pots_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_and_mango",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include bowl plus specific surrounding items",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bowl with the mango halves"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 25.162608041981002,
+      "output_png": "results/rmbg-only/smoothie_bowl__bowl_and_mango.png",
+      "preview_jpg": "results/rmbg-only/smoothie_bowl__bowl_and_mango_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_with_toppings",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include bowl plus its surrounding fruit scatter",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the smoothie bowl with the scattered berries around it"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 33.43081966700265,
+      "output_png": "results/rmbg-only/smoothie_bowl__bowl_with_toppings.png",
+      "preview_jpg": "results/rmbg-only/smoothie_bowl__bowl_with_toppings_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_without_herbs",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a specific ingredient type",
+      "should_exclude": "herbs|dill|parsley",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bowl and fruits without the green herbs"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 25.665254667022964,
+      "output_png": "results/rmbg-only/smoothie_bowl__bowl_without_herbs.png",
+      "preview_jpg": "results/rmbg-only/smoothie_bowl__bowl_without_herbs_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "just_the_bowl",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to just the central bowl",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the smoothie bowl"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 29.92674312501913,
+      "output_png": "results/rmbg-only/smoothie_bowl__just_the_bowl.png",
+      "preview_jpg": "results/rmbg-only/smoothie_bowl__just_the_bowl_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "just_the_person",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to just the person (RMBG default)",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "just the person in the yoga pose"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.782858375023352,
+      "output_png": "results/rmbg-only/yoga_studio__just_the_person.png",
+      "preview_jpg": "results/rmbg-only/yoga_studio__just_the_person_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_candles",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include mat plus nearby props",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the candles"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 8.001437750004698,
+      "output_png": "results/rmbg-only/yoga_studio__with_mat_and_candles.png",
+      "preview_jpg": "results/rmbg-only/yoga_studio__with_mat_and_candles_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_plant",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include multiple surrounding items RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the plant"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 9.432770000013988,
+      "output_png": "results/rmbg-only/yoga_studio__with_mat_and_plant.png",
+      "preview_jpg": "results/rmbg-only/yoga_studio__with_mat_and_plant_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude specific surrounding props",
+      "should_exclude": "candles",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person on the mat without the candles"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.616643624991411,
+      "output_png": "results/rmbg-only/yoga_studio__without_candles.png",
+      "preview_jpg": "results/rmbg-only/yoga_studio__without_candles_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "yoga_with_mat",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the mat RMBG might or might not keep",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the yoga mat"
+      ],
+      "mode": "rmbg-only",
+      "error": null,
+      "elapsed_s": 6.544717790995492,
+      "output_png": "results/rmbg-only/yoga_studio__yoga_with_mat.png",
+      "preview_jpg": "results/rmbg-only/yoga_studio__yoga_with_mat_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    }
+  ]
+}

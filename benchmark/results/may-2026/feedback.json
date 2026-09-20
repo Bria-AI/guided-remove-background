@@ -1,0 +1,219 @@
+[
+  {
+    "case_id": "playground:living_room.jpg:with the rug",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:15:34.749516+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:living_room.jpg:with the rug",
+    "vote": "dislike",
+    "comment": "It included the rug as expected, but there are many holes in the area between the rug and the coffee table. Also, there is a glitch of one of the chairs on the left center side of the image, behind the sofa.",
+    "timestamp": "2026-05-14T08:16:32.971023+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:living_room.jpg:With the tv shelf on the right side of the image",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:17:27.696191+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:living_room.jpg:With the tv shelf on the right side of the image",
+    "vote": "dislike",
+    "comment": "It didn't detect the tv shelf as i asked. it gave the same result as the RMBG baseline.",
+    "timestamp": "2026-05-14T08:17:48.010481+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:kids_room.jpg:Without anything on the wall or any art",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:18:45.328113+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:kids_room.jpg:Without anything on the wall or any art",
+    "vote": "dislike",
+    "comment": "It removed parts of the wall art decoration, but didn't remove the blue leaves of the art, and also remained the lamp. It was supposed to remove the background of anything that is not related to the sofa",
+    "timestamp": "2026-05-14T08:19:37.477989+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:plant_shelf.jpg:Only the two biggest pots and their plants and leaves.",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:21:16.720661+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:plant_shelf.jpg:Only the two biggest pots and their plants and leaves.",
+    "vote": "dislike",
+    "comment": "Amazing!!",
+    "timestamp": "2026-05-14T08:21:21.144544+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:plant_shelf.jpg:Only the two biggest pots and their plants and leaves.",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:21:23.992753+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cooking_scene.jpg:Only the chef and the pot being cooked, nothing else",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:27:01.286290+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cooking_scene.jpg:Only the chef and the pot being cooked, nothing else",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:31:19.797087+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cooking_scene.jpg:Only the chef and the pot being cooked, nothing else",
+    "vote": "dislike",
+    "comment": "It was almost perfect but it kept a hole in the middle of the pot, it removed the food which is obviously part of the pot",
+    "timestamp": "2026-05-14T08:31:55.241819+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cooking_scene.jpg:Only the chef and the pot being cooked with the food inside the pot, nothing else",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:33:43.915297+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:With all the berries, strawberries and anything around it but without the mango",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:35:48.677737+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:With all the berries, strawberries and anything around it but without the mango",
+    "vote": "dislike",
+    "comment": "You kept the mango",
+    "timestamp": "2026-05-14T08:36:18.915242+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:Remove the yellow mango around the smoothie ball",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:37:31.840250+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:Remove the yellow mango around the smoothie ball",
+    "vote": "dislike",
+    "comment": "It removed one of the mango but didn't remove the upper mango above the bowl",
+    "timestamp": "2026-05-14T08:37:55.834622+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:Remove the yellow mango around the smoothie ball, one is on the left side of the bowl and one is straight above the bowl.",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:42:26.950065+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:smoothie_bowl.jpg:Remove the yellow mango around the smoothie ball, one is on the left side of the bowl and one is straight above the bowl.",
+    "vote": "dislike",
+    "comment": "It kept both of the mango, didn't change anything",
+    "timestamp": "2026-05-14T08:42:40.974504+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:The dining table with its 4 chairs around it, include also the surfboard",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:44:12.530929+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:The dining table with its 4 chairs around it, include also the surfboard",
+    "vote": "dislike",
+    "comment": "Terrible result, it removed all the chairs and some of the part of the table. some chairs have holes in it. terrible",
+    "timestamp": "2026-05-14T08:44:52.628993+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:With the surfboard",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:45:59.418501+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:With the surfboard",
+    "vote": "dislike",
+    "comment": "Didn't do anything, also some chairs are not relevant to the forground",
+    "timestamp": "2026-05-14T08:46:26.352178+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:Add the surfboard",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:47:26.523707+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:Remove the further chairs the are on the right side of the picture. Add the surfboard",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:50:22.093451+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:cafe_interior.jpg:Remove the further chairs the are on the right side of the picture. Add the surfboard",
+    "vote": "dislike",
+    "comment": "It kept glitches and some of the parts of the chairs that are completely not relevant in the right side of the image",
+    "timestamp": "2026-05-14T08:50:41.834450+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:office_meeting.jpg:The two people shaking hands",
+    "vote": "like",
+    "comment": "",
+    "timestamp": "2026-05-14T08:51:37.515761+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:office_meeting.jpg:With the board behind the meeting on the wall",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:53:23.043654+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:office_meeting.jpg:With the board behind the meeting on the wall",
+    "vote": "dislike",
+    "comment": "It's really really good, but between the standing woman and the board there is so pixel gaps, it's not pixel perfect.",
+    "timestamp": "2026-05-14T08:53:52.671282+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:office_meeting.jpg:Add the board behind the meeting on the wall",
+    "vote": "dislike",
+    "comment": "",
+    "timestamp": "2026-05-14T08:53:55.452797+00:00",
+    "resolved": false
+  },
+  {
+    "case_id": "playground:office_meeting.jpg:Add the board behind the meeting on the wall",
+    "vote": "dislike",
+    "comment": "It's really really good, but between the standing woman and the board there is so pixel gaps, it's not pixel perfect.",
+    "timestamp": "2026-05-14T08:53:58.994804+00:00",
+    "resolved": false
+  }
+]

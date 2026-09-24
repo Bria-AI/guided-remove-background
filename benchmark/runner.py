@@ -32,6 +32,7 @@ CASES_CSV = Path(__file__).parent / "data" / "cases.csv"
 IMAGES_DIR = Path(__file__).parent / "images"
 RESULTS_DIR = Path(__file__).parent / "results"
 JUDGE_MODEL = "opus"
+VERIFY = True
 
 
 def load_cases(filter_str: str | None = None) -> list[dict]:
@@ -55,15 +56,16 @@ def run_one(case: dict, mode: str) -> dict:
         }
 
     prompts = [p.strip() for p in case["prompts"].split("|")]
-    out_dir = RESULTS_DIR / mode
+    out_subdir = mode if VERIFY else f"{mode}_noverify"
+    out_dir = RESULTS_DIR / out_subdir
     out_dir.mkdir(parents=True, exist_ok=True)
     output_path = out_dir / f"{image_path.stem}__{case['foreground']}.png"
 
-    log.info("[%s] %s -> %s", mode, case["image"], case["foreground"])
+    log.info("[%s] %s -> %s", out_subdir, case["image"], case["foreground"])
     try:
         result = remove_bg(
             image=image_path, prompts=prompts, output=output_path, mode=mode,
-            save_steps=(mode == "guided"), judge_model=JUDGE_MODEL,
+            save_steps=(mode == "guided"), judge_model=JUDGE_MODEL, verify=VERIFY,
         )
         vlm_data = None
         if result.vlm_decompose:
@@ -95,7 +97,7 @@ def run_one(case: dict, mode: str) -> dict:
             "should_exclude": case.get("should_exclude", ""),
             "rmbg_would": case.get("rmbg_would", ""),
             "prompts": prompts,
-            "mode": mode,
+            "mode": mode, "verify": VERIFY,
             "error": None, "elapsed_s": result.elapsed_s,
             "output_png": str(result.output_path.relative_to(RESULTS_DIR.parent)),
             "preview_jpg": str(result.preview_path.relative_to(RESULTS_DIR.parent)),
@@ -105,10 +107,10 @@ def run_one(case: dict, mode: str) -> dict:
             "judge_verdicts": judge_data,
         }
     except Exception as e:
-        log.error("[%s] %s/%s FAILED: %s", mode, case["image"], case["foreground"], e)
+        log.error("[%s] %s/%s FAILED: %s", out_subdir, case["image"], case["foreground"], e)
         return {
             "image": case["image"], "foreground": case["foreground"],
-            "mode": mode, "error": str(e), "elapsed_s": 0,
+            "mode": mode, "verify": VERIFY, "error": str(e), "elapsed_s": 0,
         }
 
 
@@ -121,11 +123,15 @@ def main() -> None:
     parser.add_argument("--concurrency", type=int, default=2)
     parser.add_argument("--judge-model", default="opus", choices=["sonnet", "opus"],
                         help="Judge VLM model (default: sonnet)")
+    parser.add_argument("--no-verify", action="store_true",
+                        help="Disable judge verification (candidate: existing chain, judge off). "
+                             "Writes to results/{mode}_noverify/ and run_meta_noverify.json.")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
-    global JUDGE_MODEL
+    global JUDGE_MODEL, VERIFY
     JUDGE_MODEL = args.judge_model
+    VERIFY = not args.no_verify
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -148,7 +154,7 @@ def main() -> None:
     all_raw: list[dict] = []
     t0 = time.monotonic()
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    meta_path = RESULTS_DIR / "run_meta.json"
+    meta_path = RESULTS_DIR / ("run_meta.json" if VERIFY else "run_meta_noverify.json")
 
     def _flush_meta(done: bool = False) -> None:
         elapsed = time.monotonic() - t0

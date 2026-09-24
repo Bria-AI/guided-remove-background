@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guided Remove Background — Candidate Comparison</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+       background: #0f172a; color: #e2e8f0; line-height: 1.5; }
+.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+h1 { font-size: 1.5rem; margin-bottom: 4px; }
+.subtitle { color: #64748b; margin-bottom: 16px; font-size: 0.9rem; }
+
+.candidate-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.candidate-chip { padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+               cursor: pointer; border: 1px solid #334155; background: #1e293b; color: #94a3b8;
+               transition: all 0.2s; user-select: none; }
+.candidate-chip:hover { border-color: #475569; color: #e2e8f0; }
+.candidate-chip.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+.candidate-chip .n-count { font-size: 0.72rem; opacity: 0.75; margin-left: 6px; }
+.candidate-chip.missing { opacity: 0.45; }
+
+.status-bar { display: flex; gap: 16px; align-items: center; margin-bottom: 20px;
+              padding: 12px 16px; background: #1e293b; border-radius: 10px; flex-wrap: wrap; }
+.status-item { font-size: 0.85rem; }
+.status-item b { color: #38bdf8; }
+
+.filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-chip { padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 500;
+               cursor: pointer; border: 1px solid #334155; background: #1e293b; color: #94a3b8;
+               transition: all 0.2s; user-select: none; }
+.filter-chip:hover { border-color: #475569; color: #e2e8f0; }
+.filter-chip.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+.filter-chip .chip-count { font-size: 0.7rem; opacity: 0.7; margin-left: 4px; }
+
+.results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 16px; }
+.card { background: #1e293b; border-radius: 12px; overflow: hidden;
+        border: 1px solid #334155; transition: border-color 0.3s; cursor: pointer; }
+.card:hover { border-color: #475569; }
+.card-header { padding: 10px 14px; border-bottom: 1px solid #334155; position: relative; }
+.card-header .prompt-text { font-size: 0.82rem; color: #38bdf8; font-style: italic;
+                            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+                            display: block; }
+.card-images { display: flex; gap: 2px; }
+.img-wrap { position: relative; width: 50%; }
+.img-wrap img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.img-wrap .label { position: absolute; bottom: 4px; left: 4px; font-size: 0.65rem;
+                   background: rgba(0,0,0,0.7); padding: 1px 6px; border-radius: 4px; }
+.card-footer { padding: 8px 14px; font-size: 0.78rem; color: #94a3b8;
+               display: flex; justify-content: space-between; align-items: center; }
+.card-footer .time { color: #64748b; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 8px;
+       font-size: 0.72rem; font-weight: 600; }
+.tag-scenario { background: #1e3a5f; color: #38bdf8; }
+.tag-difficulty { background: #422006; color: #fbbf24; }
+.err { color: #f87171; font-size: 0.78rem; padding: 12px 14px; }
+.pass-pill { padding: 2px 8px; border-radius: 8px; font-size: 0.68rem; font-weight: 700; }
+.pass-pill.pass { background: #14532d; color: #4ade80; }
+.pass-pill.fail { background: #7f1d1d; color: #f87171; }
+
+.empty-state { padding: 60px 20px; text-align: center; color: #64748b; }
+
+/* Modal */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88);
+                 z-index: 1000; }
+.modal-overlay.open { display: flex; justify-content: center; align-items: center;
+                      padding: 20px 60px; }
+.modal { background: #1e293b; border-radius: 14px; width: calc(100vw - 120px);
+         max-width: 1600px; height: calc(100vh - 40px); overflow: hidden;
+         border: 1px solid #334155; position: relative;
+         display: flex; flex-direction: column; }
+.modal-close { position: absolute; top: 10px; right: 16px; background: none; border: none;
+               color: #94a3b8; font-size: 1.6rem; cursor: pointer; z-index: 10;
+               line-height: 1; }
+.modal-close:hover { color: #e2e8f0; }
+
+.nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(15,23,42,0.85);
+             border: 1px solid #334155; color: #e2e8f0; font-size: 2rem; width: 44px; height: 44px;
+             border-radius: 50%; cursor: pointer; display: flex; align-items: center;
+             justify-content: center; z-index: 1010; transition: all 0.2s; }
+.nav-arrow:hover { background: #2563eb; border-color: #2563eb; }
+.nav-arrow.prev { left: 10px; }
+.nav-arrow.next { right: 10px; }
+
+.modal-header { padding: 12px 28px 10px; text-align: center; position: relative;
+                border-bottom: 1px solid #334155; flex-shrink: 0; }
+.modal-header h2 { font-size: 1.15rem; color: #38bdf8; font-style: italic; margin-bottom: 4px; }
+.modal-header .meta-row { display: flex; justify-content: center; gap: 10px; align-items: center;
+                          font-size: 0.78rem; color: #94a3b8; flex-wrap: wrap; }
+
+.modal-body { display: flex; flex: 1; min-height: 0; overflow: hidden; }
+.modal-col-left { flex: 1; border-right: 1px solid #334155; padding: 20px;
+                  overflow: hidden; min-width: 0; display: flex; flex-direction: column;
+                  align-items: center; justify-content: center; }
+.modal-col-right { flex: 1; display: flex; flex-direction: column; align-items: center;
+                   justify-content: center; padding: 20px 24px; min-width: 0; }
+.modal-col-left .lbl, .modal-col-right .lbl { color: #64748b; font-size: 0.78rem;
+                   margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.pipe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+             flex: 1; min-height: 0; grid-auto-rows: 1fr; width: 100%; }
+.step-card { background: #0f172a; border-radius: 10px; padding: 10px 12px;
+             border: 1px solid #1e293b; display: flex; flex-direction: column; overflow: hidden; }
+.step-hdr { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-shrink: 0; }
+.step-num { font-size: 0.58rem; font-weight: 800; color: #38bdf8; background: #0c4a6e;
+            width: 18px; height: 18px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0; }
+.step-num.pass { color: #4ade80; background: #14532d; }
+.step-num.fail { color: #fca5a5; background: #7f1d1d; }
+.step-name { font-size: 0.75rem; font-weight: 700; color: #e2e8f0; }
+.step-desc { font-size: 0.7rem; color: #64748b; margin-bottom: 4px; line-height: 1.35; flex-shrink: 0; }
+.step-thumbs { display: flex; gap: 8px; flex: 1; min-height: 0; align-items: center; justify-content: center; }
+.step-thumb { border-radius: 6px; overflow: hidden; background: #1e293b;
+              display: flex; align-items: center; justify-content: center; }
+.step-thumb img { display: block; max-width: 100%; max-height: 120px; object-fit: contain; }
+
+.vlm-targets { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.vlm-chip { padding: 2px 8px; border-radius: 5px; font-size: 0.68rem; font-weight: 600; }
+.vlm-chip.incl { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+.vlm-chip.excl { background: #450a0a; color: #fca5a5; border: 1px solid #991b1b; }
+
+.sam-board { margin-top: 4px; }
+.sam-row { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 0.68rem; }
+.sam-label { flex: 1; color: #cbd5e1; min-width: 0; overflow: hidden;
+             text-overflow: ellipsis; white-space: nowrap; }
+.sam-bar-track { width: 50px; height: 4px; background: #334155; border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+.sam-bar-fill { height: 100%; border-radius: 2px; }
+.sam-val { width: 30px; text-align: right; font-weight: 700; font-size: 0.64rem; font-family: monospace; flex-shrink: 0; }
+
+.judge-timeline { margin-top: 4px; }
+.judge-attempt { padding: 3px 0; border-bottom: 1px solid #1e293b; }
+.judge-attempt:last-child { border: none; }
+.judge-hdr { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; }
+.judge-badge { padding: 2px 7px; border-radius: 4px; font-size: 0.64rem; font-weight: 700; }
+.judge-badge.pass { background: #14532d; color: #4ade80; }
+.judge-badge.fail { background: #450a0a; color: #fca5a5; }
+.judge-badge.reverted { background: #78350f; color: #fbbf24; }
+.judge-issues { margin-top: 3px; padding-left: 6px; }
+.judge-issue { font-size: 0.66rem; color: #94a3b8; padding: 1px 0; }
+.judge-issue .issue-type { color: #f87171; font-weight: 600; text-transform: uppercase; font-size: 0.62rem; }
+.judge-issue .issue-fix { color: #60a5fa; font-family: monospace; font-size: 0.62rem; }
+
+.mode-badge { padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.64rem;
+              text-transform: uppercase; letter-spacing: 0.5px; }
+.mode-add { background: #052e16; color: #4ade80; }
+.mode-remove { background: #450a0a; color: #fca5a5; }
+.mode-narrow { background: #1e1b4b; color: #c4b5fd; }
+.mode-add_remove { background: #422006; color: #fbbf24; }
+
+.simple-compare { display: flex; gap: 16px; width: 100%; height: 100%; align-items: center; justify-content: center; }
+.simple-compare .half { flex: 1; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.simple-compare img { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 8px; }
+
+.final-big-img { display: flex; align-items: center; justify-content: center;
+                 border-radius: 12px; background: #0f172a; overflow: hidden;
+                 width: 100%; flex: 1; min-height: 0; padding: 8px; }
+.final-big-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <h1>Guided Remove Background — Candidate Comparison (AG-184)</h1>
+    <a href="live.html" style="color:#60a5fa;text-decoration:none;font-size:14px">Live dashboard</a>
+  </div>
+  <p class="subtitle">Pick a candidate to browse all 58 cases. Click a card for a detailed view.</p>
+
+  <div class="candidate-bar" id="candidateBar"></div>
+
+  <div class="status-bar" id="statusBar" style="display:none">
+    <span class="status-item"><b id="completed">0</b> / <span id="total">?</span></span>
+    <span class="status-item"><b id="succeeded">0</b> OK</span>
+    <span class="status-item" style="color:#f87171"><b id="failed">0</b> err</span>
+    <span class="status-item">Elapsed: <b id="elapsed">0s</b></span>
+    <span class="status-item" id="passRateWrap" style="display:none">Judge pass: <b id="passRate">-</b></span>
+  </div>
+
+  <div class="filter-bar" id="filterBar"></div>
+
+  <div class="results-grid" id="grid"></div>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+// Registry of candidates from the AG-184 comparison. `file` is the run_meta json
+// this candidate's runner writes; `match` filters that file's `results` array down
+// to just this candidate's rows (a file may hold more than one mode/variant).
+const CANDIDATES = [
+  { id: 'a1_judge_on',  label: 'A1 · Existing chain, judge ON',  file: 'results/run_meta.json',
+    match: r => r.mode === 'guided' && r.verify !== false },
+  { id: 'a2_judge_off', label: 'A2 · Existing chain, judge OFF', file: 'results/run_meta_noverify.json',
+    match: r => r.mode === 'guided' },
+  { id: 'b_rmbg_sam31', label: 'B · RMBG + SAM 3.1 (no VLM/judge)', file: 'results/run_meta_rmbg_sam_direct.json',
+    match: r => true },
+  { id: 'c1_fibo',      label: 'C1 · fibo-edit-1.5 (single call)', file: 'results/run_meta_edit_fibo.json',
+    match: r => true },
+  { id: 'c2_nanobanana2', label: 'C2 · Nano Banana 2 edit',        file: 'results/run_meta_edit_nanobanana2.json',
+    match: r => true },
+  { id: 'c3_gptimage2', label: 'C3 · GPT Image 2 edit',            file: 'results/run_meta_edit_gptimage2.json',
+    match: r => true },
+  { id: 'e1_fibo_alpha', label: 'E1 · fibo-edit-1.5 + RMBG alpha', file: 'results/run_meta_fibo_plus_alpha.json',
+    match: r => true },
+];
+
+let currentCandidate = null;
+let candidateData = {}; // id -> {meta, results} or null if unavailable
+let allResults = [];
+let activeFilters = new Set();
+let currentCaseIds = [];
+let currentModalIdx = -1;
+let _stepCards = [];
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function fixPaths(r) {
+  for (const key of ['output_png', 'preview_jpg']) {
+    if (r[key] && r[key].includes('/benchmark/')) {
+      r[key] = r[key].substring(r[key].indexOf('/benchmark/') + '/benchmark/'.length);
+    }
+  }
+  return r;
+}
+
+function lastVerdictPassed(r) {
+  const jv = r.judge_verdicts || [];
+  if (jv.length) return jv[jv.length - 1].passed;
+  if (r.uniform_passed !== undefined) return r.uniform_passed;
+  return null;
+}
+
+async function loadUniformJudge(candId) {
+  try {
+    const r = await fetch(`results/judge_uniform_${candId}.json?` + Date.now());
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) { return null; }
+}
+
+async function loadCandidate(cand) {
+  if (candidateData[cand.id] !== undefined) return candidateData[cand.id];
+  try {
+    const r = await fetch(cand.file + '?' + Date.now());
+    if (!r.ok) { candidateData[cand.id] = null; return null; }
+    const data = await r.json();
+    const results = (data.results || []).filter(cand.match).map(fixPaths);
+
+    // Overlay the uniform single-pass judge verdict (judge_uniform_<id>.json) onto
+    // each record as `uniform_passed` — separate from any embedded `judge_verdicts`
+    // a candidate's own pipeline may have produced (only A1 has those natively).
+    const uniform = await loadUniformJudge(cand.id);
+    if (uniform && uniform.results) {
+      const byKey = new Map(uniform.results.map(g => [g.image + '__' + g.foreground, g]));
+      for (const r of results) {
+        const g = byKey.get(r.image + '__' + r.foreground);
+        if (g) { r.uniform_passed = g.passed; r.uniform_issues = g.issues; }
+      }
+    }
+    candidateData[cand.id] = { meta: data, results, uniform };
+  } catch (e) {
+    candidateData[cand.id] = null;
+  }
+  return candidateData[cand.id];
+}
+
+async function buildCandidateBar() {
+  const bar = document.getElementById('candidateBar');
+  bar.innerHTML = CANDIDATES.map(c => `<span class="candidate-chip" id="chip-${c.id}" onclick="selectCandidate('${c.id}')">${esc(c.label)}<span class="n-count" id="n-${c.id}">…</span></span>`).join('');
+  // Kick off counts in the background without blocking first render.
+  for (const c of CANDIDATES) {
+    loadCandidate(c).then(d => {
+      const el = document.getElementById('n-' + c.id);
+      const chip = document.getElementById('chip-' + c.id);
+      if (!d || !d.results.length) { chip.classList.add('missing'); el.textContent = 'no data'; }
+      else el.textContent = d.results.length;
+    });
+  }
+}
+
+async function selectCandidate(id) {
+  currentCandidate = id;
+  document.querySelectorAll('.candidate-chip').forEach(el => el.classList.remove('active'));
+  document.getElementById('chip-' + id).classList.add('active');
+  activeFilters.clear();
+
+  const cand = CANDIDATES.find(c => c.id === id);
+  const d = await loadCandidate(cand);
+  const grid = document.getElementById('grid');
+  if (!d || !d.results.length) {
+    document.getElementById('statusBar').style.display = 'none';
+    document.getElementById('filterBar').innerHTML = '';
+    grid.innerHTML = `<div class="empty-state">No results yet for <b>${esc(cand.label)}</b>.<br>Expected file: <code>${esc(cand.file)}</code></div>`;
+    return;
+  }
+
+  allResults = d.results;
+  const meta = d.meta;
+  document.getElementById('statusBar').style.display = 'flex';
+  document.getElementById('completed').textContent = meta.completed ?? allResults.length;
+  document.getElementById('total').textContent = meta.total_cases ?? allResults.length;
+  document.getElementById('succeeded').textContent = meta.succeeded ?? allResults.filter(r=>!r.error).length;
+  document.getElementById('failed').textContent = meta.failed ?? allResults.filter(r=>r.error).length;
+  document.getElementById('elapsed').textContent = (meta.total_elapsed_s || 0).toFixed(1) + 's';
+
+  const judged = allResults.filter(r => lastVerdictPassed(r) !== null);
+  const passWrap = document.getElementById('passRateWrap');
+  if (judged.length) {
+    const passed = judged.filter(r => lastVerdictPassed(r) === true).length;
+    document.getElementById('passRate').textContent = `${passed}/${judged.length} (${Math.round(100*passed/judged.length)}%)`;
+    passWrap.style.display = '';
+  } else {
+    passWrap.style.display = 'none';
+  }
+
+  buildFilterChips();
+  renderCards();
+}
+
+function buildFilterChips() {
+  const counts = {};
+  for (const r of allResults) counts[r.scenario || '?'] = (counts[r.scenario || '?'] || 0) + 1;
+  const bar = document.getElementById('filterBar');
+  const allCount = allResults.length;
+  const labels = { include: 'Include', exclude: 'Exclude', narrow: 'Narrow' };
+  let html = `<span class="filter-chip ${activeFilters.size === 0 ? 'active' : ''}" onclick="toggleFilter('')">All<span class="chip-count">${allCount}</span></span>`;
+  for (const [key, c] of Object.entries(counts)) {
+    const label = labels[key] || key;
+    html += `<span class="filter-chip ${activeFilters.has(key) ? 'active' : ''}" onclick="toggleFilter('${esc(key)}')">${esc(label)}<span class="chip-count">${c}</span></span>`;
+  }
+  bar.innerHTML = html;
+}
+
+function toggleFilter(scenario) {
+  if (!scenario) activeFilters.clear();
+  else { if (activeFilters.has(scenario)) activeFilters.delete(scenario); else activeFilters.add(scenario); }
+  buildFilterChips();
+  renderCards();
+}
+
+function caseId(r) { return r.image + '__' + r.foreground; }
+
+function renderCards() {
+  const grid = document.getElementById('grid');
+  let filtered = allResults;
+  if (activeFilters.size > 0) filtered = filtered.filter(r => activeFilters.has(r.scenario));
+  currentCaseIds = filtered.map(caseId);
+
+  grid.innerHTML = filtered.map(r => {
+    const id = caseId(r);
+    const prompt = (r.prompts || []).join(', ');
+    const origSrc = 'images/' + r.image;
+
+    if (r.error) {
+      return `<div class="card" onclick='openModal("${esc(id)}")'>
+        <div class="card-header"><span class="prompt-text">"${esc(prompt)}"</span></div>
+        <div class="err">${esc(r.error).slice(0,100)}</div>
+        <div class="card-footer"><span>${esc(r.image)}</span></div>
+      </div>`;
+    }
+
+    const resultSrc = r.preview_jpg || r.output_png || origSrc;
+    const passed = lastVerdictPassed(r);
+    const passPill = passed === null ? '' : `<span class="pass-pill ${passed ? 'pass' : 'fail'}">${passed ? 'PASS' : 'FAIL'}</span>`;
+
+    return `<div class="card" onclick='openModal("${esc(id)}")'>
+      <div class="card-header"><span class="prompt-text">"${esc(prompt)}"</span></div>
+      <div class="card-images">
+        <div class="img-wrap"><img src="${origSrc}" loading="lazy" /><span class="label">Original</span></div>
+        <div class="img-wrap"><img src="${resultSrc}" loading="lazy" /><span class="label">Result</span></div>
+      </div>
+      <div class="card-footer">
+        <span>${esc(r.image)} · <span class="tag tag-scenario">${esc(r.scenario||'')}</span> ${passPill}</span>
+        <span class="time">${(r.elapsed_s||0).toFixed(1)}s</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function navigateModal(delta) {
+  if (currentCaseIds.length === 0) return;
+  let next = currentModalIdx + delta;
+  if (next < 0) next = currentCaseIds.length - 1;
+  if (next >= currentCaseIds.length) next = 0;
+  openModal(currentCaseIds[next]);
+}
+
+function openModal(id) {
+  currentModalIdx = currentCaseIds.indexOf(id);
+  if (currentModalIdx === -1) currentModalIdx = 0;
+  const r = allResults.find(x => caseId(x) === id);
+  if (!r) return;
+
+  const origSrc = 'images/' + r.image;
+  const resultSrc = r.preview_jpg || r.output_png || '';
+  const prompt = (r.prompts || []).join(', ');
+  const steps = r.step_images || {};
+  const vlm = r.vlm_decompose;
+  const sam = r.sam_scores || {};
+  const verdicts = r.judge_verdicts || [];
+  const vlmMode = (vlm && vlm.mode) || '';
+  const hasPipelineDetail = Object.keys(steps).length > 0 || (vlm && !vlm.error) || Object.keys(sam).length > 0 || verdicts.length > 0;
+
+  let bodyHtml;
+  if (hasPipelineDetail) {
+    const rmbgSrc = steps['step1_rmbg'] || '';
+    _stepCards = [];
+    function addCard(inner) { _stepCards.push(inner); return `<div class="step-card">${inner}</div>`; }
+    let stepsHtml = '';
+
+    stepsHtml += addCard(`
+      <div class="step-hdr"><span class="step-num">1</span><span class="step-name">RMBG Baseline</span></div>
+      <div class="step-desc">Auto foreground via RMBG-2.0${r.rmbg_would ? '<br><span style="color:#c4b5fd">' + esc(r.rmbg_would) + '</span>' : ''}</div>
+      <div class="step-thumbs">
+        <div class="step-thumb"><img src="${origSrc}" /></div>
+        ${rmbgSrc ? '<div class="step-thumb"><img src="' + rmbgSrc + '" /></div>' : ''}
+      </div>`);
+
+    if (vlm && !vlm.error) {
+      const modeClass = 'mode-' + vlmMode;
+      const includeTargets = vlm.include || [];
+      const excludeTargets = vlm.exclude || [];
+      const allTargets = vlm.targets || [];
+      let chipsHtml = '';
+      if (includeTargets.length) chipsHtml += includeTargets.map(t => '<span class="vlm-chip incl">+ ' + esc(t) + '</span>').join('');
+      if (excludeTargets.length) chipsHtml += excludeTargets.map(t => '<span class="vlm-chip excl">- ' + esc(t) + '</span>').join('');
+      if (!chipsHtml && allTargets.length) {
+        const chipClass = vlmMode === 'remove' ? 'excl' : 'incl';
+        const prefix = vlmMode === 'remove' ? '- ' : '+ ';
+        chipsHtml = allTargets.map(t => '<span class="vlm-chip ' + chipClass + '">' + prefix + esc(t) + '</span>').join('');
+      }
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num">2</span><span class="step-name">VLM Intent</span> <span class="mode-badge ${modeClass}">${esc(vlmMode)}</span></div>
+        <div class="vlm-targets">${chipsHtml || '<span style="color:#64748b;font-size:0.7rem">No targets</span>'}</div>`);
+    }
+
+    const samEntries = Object.entries(sam);
+    const samKey = ['step3_sam_add','step3_sam_remove','step3_sam_narrow','step3_sam_include','step3_sam_exclude','step3_sam'].find(k => steps[k]);
+    const samLabelsMap = {step3_sam_add:'Add',step3_sam_remove:'Remove',step3_sam_narrow:'Narrow',step3_sam_include:'Include',step3_sam_exclude:'Exclude',step3_sam:''};
+    if (samEntries.length > 0 || samKey) {
+      let boardHtml = '';
+      if (samEntries.length) {
+        boardHtml = '<div class="sam-board">' + samEntries.map(([label, score]) => {
+          const pct = Math.round((score || 0) * 100);
+          const color = score >= 0.7 ? '#22c55e' : score >= 0.4 ? '#fbbf24' : score > 0 ? '#f87171' : '#475569';
+          const displayLabel = label.replace(/^(excl|incl):/, '');
+          return `<div class="sam-row">
+            <span class="sam-label" title="${esc(displayLabel)}">${esc(displayLabel)}</span>
+            <div class="sam-bar-track"><div class="sam-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+            <span class="sam-val" style="color:${color}">${score > 0 ? score.toFixed(2) : 'N/A'}</span>
+          </div>`;
+        }).join('') + '</div>';
+      }
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num">3</span><span class="step-name">SAM${samKey ? ' — ' + (samLabelsMap[samKey] || '') : ''}</span></div>
+        ${boardHtml}
+        ${samKey && steps[samKey] ? '<div class="step-thumbs"><div class="step-thumb"><img src="' + steps[samKey] + '" /></div></div>' : ''}`);
+    }
+
+    const maskSrc = steps['step4_combined_mask'] || '';
+    if (maskSrc) {
+      const maskDesc = vlmMode === 'add' ? 'RMBG + SAM, hole-fill'
+        : vlmMode === 'remove' ? 'RMBG minus SAM, core protect'
+        : vlmMode === 'narrow' ? 'RMBG intersect SAM, hole-fill'
+        : 'RMBG + SAM combined';
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num">4</span><span class="step-name">Mask</span></div>
+        <div class="step-desc">${maskDesc}</div>
+        <div class="step-thumbs"><div class="step-thumb"><img src="${maskSrc}" /></div></div>`);
+    }
+
+    const alphaSrc = steps['step5_edge_refined'] || '';
+    if (alphaSrc) {
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num">5</span><span class="step-name">Alpha</span></div>
+        <div class="step-desc">RMBG alpha + feathered SAM edges</div>
+        <div class="step-thumbs"><div class="step-thumb"><img src="${alphaSrc}" /></div></div>`);
+    }
+
+    if (verdicts.length > 0) {
+      const lastVerdict = verdicts[verdicts.length - 1];
+      const allFailed = !lastVerdict.passed && !lastVerdict.error;
+      const retries = verdicts.length - 1;
+      const numClass = lastVerdict.passed ? 'pass' : (allFailed ? 'fail' : '');
+      const reverted = allFailed && retries > 0;
+      let headerBadge = lastVerdict.passed ? '<span class="judge-badge pass" style="margin-left:auto">PASS</span>'
+        : reverted ? '<span class="judge-badge reverted" style="margin-left:auto">REVERTED</span>'
+        : '<span class="judge-badge fail" style="margin-left:auto">FAIL</span>';
+      let timelineHtml = '<div class="judge-timeline">';
+      verdicts.forEach((v, idx) => {
+        const cls = v.passed ? 'pass' : 'fail';
+        const lbl = v.passed ? 'PASS' : 'FAIL';
+        const attemptLabel = idx === 0 ? 'Initial' : 'Fix #' + idx;
+        let issuesHtml = '';
+        if (v.issues && v.issues.length) {
+          issuesHtml = '<div class="judge-issues">' + v.issues.map(i =>
+            '<div class="judge-issue"><span class="issue-type">' + esc(i.type) + '</span> ' +
+            esc(i.description) + ' <span class="issue-fix">' + esc(i.fix||'') + '</span></div>'
+          ).join('') + '</div>';
+        }
+        timelineHtml += `<div class="judge-attempt"><div class="judge-hdr"><span class="judge-badge ${cls}">${lbl}</span><span style="color:#64748b;font-size:0.66rem">${attemptLabel}</span></div>${issuesHtml}</div>`;
+      });
+      timelineHtml += '</div>';
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num ${numClass}">J</span><span class="step-name">Judge</span>${headerBadge}</div>
+        ${timelineHtml}`);
+    } else if (r.uniform_passed !== undefined) {
+      // No embedded multi-retry verdicts (candidate has no self-correction loop, e.g. B/D) —
+      // fall back to the uniform single-pass judge score computed separately for comparison.
+      const passed = r.uniform_passed;
+      const numClass = passed ? 'pass' : 'fail';
+      const badge = `<span class="judge-badge ${passed ? 'pass' : 'fail'}" style="margin-left:auto">${passed ? 'PASS' : 'FAIL'}</span>`;
+      const issues = r.uniform_issues || [];
+      const issuesHtml = issues.length ? '<div class="judge-issues">' + issues.map(i =>
+        '<div class="judge-issue"><span class="issue-type">' + esc(i.type) + '</span> ' + esc(i.description) + '</div>'
+      ).join('') + '</div>' : '';
+      stepsHtml += addCard(`
+        <div class="step-hdr"><span class="step-num ${numClass}">J</span><span class="step-name">Judge</span>${badge}</div>
+        <div class="step-desc">Uniform single-pass judge (no self-correction loop for this candidate)</div>
+        ${issuesHtml}`);
+    }
+
+    bodyHtml = `
+      <div class="modal-col-left"><div class="pipe-grid">${stepsHtml}</div></div>
+      <div class="modal-col-right">
+        <div class="final-big-img">${resultSrc ? `<img src="${resultSrc}" />` : `<div style="color:#475569;font-size:0.9rem">No result</div>`}</div>
+      </div>`;
+  } else {
+    // No per-step data available (e.g. a single edit-model call) — plain side-by-side compare.
+    const passed = lastVerdictPassed(r);
+    let judgeHtml = '';
+    if (passed !== null) {
+      const badge = `<span class="judge-badge ${passed ? 'pass' : 'fail'}">${passed ? 'PASS' : 'FAIL'}</span>`;
+      const issues = r.uniform_issues || [];
+      const issuesHtml = issues.length ? '<div class="judge-issues">' + issues.map(i =>
+        '<div class="judge-issue"><span class="issue-type">' + esc(i.type) + '</span> ' + esc(i.description) + '</div>'
+      ).join('') + '</div>' : '';
+      judgeHtml = `<div style="margin-top:14px;text-align:center">${badge} <span style="color:#64748b;font-size:0.72rem">uniform single-pass judge</span>${issuesHtml}</div>`;
+    }
+    bodyHtml = `
+      <div class="modal-col-left" style="border-right:none">
+        <div class="simple-compare">
+          <div class="half"><span class="lbl">Original</span><img src="${origSrc}" /></div>
+          <div class="half"><span class="lbl">Result</span>${resultSrc ? `<img src="${resultSrc}" />` : '<div style="color:#475569">No result</div>'}${judgeHtml}</div>
+        </div>
+      </div>`;
+  }
+
+  document.getElementById('modalContent').innerHTML = `
+    <button class="nav-arrow prev" onclick="event.stopPropagation();navigateModal(-1)">&#8249;</button>
+    <button class="nav-arrow next" onclick="event.stopPropagation();navigateModal(1)">&#8250;</button>
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-header">
+      <h2>"${esc(prompt)}"</h2>
+      <div class="meta-row">
+        <span>${esc(r.image)}</span>
+        <span class="tag tag-scenario">${esc(r.scenario||'')}</span>
+        <span class="tag tag-difficulty">${esc(r.difficulty||'')}</span>
+        <span style="color:#64748b">${(r.elapsed_s||0).toFixed(1)}s</span>
+      </div>
+    </div>
+    <div class="modal-body">${bodyHtml}</div>
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') navigateModal(-1);
+  if (e.key === 'ArrowRight') navigateModal(1);
+});
+
+(async function init() {
+  await buildCandidateBar();
+  selectCandidate(CANDIDATES[0].id);
+})();
+</script>
+</body>
+</html>

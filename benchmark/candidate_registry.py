@@ -71,6 +71,33 @@ ALL_CANDIDATES: dict[str, dict] = {
         "match": lambda r: True,
         "kind": "rmbg_realpha", "source_candidate": "c1_fibo", "out_subdir": "fibo_plus_alpha",
     },
+    # Same RMBG->VLM->SAM->merge chain as A1/A2, but the judge/Opus retry loop is
+    # replaced with a single deterministic retry right after SAM: re-run a target with
+    # a simplified prompt if SAM found nothing for it or scored it below 0.5. Tests
+    # whether most of the judge loop's ~20pt pass-rate gain can be had without any
+    # Opus call in the request path.
+    "f1_det_retry": {
+        "label": "F1 · Deterministic retry (no judge)",
+        "file": "run_meta_det_retry.json",
+        "match": lambda r: True,
+        "kind": "deterministic_retry", "out_subdir": "det_retry",
+    },
+    # Bria's own object-extraction endpoint (single prompt -> single cutout), no VLM
+    # decompose, no judge. Two variants of its own "remove_background" toggle: G1 uses
+    # the raw SAM-segmentation alpha, G2 refines it with an RMBG pass. Tests whether
+    # this off-the-shelf endpoint alone matches the existing chain on ADD-style cases.
+    "g1_extract_object_rmbg_off": {
+        "label": "G1 · extract-object, remove_background OFF",
+        "file": "run_meta_extract_object_rmbg_off.json",
+        "match": lambda r: True,
+        "kind": "extract_object", "remove_background": False, "out_subdir": "extract_object_rmbg_off",
+    },
+    "g2_extract_object_rmbg_on": {
+        "label": "G2 · extract-object, remove_background ON",
+        "file": "run_meta_extract_object_rmbg_on.json",
+        "match": lambda r: True,
+        "kind": "extract_object", "remove_background": True, "out_subdir": "extract_object_rmbg_on",
+    },
 }
 
 # Candidates candidate_runner.py can actually execute (the rest are produced by runner.py).

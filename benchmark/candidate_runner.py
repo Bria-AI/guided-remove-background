@@ -35,6 +35,8 @@ from PIL import Image
 
 from guided_remove_background.clients.bria_rmbg import call_rmbg
 from guided_remove_background.clients.fal_edit import call_edit_model
+from guided_remove_background.clients.fal_extract_object import call_extract_object
+from guided_remove_background.pipelines.deterministic_retry import remove_bg_deterministic_retry
 from guided_remove_background.pipelines.rmbg_sam_direct import rmbg_sam_direct
 from guided_remove_background.processing.output import save_preview, save_result
 
@@ -93,6 +95,26 @@ def run_one(case: dict, candidate_id: str, cand: dict) -> dict:
             result = rmbg_sam_direct(image_path, prompts, output_path)
             output_png, preview_jpg = result.output_path, result.preview_path
             elapsed_s, sam_scores = result.elapsed_s, result.sam_scores
+
+        elif cand["kind"] == "deterministic_retry":
+            result = remove_bg_deterministic_retry(image_path, prompts, output_path)
+            if result.error:
+                raise RuntimeError(result.error)
+            output_png, preview_jpg = result.output_path, result.preview_path
+            elapsed_s, sam_scores = result.elapsed_s, result.sam_scores
+
+        elif cand["kind"] == "extract_object":
+            t0 = time.monotonic()
+            rgba = call_extract_object(
+                image_path, " ".join(prompts),
+                remove_background=cand["remove_background"],
+            )
+            if rgba is None:
+                raise RuntimeError("extract-object returned no image")
+            output_png = save_result(rgba, output_path)
+            preview_jpg = save_preview(rgba, output_path)
+            elapsed_s = time.monotonic() - t0
+            sam_scores = {}
 
         elif cand["kind"] == "edit_model":
             t0 = time.monotonic()

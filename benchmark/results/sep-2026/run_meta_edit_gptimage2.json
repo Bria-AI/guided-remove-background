@@ -1,0 +1,95 @@
+{
+  "total_cases": 4,
+  "completed": 4,
+  "succeeded": 4,
+  "failed": 0,
+  "done": true,
+  "total_elapsed_s": 172.4220000000205,
+  "candidate": "c3_gptimage2",
+  "results": [
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "full_desk_setup",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include all items as a group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the entire desk setup including glasses and notebook"
+      ],
+      "mode": "c3_gptimage2",
+      "error": null,
+      "elapsed_s": 85.40600000001723,
+      "output_png": "results\\edit_gptimage2\\desk_setup__full_desk_setup.png",
+      "preview_jpg": "results\\edit_gptimage2\\desk_setup__full_desk_setup_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "just_the_laptop",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the obvious main object",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the laptop"
+      ],
+      "mode": "c3_gptimage2",
+      "error": null,
+      "elapsed_s": 88.07900000002701,
+      "output_png": "results\\edit_gptimage2\\desk_setup__just_the_laptop.png",
+      "preview_jpg": "results\\edit_gptimage2\\desk_setup__just_the_laptop_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "laptop_and_plant",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include two main items together",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the laptop with the potted plant"
+      ],
+      "mode": "c3_gptimage2",
+      "error": null,
+      "elapsed_s": 84.73399999999674,
+      "output_png": "results\\edit_gptimage2\\desk_setup__laptop_and_plant.png",
+      "preview_jpg": "results\\edit_gptimage2\\desk_setup__laptop_and_plant_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one peripheral item",
+      "should_exclude": "smartphone|phone",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the smartphone"
+      ],
+      "mode": "c3_gptimage2",
+      "error": null,
+      "elapsed_s": 84.34299999999348,
+      "output_png": "results\\edit_gptimage2\\desk_setup__without_phone.png",
+      "preview_jpg": "results\\edit_gptimage2\\desk_setup__without_phone_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": null,
+      "step_images": {},
+      "judge_verdicts": []
+    }
+  ]
+}

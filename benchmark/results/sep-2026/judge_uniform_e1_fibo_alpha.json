@@ -1,0 +1,720 @@
+{
+  "candidate": "e1_fibo_alpha",
+  "judge_model": "opus",
+  "done": true,
+  "total": 58,
+  "completed": 58,
+  "judged": 58,
+  "passed": 47,
+  "results": [
+    {
+      "image": "art_table.jpg",
+      "foreground": "full_art_setup",
+      "prompts": [
+        "the complete art setup with canvas and all tools"
+      ],
+      "elapsed_s": 4.687999999965541,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "just_the_palette",
+      "prompts": [
+        "only the paint palette"
+      ],
+      "elapsed_s": 3.75,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "painting_tools",
+      "prompts": [
+        "the palette and the brushes"
+      ],
+      "elapsed_s": 2.952999999979511,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "art_table.jpg",
+      "foreground": "without_pastels",
+      "prompts": [
+        "everything except the pastel set"
+      ],
+      "elapsed_s": 4.35999999998603,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "just_the_seating",
+      "prompts": [
+        "just the dining table and chairs"
+      ],
+      "elapsed_s": 2.85999999998603,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "seating_with_surfboard",
+      "prompts": [
+        "the seating area with the surfboard on the wall"
+      ],
+      "elapsed_s": 3.1089999999967404,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_interior.jpg",
+      "foreground": "without_bar",
+      "prompts": [
+        "everything except the bar counter area"
+      ],
+      "elapsed_s": 4.061999999976251,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "drinks_only",
+      "prompts": [
+        "the drinks without the food items"
+      ],
+      "elapsed_s": 3.9679999999934807,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "just_the_teapots",
+      "prompts": [
+        "only the glass teapots"
+      ],
+      "elapsed_s": 2.875,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cafe_table.jpg",
+      "foreground": "teapots_and_book",
+      "prompts": [
+        "the glass teapots with the open book"
+      ],
+      "elapsed_s": 2.594000000040978,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_dish",
+      "prompts": [
+        "just the chef and the dish being prepared"
+      ],
+      "elapsed_s": 3.9060000000172295,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_and_stove",
+      "prompts": [
+        "the chef with the stove and pots"
+      ],
+      "elapsed_s": 3.7660000000032596,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_with_countertop",
+      "prompts": [
+        "the chef with the countertop"
+      ],
+      "elapsed_s": 3.7339999999967404,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "cooking_scene.jpg",
+      "foreground": "chef_without_pans",
+      "prompts": [
+        "the chef without the stove pans"
+      ],
+      "elapsed_s": 3.6410000000032596,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "full_desk_setup",
+      "prompts": [
+        "the entire desk setup including glasses and notebook"
+      ],
+      "elapsed_s": 3.297000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "just_the_laptop",
+      "prompts": [
+        "only the laptop"
+      ],
+      "elapsed_s": 2.73499999998603,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "laptop_and_plant",
+      "prompts": [
+        "the laptop with the potted plant"
+      ],
+      "elapsed_s": 2.702999999979511,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "prompts": [
+        "everything except the smartphone"
+      ],
+      "elapsed_s": 3.1410000000032596,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "full_patio_scene",
+      "prompts": [
+        "the complete patio scene with the lantern and chairs"
+      ],
+      "elapsed_s": 4.545999999972992,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_with_food",
+      "prompts": [
+        "the table setup with the food and drinks"
+      ],
+      "elapsed_s": 5.313000000023749,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "table_without_chairs",
+      "prompts": [
+        "only the table without the chairs"
+      ],
+      "elapsed_s": 3.4060000000172295,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "garden_patio.jpg",
+      "foreground": "without_pergola",
+      "prompts": [
+        "the table and chairs without the overhead pergola"
+      ],
+      "elapsed_s": 4.282000000006519,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "with_laptop",
+      "prompts": [
+        "the woman with the laptop"
+      ],
+      "elapsed_s": 3.4369999999762513,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "prompts": [
+        "the woman at her desk without the lamp behind her"
+      ],
+      "elapsed_s": 3.64000000001397,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "woman_with_rug",
+      "prompts": [
+        "the woman with the rug on the floor"
+      ],
+      "elapsed_s": 3.577999999979511,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The rug that was on the floor in the original image is completely absent from the result",
+          "fix": "re-sam: the gray rug on floor"
+        }
+      ]
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "workspace_setup",
+      "prompts": [
+        "the desk setup with the chair"
+      ],
+      "elapsed_s": 4.047000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_and_toys",
+      "prompts": [
+        "the daybed with the stuffed animals"
+      ],
+      "elapsed_s": 2.812999999965541,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "bed_without_desk",
+      "prompts": [
+        "the bed area without the desk and computer"
+      ],
+      "elapsed_s": 2.75,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "kids_room.jpg",
+      "foreground": "without_desk_area",
+      "prompts": [
+        "everything except the desk and computer"
+      ],
+      "elapsed_s": 4.75,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The desk and computer were explicitly requested to be kept but are completely absent from the result",
+          "fix": "re-sam: white desk with computer monitor"
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "everything_minus_kitchen",
+      "prompts": [
+        "everything except the kitchen area"
+      ],
+      "elapsed_s": 3.172000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "full_furnished_space",
+      "prompts": [
+        "all the furniture including the staircase"
+      ],
+      "elapsed_s": 4.578000000037719,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The staircase was explicitly requested but is completely absent from the result",
+          "fix": "re-sam: wooden floating staircase with glass railing"
+        }
+      ]
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "just_the_sofa_area",
+      "prompts": [
+        "only the sofa and its cushions"
+      ],
+      "elapsed_s": 2.625,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "living_room.jpg",
+      "foreground": "living_area_furniture",
+      "prompts": [
+        "the sofa and coffee table with the rug"
+      ],
+      "elapsed_s": 3.4369999999762513,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The rug that was explicitly requested is completely absent from the result",
+          "fix": "re-sam: patterned circular area rug"
+        }
+      ]
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "just_the_handshake",
+      "prompts": [
+        "only the two people shaking hands"
+      ],
+      "elapsed_s": 2.7810000000172295,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "people_and_table",
+      "prompts": [
+        "the people with the table and laptops"
+      ],
+      "elapsed_s": 3.5,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "with_cork_board",
+      "prompts": [
+        "the people with the cork board behind them"
+      ],
+      "elapsed_s": 4.422000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "office_meeting.jpg",
+      "foreground": "without_tech",
+      "prompts": [
+        "the people without any technology"
+      ],
+      "elapsed_s": 6.077999999979511,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "unwanted_item",
+          "description": "Laptop computer is visible on the table - user asked for people without any technology",
+          "fix": "re-sam: laptop computer"
+        },
+        {
+          "type": "unwanted_item",
+          "description": "Tablet/iPad visible on the table - user asked for people without any technology",
+          "fix": "re-sam: tablet iPad device"
+        }
+      ]
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "friends_with_drinks",
+      "prompts": [
+        "the friends with their beer glasses and the table"
+      ],
+      "elapsed_s": 3.327999999979511,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "with_bench",
+      "prompts": [
+        "the friends with the wooden bench"
+      ],
+      "elapsed_s": 3.577999999979511,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_background",
+      "prompts": [
+        "the people without the bar interior"
+      ],
+      "elapsed_s": 3.23499999998603,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "patio_bar.jpg",
+      "foreground": "without_third_person",
+      "prompts": [
+        "the two friends without the third person"
+      ],
+      "elapsed_s": 3.875,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "just_the_dog",
+      "prompts": [
+        "only the dog"
+      ],
+      "elapsed_s": 2.422000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "walk_scene",
+      "prompts": [
+        "the person and dog with the path"
+      ],
+      "elapsed_s": 4.717999999993481,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The path is mostly removed - only a small fragment of leaves remains in the bottom left corner. The user explicitly asked for 'the path' to be included.",
+          "fix": "re-sam: the forest path with fallen leaves"
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "with_autumn_leaves",
+      "prompts": [
+        "the person and dog with the autumn leaves around them"
+      ],
+      "elapsed_s": 4.125,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The autumn leaves around the person and dog are completely absent from the result - the user explicitly asked for the autumn leaves to be included",
+          "fix": "re-sam: autumn fallen leaves on ground"
+        }
+      ]
+    },
+    {
+      "image": "person_dog.jpg",
+      "foreground": "without_dog",
+      "prompts": [
+        "the person walking without the dog"
+      ],
+      "elapsed_s": 2.5619999999762513,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "just_the_large_pots",
+      "prompts": [
+        "only the two largest pots"
+      ],
+      "elapsed_s": 3.4839999999967404,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "mint_and_basil",
+      "prompts": [
+        "the mint and basil pots with their labels"
+      ],
+      "elapsed_s": 2.547000000020489,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "pepper_and_mint",
+      "prompts": [
+        "the pepper and mint pots"
+      ],
+      "elapsed_s": 3.6089999999967404,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "unwanted_item",
+          "description": "The tomato pot is present in the result but the user only asked for pepper and mint pots",
+          "fix": "no-fix"
+        }
+      ]
+    },
+    {
+      "image": "plant_shelf.jpg",
+      "foreground": "without_small_pots",
+      "prompts": [
+        "the herb pots without the two smallest ones"
+      ],
+      "elapsed_s": 2.6880000000237487,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_and_mango",
+      "prompts": [
+        "the bowl with the mango halves"
+      ],
+      "elapsed_s": 4.813000000023749,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The user asked for the bowl WITH the mango halves (the scored/cubed mango halves visible outside the bowl in the original image), but only the bowl is present - the mango halves that were beside the bowl are not included",
+          "fix": "re-sam: scored mango halves"
+        }
+      ]
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_with_toppings",
+      "prompts": [
+        "the smoothie bowl with the scattered berries around it"
+      ],
+      "elapsed_s": 4.407000000006519,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "bowl_without_herbs",
+      "prompts": [
+        "the bowl and fruits without the green herbs"
+      ],
+      "elapsed_s": 4.8439999999827705,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "smoothie_bowl.jpg",
+      "foreground": "just_the_bowl",
+      "prompts": [
+        "only the smoothie bowl"
+      ],
+      "elapsed_s": 3.3910000000032596,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "just_the_person",
+      "prompts": [
+        "just the person in the yoga pose"
+      ],
+      "elapsed_s": 3.125,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_candles",
+      "prompts": [
+        "the person with the mat and the candles"
+      ],
+      "elapsed_s": 3.6869999999762513,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The candles that the user explicitly asked for are completely absent from the result",
+          "fix": "re-sam: white candles on floor"
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_plant",
+      "prompts": [
+        "the person with the mat and the plant"
+      ],
+      "elapsed_s": 3.8589999999967404,
+      "passed": false,
+      "error": null,
+      "issues": [
+        {
+          "type": "missing_item",
+          "description": "The plant (potted palm plant) that the user explicitly asked for is completely absent from the result",
+          "fix": "re-sam: potted palm plant in basket"
+        }
+      ]
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "prompts": [
+        "the person on the mat without the candles"
+      ],
+      "elapsed_s": 4.295999999972992,
+      "passed": true,
+      "error": null,
+      "issues": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "yoga_with_mat",
+      "prompts": [
+        "the person with the yoga mat"
+      ],
+      "elapsed_s": 3.094000000040978,
+      "passed": true,
+      "error": null,
+      "issues": []
+    }
+  ]
+}

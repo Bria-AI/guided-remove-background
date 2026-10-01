@@ -1,0 +1,61 @@
+{
+  "bria_candidate": "bria_a2",
+  "bria_label": "Bria (a2, judge off \u2014 shipped route default)",
+  "competitors": {
+    "rmbg_only": {
+      "label": "Plain remove background (no guidance)",
+      "overall": {
+        "n": 59,
+        "bria_wins": 33,
+        "ties": 15,
+        "competitor_wins": 11,
+        "bria_win_rate_ties_half": 0.686,
+        "tie_share": 0.254
+      }
+    },
+    "g2_extract_object_rmbg_on": {
+      "label": "extract-object",
+      "overall": {
+        "n": 59,
+        "bria_wins": 26,
+        "ties": 16,
+        "competitor_wins": 17,
+        "bria_win_rate_ties_half": 0.576,
+        "tie_share": 0.271
+      }
+    },
+    "c2_nanobanana2": {
+      "label": "Nano Banana 2",
+      "overall": {
+        "n": 59,
+        "bria_wins": 40,
+        "ties": 2,
+        "competitor_wins": 17,
+        "bria_win_rate_ties_half": 0.695,
+        "tie_share": 0.034
+      }
+    },
+    "c1_fibo": {
+      "label": "FIBO-Edit-1.5",
+      "overall": {
+        "n": 59,
+        "bria_wins": 54,
+        "ties": 0,
+        "competitor_wins": 5,
+        "bria_win_rate_ties_half": 0.915,
+        "tie_share": 0.0
+      }
+    },
+    "c3_gptimage2": {
+      "label": "GPT Image 2",
+      "overall": {
+        "n": 59,
+        "bria_wins": 41,
+        "ties": 0,
+        "competitor_wins": 18,
+        "bria_win_rate_ties_half": 0.695,
+        "tie_share": 0.0
+      }
+    }
+  }
+}

@@ -30,7 +30,8 @@ log = logging.getLogger(__name__)
 
 CASES_CSV = Path(__file__).parent / "data" / "cases.csv"
 IMAGES_DIR = Path(__file__).parent / "images"
-RESULTS_DIR = Path(__file__).parent / "results"
+BENCHMARK_DIR = Path(__file__).parent
+RESULTS_DIR = BENCHMARK_DIR / "results"
 JUDGE_MODEL = "opus"
 VERIFY = True
 
@@ -79,7 +80,7 @@ def run_one(case: dict, mode: str) -> dict:
         step_images = {}
         for step_name, step_path in result.step_images.items():
             try:
-                step_images[step_name] = str(Path(step_path).relative_to(RESULTS_DIR.parent))
+                step_images[step_name] = str(Path(step_path).relative_to(BENCHMARK_DIR))
             except ValueError:
                 step_images[step_name] = step_path
         judge_data = []
@@ -99,8 +100,8 @@ def run_one(case: dict, mode: str) -> dict:
             "prompts": prompts,
             "mode": mode, "verify": VERIFY,
             "error": None, "elapsed_s": result.elapsed_s,
-            "output_png": str(result.output_path.relative_to(RESULTS_DIR.parent)),
-            "preview_jpg": str(result.preview_path.relative_to(RESULTS_DIR.parent)),
+            "output_png": str(result.output_path.relative_to(BENCHMARK_DIR)),
+            "preview_jpg": str(result.preview_path.relative_to(BENCHMARK_DIR)),
             "sam_scores": result.sam_scores,
             "vlm_decompose": vlm_data,
             "step_images": step_images,
@@ -126,12 +127,18 @@ def main() -> None:
     parser.add_argument("--no-verify", action="store_true",
                         help="Disable judge verification (candidate: existing chain, judge off). "
                              "Writes to results/{mode}_noverify/ and run_meta_noverify.json.")
+    parser.add_argument("--results-dir", type=Path, default=None,
+                        help="Write outputs and run_meta here instead of benchmark/results/")
+    parser.add_argument("--resume", action="store_true",
+                        help="Keep results already in this run_meta file; run only the rest")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
-    global JUDGE_MODEL, VERIFY
+    global JUDGE_MODEL, VERIFY, RESULTS_DIR
     JUDGE_MODEL = args.judge_model
     VERIFY = not args.no_verify
+    if args.results_dir:
+        RESULTS_DIR = args.results_dir.resolve()
 
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
@@ -155,12 +162,19 @@ def main() -> None:
     t0 = time.monotonic()
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     meta_path = RESULTS_DIR / ("run_meta.json" if VERIFY else "run_meta_noverify.json")
+    total_jobs = len(jobs)
+    if args.resume and meta_path.exists():
+        # Recorded failures stay recorded (hard fails count); only never-attempted jobs run.
+        all_raw = json.loads(meta_path.read_text())["results"]
+        done_keys = {(r["mode"], r["image"], r["foreground"]) for r in all_raw}
+        jobs = [(c, m) for c, m in jobs if (m, c["image"], c["foreground"]) not in done_keys]
+        log.info("Resuming: %d job(s) already done, %d to run", len(all_raw), len(jobs))
 
     def _flush_meta(done: bool = False) -> None:
         elapsed = time.monotonic() - t0
         sorted_results = sorted(all_raw, key=lambda r: (r["mode"], r["image"], r["foreground"]))
         meta = {
-            "total_cases": len(jobs),
+            "total_cases": total_jobs,
             "completed": len(all_raw),
             "succeeded": sum(1 for r in all_raw if not r.get("error")),
             "failed": sum(1 for r in all_raw if r.get("error")),

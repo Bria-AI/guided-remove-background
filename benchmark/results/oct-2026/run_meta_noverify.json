@@ -1,0 +1,2506 @@
+{
+  "total_cases": 59,
+  "completed": 59,
+  "succeeded": 59,
+  "failed": 0,
+  "done": true,
+  "total_elapsed_s": 199.5,
+  "judge_model": "opus",
+  "results": [
+    {
+      "image": "armchair_lamp.jpg",
+      "foreground": "armchair_and_lamp",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep both furniture pieces",
+      "should_exclude": "",
+      "rmbg_would": "armchair + lamp",
+      "prompts": [
+        "the armchair and the floor lamp"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.125,
+      "output_png": "results\\oct-2026\\guided_noverify\\armchair_lamp__armchair_and_lamp.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\armchair_lamp__armchair_and_lamp_preview.jpg",
+      "sam_scores": {
+        "the burgundy and gray upholstered armchair": 0.9765625,
+        "the floor lamp with white shade and black textured pole": 0.66796875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the burgundy and gray upholstered armchair",
+          "the floor lamp with white shade and black textured pole"
+        ],
+        "include": [
+          "the burgundy and gray upholstered armchair",
+          "the floor lamp with white shade and black textured pole"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__armchair_and_lamp\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "armchair_lamp.jpg",
+      "foreground": "just_the_armchair",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the main object",
+      "should_exclude": "",
+      "rmbg_would": "armchair + lamp",
+      "prompts": [
+        "only the armchair"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.0,
+      "output_png": "results\\oct-2026\\guided_noverify\\armchair_lamp__just_the_armchair.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\armchair_lamp__just_the_armchair_preview.jpg",
+      "sam_scores": {
+        "the burgundy and gray upholstered armchair": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the burgundy and gray upholstered armchair"
+        ],
+        "include": [
+          "the burgundy and gray upholstered armchair"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_armchair\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "armchair_lamp.jpg",
+      "foreground": "just_the_lamp",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the thin tall object",
+      "should_exclude": "",
+      "rmbg_would": "armchair + lamp",
+      "prompts": [
+        "only the floor lamp"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.485000000000014,
+      "output_png": "results\\oct-2026\\guided_noverify\\armchair_lamp__just_the_lamp.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\armchair_lamp__just_the_lamp_preview.jpg",
+      "sam_scores": {
+        "the floor lamp with white shade": 0.84375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the floor lamp with white shade"
+        ],
+        "include": [
+          "the floor lamp with white shade"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\armchair_lamp__just_the_lamp\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "chair_and_desk",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Keep the work corner",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the chair and the desk"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.484000000000037,
+      "output_png": "results\\oct-2026\\guided_noverify\\bedroom_desk__chair_and_desk.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\bedroom_desk__chair_and_desk_preview.jpg",
+      "sam_scores": {
+        "the gray built-in desk with drawer": 0.75,
+        "the gray velvet accent chair": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the gray velvet accent chair",
+          "the gray built-in desk with drawer"
+        ],
+        "include": [
+          "the gray velvet accent chair",
+          "the gray built-in desk with drawer"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__chair_and_desk\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "just_the_bed",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow a room to one furniture piece",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the bed with its pillows"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.859000000000037,
+      "output_png": "results\\oct-2026\\guided_noverify\\bedroom_desk__just_the_bed.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\bedroom_desk__just_the_bed_preview.jpg",
+      "sam_scores": {
+        "the bed with teal upholstered headboard": 0.9609375,
+        "the three beige pillows on the bed": 0.8828125,
+        "the white bedding": 0.9375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the bed with teal upholstered headboard",
+          "the white bedding",
+          "the three beige pillows on the bed"
+        ],
+        "include": [
+          "the bed with teal upholstered headboard",
+          "the white bedding",
+          "the three beige pillows on the bed"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_bed\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "just_the_chair",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to a single object with thin legs",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the chair"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.483999999999924,
+      "output_png": "results\\oct-2026\\guided_noverify\\bedroom_desk__just_the_chair.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\bedroom_desk__just_the_chair_preview.jpg",
+      "sam_scores": {
+        "the gray velvet upholstered chair": 0.984375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the gray velvet upholstered chair"
+        ],
+        "include": [
+          "the gray velvet upholstered chair"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__just_the_chair\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude built-in storage",
+      "should_exclude": "shelves|shelving",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the bed and the chair without the wall shelves"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 8.985000000000014,
+      "output_png": "results\\oct-2026\\guided_noverify\\bedroom_desk__without_shelves.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\bedroom_desk__without_shelves_preview.jpg",
+      "sam_scores": {
+        "excl:the wall-mounted shelving unit above the desk": 0.890625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the wall-mounted shelving unit above the desk"
+        ],
+        "include": [],
+        "exclude": [
+          "the wall-mounted shelving unit above the desk"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\bedroom_desk__without_shelves\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "just_the_coffee",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to one item",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the cup of coffee"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 25.891000000000076,
+      "output_png": "results\\oct-2026\\guided_noverify\\breakfast_plate__just_the_coffee.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\breakfast_plate__just_the_coffee_preview.jpg",
+      "sam_scores": {
+        "the black coffee mug": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the black coffee mug"
+        ],
+        "include": [
+          "the black coffee mug"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_coffee\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "just_the_egg_cup",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to a small item",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the egg in the egg cup"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 23.67100000000005,
+      "output_png": "results\\oct-2026\\guided_noverify\\breakfast_plate__just_the_egg_cup.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\breakfast_plate__just_the_egg_cup_preview.jpg",
+      "sam_scores": {
+        "the soft boiled egg in the egg cup": 0.93359375,
+        "the white egg cup": 0.94140625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the white egg cup",
+          "the soft boiled egg in the egg cup"
+        ],
+        "include": [
+          "the white egg cup",
+          "the soft boiled egg in the egg cup"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__just_the_egg_cup\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "plate_and_coffee",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Keep two separate items",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the plate of food and the coffee cup"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 29.25,
+      "output_png": "results\\oct-2026\\guided_noverify\\breakfast_plate__plate_and_coffee.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\breakfast_plate__plate_and_coffee_preview.jpg",
+      "sam_scores": {
+        "the black coffee mug": 0.96484375,
+        "the round white plate with breakfast food": 0.92578125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the round white plate with breakfast food",
+          "the black coffee mug"
+        ],
+        "include": [
+          "the round white plate with breakfast food",
+          "the black coffee mug"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__plate_and_coffee\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude thin objects touching the plate",
+      "should_exclude": "knife|fork|cutlery",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the plate and the coffee without the knife and fork"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 22.828000000000088,
+      "output_png": "results\\oct-2026\\guided_noverify\\breakfast_plate__without_cutlery.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\breakfast_plate__without_cutlery_preview.jpg",
+      "sam_scores": {
+        "the fork with white handle": 0.953125,
+        "the black coffee mug": 0.96484375,
+        "the white round plate": 0.96484375,
+        "the knife with white handle": 0.8984375
+      },
+      "vlm_decompose": {
+        "mode": "add_remove",
+        "targets": [],
+        "include": [
+          "the white round plate",
+          "the black coffee mug"
+        ],
+        "exclude": [
+          "the knife with white handle",
+          "the fork with white handle"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step2_vlm.json",
+        "step3_sam": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step3_sam.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\breakfast_plate__without_cutlery\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "just_the_bicycle",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to a thin-structured background object",
+      "should_exclude": "",
+      "rmbg_would": "the man",
+      "prompts": [
+        "only the bicycle"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.156000000000063,
+      "output_png": "results\\oct-2026\\guided_noverify\\courier_bench__just_the_bicycle.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\courier_bench__just_the_bicycle_preview.jpg",
+      "sam_scores": {
+        "the white bicycle leaning against the bench": 0.953125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the white bicycle leaning against the bench"
+        ],
+        "include": [
+          "the white bicycle leaning against the bench"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__just_the_bicycle\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_and_bag",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Keep the person plus one object beside him",
+      "should_exclude": "",
+      "rmbg_would": "the man",
+      "prompts": [
+        "the man with the delivery bag"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 20.03200000000004,
+      "output_png": "results\\oct-2026\\guided_noverify\\courier_bench__man_and_bag.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\courier_bench__man_and_bag_preview.jpg",
+      "sam_scores": {
+        "the teal insulated delivery bag": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the teal insulated delivery bag"
+        ],
+        "include": [
+          "the teal insulated delivery bag"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_and_bag\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_bench_bag_bike",
+      "scenario": "include",
+      "difficulty": "hard",
+      "description": "Keep a full group including thin bike spokes",
+      "should_exclude": "",
+      "rmbg_would": "the man",
+      "prompts": [
+        "the man, the bench, the bag and the bicycle"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.734000000000037,
+      "output_png": "results\\oct-2026\\guided_noverify\\courier_bench__man_bench_bag_bike.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\courier_bench__man_bench_bag_bike_preview.jpg",
+      "sam_scores": {
+        "the white bicycle leaning against the bench": 0.953125,
+        "the teal delivery bag on the bench": 0.96875,
+        "the blue wooden slatted bench": 0.96484375,
+        "the man sitting on the bench": 0.87109375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the man sitting on the bench",
+          "the blue wooden slatted bench",
+          "the teal delivery bag on the bench",
+          "the white bicycle leaning against the bench"
+        ],
+        "include": [
+          "the man sitting on the bench",
+          "the blue wooden slatted bench",
+          "the teal delivery bag on the bench",
+          "the white bicycle leaning against the bench"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_bench_bag_bike\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude an object right next to the person",
+      "should_exclude": "bag|delivery bag",
+      "rmbg_would": "the man",
+      "prompts": [
+        "the man on the bench without the delivery bag"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.172000000000025,
+      "output_png": "results\\oct-2026\\guided_noverify\\courier_bench__man_without_bag.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\courier_bench__man_without_bag_preview.jpg",
+      "sam_scores": {
+        "excl:the teal delivery bag on the bench": 0.96875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the teal delivery bag on the bench"
+        ],
+        "include": [],
+        "exclude": [
+          "the teal delivery bag on the bench"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\courier_bench__man_without_bag\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "full_desk_setup",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include all items as a group",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the entire desk setup including glasses and notebook"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.796999999991385,
+      "output_png": "results\\oct-2026\\guided_noverify\\desk_setup__full_desk_setup.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\desk_setup__full_desk_setup_preview.jpg",
+      "sam_scores": {
+        "the white notebook beneath the glasses": 0.0,
+        "the black-framed reading glasses": 0.82421875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the black-framed reading glasses",
+          "the white notebook beneath the glasses"
+        ],
+        "include": [
+          "the black-framed reading glasses",
+          "the white notebook beneath the glasses"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__full_desk_setup\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "just_the_laptop",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the obvious main object",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the laptop"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 13.01600000000326,
+      "output_png": "results\\oct-2026\\guided_noverify\\desk_setup__just_the_laptop.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\desk_setup__just_the_laptop_preview.jpg",
+      "sam_scores": {
+        "the silver Dell laptop": 0.96875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the silver Dell laptop"
+        ],
+        "include": [
+          "the silver Dell laptop"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__just_the_laptop\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "laptop_and_plant",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include two main items together",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the laptop with the potted plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 16.85899999999674,
+      "output_png": "results\\oct-2026\\guided_noverify\\desk_setup__laptop_and_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\desk_setup__laptop_and_plant_preview.jpg",
+      "sam_scores": {
+        "the potted plant in the orange terracotta pot": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the potted plant in the orange terracotta pot"
+        ],
+        "include": [
+          "the potted plant in the orange terracotta pot"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__laptop_and_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude one peripheral item",
+      "should_exclude": "smartphone|phone",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "everything except the smartphone"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 13.593999999997322,
+      "output_png": "results\\oct-2026\\guided_noverify\\desk_setup__without_phone.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\desk_setup__without_phone_preview.jpg",
+      "sam_scores": {
+        "excl:the smartphone on the right side of the desk": 0.890625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the smartphone on the right side of the desk"
+        ],
+        "include": [],
+        "exclude": [
+          "the smartphone on the right side of the desk"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\desk_setup__without_phone\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "bottles_with_rocks",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep the product display as a whole",
+      "should_exclude": "",
+      "rmbg_would": "bottles + rocks",
+      "prompts": [
+        "the bottles with the rocks they stand on"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.030999999999949,
+      "output_png": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__bottles_with_rocks.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__bottles_with_rocks_preview.jpg",
+      "sam_scores": {
+        "the smooth beige stone piece in the background": 0.68359375,
+        "the textured gray stone in the foreground": 0.921875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the textured gray stone in the foreground",
+          "the smooth beige stone piece in the background"
+        ],
+        "include": [
+          "the textured gray stone in the foreground",
+          "the smooth beige stone piece in the background"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__bottles_with_rocks\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "just_the_bottles",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Drop the rocks the products stand on",
+      "should_exclude": "",
+      "rmbg_would": "bottles + rocks",
+      "prompts": [
+        "only the three dropper bottles"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 12.593999999999994,
+      "output_png": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__just_the_bottles.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__just_the_bottles_preview.jpg",
+      "sam_scores": {
+        "the center white serum bottle with bamboo dropper cap": 0.9453125,
+        "the rightmost white serum bottle with bamboo dropper cap": 0.9765625,
+        "the leftmost white serum bottle with bamboo dropper cap": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the leftmost white serum bottle with bamboo dropper cap",
+          "the center white serum bottle with bamboo dropper cap",
+          "the rightmost white serum bottle with bamboo dropper cap"
+        ],
+        "include": [
+          "the leftmost white serum bottle with bamboo dropper cap",
+          "the center white serum bottle with bamboo dropper cap",
+          "the rightmost white serum bottle with bamboo dropper cap"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__just_the_bottles\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Keep the display props, drop the products",
+      "should_exclude": "bottles|droppers",
+      "rmbg_would": "bottles + rocks",
+      "prompts": [
+        "the rocks without the bottles"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.437000000000012,
+      "output_png": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__rocks_without_bottles.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__rocks_without_bottles_preview.jpg",
+      "sam_scores": {
+        "excl:the center serum bottle with bamboo dropper cap": 0.890625,
+        "excl:the rightmost tilted serum bottle with bamboo dropper cap": 0.96875,
+        "excl:the leftmost serum bottle with bamboo dropper cap": 0.9609375
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the leftmost serum bottle with bamboo dropper cap",
+          "the center serum bottle with bamboo dropper cap",
+          "the rightmost tilted serum bottle with bamboo dropper cap"
+        ],
+        "include": [],
+        "exclude": [
+          "the leftmost serum bottle with bamboo dropper cap",
+          "the center serum bottle with bamboo dropper cap",
+          "the rightmost tilted serum bottle with bamboo dropper cap"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__rocks_without_bottles\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "tallest_bottle",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to one product of three",
+      "should_exclude": "",
+      "rmbg_would": "bottles + rocks",
+      "prompts": [
+        "only the tallest bottle in the middle"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.593999999999937,
+      "output_png": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__tallest_bottle.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\dropper_bottles_rocks__tallest_bottle_preview.jpg",
+      "sam_scores": {
+        "the tallest serum bottle with bamboo cap in the center": 0.8984375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the tallest serum bottle with bamboo cap in the center"
+        ],
+        "include": [
+          "the tallest serum bottle with bamboo cap in the center"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\dropper_bottles_rocks__tallest_bottle\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "with_laptop",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include one item RMBG might drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the laptop"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.202999999994063,
+      "output_png": "results\\oct-2026\\guided_noverify\\home_office__with_laptop.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\home_office__with_laptop_preview.jpg",
+      "sam_scores": {
+        "the silver laptop computer": 0.95703125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the silver laptop computer"
+        ],
+        "include": [
+          "the silver laptop computer"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\home_office__with_laptop\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a peripheral element RMBG would include",
+      "should_exclude": "lamp",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman at her desk without the lamp behind her"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.672000000005937,
+      "output_png": "results\\oct-2026\\guided_noverify\\home_office__without_lamp.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\home_office__without_lamp_preview.jpg",
+      "sam_scores": {
+        "excl:the woven straw pendant lamp above the desk": 0.96875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the woven straw pendant lamp above the desk"
+        ],
+        "include": [],
+        "exclude": [
+          "the woven straw pendant lamp above the desk"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\home_office__without_lamp\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "woman_with_rug",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include person plus background surface RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the woman with the rug on the floor"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.281999999991967,
+      "output_png": "results\\oct-2026\\guided_noverify\\home_office__woman_with_rug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\home_office__woman_with_rug_preview.jpg",
+      "sam_scores": {
+        "the woven area rug on the floor": 0.953125
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the woven area rug on the floor"
+        ],
+        "include": [
+          "the woven area rug on the floor"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\home_office__woman_with_rug\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "workspace_setup",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the furniture arrangement around the person",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the desk setup with the chair"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.5,
+      "output_png": "results\\oct-2026\\guided_noverify\\home_office__workspace_setup.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\home_office__workspace_setup_preview.jpg",
+      "sam_scores": {
+        "the black wooden chair": 0.91015625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the black wooden chair"
+        ],
+        "include": [
+          "the black wooden chair"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\home_office__workspace_setup\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "laptop_pears.jpg",
+      "foreground": "just_the_laptop",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the main object",
+      "should_exclude": "",
+      "rmbg_would": "laptop + pears",
+      "prompts": [
+        "only the laptop"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 24.391000000000076,
+      "output_png": "results\\oct-2026\\guided_noverify\\laptop_pears__just_the_laptop.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\laptop_pears__just_the_laptop_preview.jpg",
+      "sam_scores": {
+        "the silver laptop": 0.98046875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the silver laptop"
+        ],
+        "include": [
+          "the silver laptop"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_laptop\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "laptop_pears.jpg",
+      "foreground": "just_the_pears",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the secondary objects",
+      "should_exclude": "",
+      "rmbg_would": "laptop + pears",
+      "prompts": [
+        "only the two pears"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.875,
+      "output_png": "results\\oct-2026\\guided_noverify\\laptop_pears__just_the_pears.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\laptop_pears__just_the_pears_preview.jpg",
+      "sam_scores": {
+        "the reclining green pear on the left": 0.0,
+        "the upright green pear with stem": 0.515625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the upright green pear with stem",
+          "the reclining green pear on the left"
+        ],
+        "include": [
+          "the upright green pear with stem",
+          "the reclining green pear on the left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__just_the_pears\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "laptop_pears.jpg",
+      "foreground": "laptop_and_pears",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep all objects on the table",
+      "should_exclude": "",
+      "rmbg_would": "laptop + pears",
+      "prompts": [
+        "the laptop with the two pears"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.812999999999988,
+      "output_png": "results\\oct-2026\\guided_noverify\\laptop_pears__laptop_and_pears.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\laptop_pears__laptop_and_pears_preview.jpg",
+      "sam_scores": {
+        "the tilted green pear on the left": 0.0,
+        "the upright green pear with stem": 0.515625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the upright green pear with stem",
+          "the tilted green pear on the left"
+        ],
+        "include": [
+          "the upright green pear with stem",
+          "the tilted green pear on the left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__laptop_and_pears\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "laptop_pears.jpg",
+      "foreground": "lying_pear",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to one of two similar objects",
+      "should_exclude": "",
+      "rmbg_would": "laptop + pears",
+      "prompts": [
+        "only the pear lying on its side"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 12.015999999999963,
+      "output_png": "results\\oct-2026\\guided_noverify\\laptop_pears__lying_pear.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\laptop_pears__lying_pear_preview.jpg",
+      "sam_scores": {
+        "the green pear lying on its side on the left": 0.91015625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the green pear lying on its side on the left"
+        ],
+        "include": [
+          "the green pear lying on its side on the left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\laptop_pears__lying_pear\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_bench_and_grass",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include the ground the scene stands on",
+      "should_exclude": "",
+      "rmbg_would": "the man",
+      "prompts": [
+        "the man, the bench and the grass in front of it"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.812000000000012,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_bench_and_grass.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_bench_and_grass_preview.jpg",
+      "sam_scores": {
+        "the bearded man with sunglasses": 0.96484375,
+        "the wooden park bench": 0.9296875,
+        "the grass and shrubs in front of the bench": 0.84765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the bearded man with sunglasses",
+          "the wooden park bench",
+          "the grass and shrubs in front of the bench"
+        ],
+        "include": [
+          "the bearded man with sunglasses",
+          "the wooden park bench",
+          "the grass and shrubs in front of the bench"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_bench_and_grass\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_with_bench",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the seat RMBG may drop",
+      "should_exclude": "",
+      "rmbg_would": "the man",
+      "prompts": [
+        "the man with the bench he sits on"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.390999999999963,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_with_bench.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_with_bench_preview.jpg",
+      "sam_scores": {
+        "the wooden park bench": 0.9296875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the wooden park bench"
+        ],
+        "include": [
+          "the wooden park bench"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_with_bench\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "scenario": "exclude",
+      "difficulty": "hard",
+      "description": "Separate a person from the bench under him",
+      "should_exclude": "bench",
+      "rmbg_would": "the man",
+      "prompts": [
+        "only the man without the bench"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 8.672000000000025,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_without_bench.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_bench_mountains__man_without_bench_preview.jpg",
+      "sam_scores": {
+        "the wooden park bench": 0.9296875
+      },
+      "vlm_decompose": {
+        "mode": "add_remove",
+        "targets": [],
+        "include": [],
+        "exclude": [
+          "the wooden park bench"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step2_vlm.json",
+        "step3_sam": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step3_sam.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_bench_mountains__man_without_bench\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "just_the_pug",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the animal held by the person",
+      "should_exclude": "",
+      "rmbg_would": "man + pug",
+      "prompts": [
+        "only the pug"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 12.656000000000063,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_pug_mug__just_the_pug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_pug_mug__just_the_pug_preview.jpg",
+      "sam_scores": {
+        "the black pug": 0.98046875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the black pug"
+        ],
+        "include": [
+          "the black pug"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__just_the_pug\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_pug_and_mug",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep the person and everything he holds",
+      "should_exclude": "",
+      "rmbg_would": "man + pug",
+      "prompts": [
+        "the man with the pug and the mug"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 5.75,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_pug_and_mug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_pug_and_mug_preview.jpg",
+      "sam_scores": {},
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [],
+        "include": [],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_pug_and_mug\\step1_rmbg.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude a small held object",
+      "should_exclude": "mug|cup",
+      "rmbg_would": "man + pug",
+      "prompts": [
+        "the man and the pug without the mug"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 12.015999999999963,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_without_mug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_without_mug_preview.jpg",
+      "sam_scores": {
+        "excl:the white coffee mug in his left hand": 0.91796875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white coffee mug in his left hand"
+        ],
+        "include": [],
+        "exclude": [
+          "the white coffee mug in his left hand"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_mug\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "scenario": "exclude",
+      "difficulty": "hard",
+      "description": "Remove an animal held against the body",
+      "should_exclude": "pug|dog",
+      "rmbg_would": "man + pug",
+      "prompts": [
+        "only the man without the dog"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.687000000000012,
+      "output_png": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_without_pug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\man_pug_mug__man_without_pug_preview.jpg",
+      "sam_scores": {
+        "the man in the white t-shirt": 0.93359375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the man in the white t-shirt"
+        ],
+        "include": [
+          "the man in the white t-shirt"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\man_pug_mug__man_without_pug\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "armchair_and_lamp",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Keep two furniture pieces from a corner",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the armchair and the floor lamp"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.952999999999975,
+      "output_png": "results\\oct-2026\\guided_noverify\\reading_corner__armchair_and_lamp.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\reading_corner__armchair_and_lamp_preview.jpg",
+      "sam_scores": {
+        "the floor lamp with yellow pleated shade": 0.828125,
+        "the blue tufted armchair": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the blue tufted armchair",
+          "the floor lamp with yellow pleated shade"
+        ],
+        "include": [
+          "the blue tufted armchair",
+          "the floor lamp with yellow pleated shade"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__armchair_and_lamp\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "just_the_armchair",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to one object",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the blue armchair"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 25.156000000000063,
+      "output_png": "results\\oct-2026\\guided_noverify\\reading_corner__just_the_armchair.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\reading_corner__just_the_armchair_preview.jpg",
+      "sam_scores": {
+        "the blue tufted armchair": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the blue tufted armchair"
+        ],
+        "include": [
+          "the blue tufted armchair"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__just_the_armchair\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "shelf_and_plant",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Narrow to the shelf unit",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the wooden shelf with the plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.218000000000075,
+      "output_png": "results\\oct-2026\\guided_noverify\\reading_corner__shelf_and_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\reading_corner__shelf_and_plant_preview.jpg",
+      "sam_scores": {
+        "the wooden ladder-style plant stand": 0.9453125,
+        "the potted spiky dracaena plant": 0.9375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the wooden ladder-style plant stand",
+          "the potted spiky dracaena plant"
+        ],
+        "include": [
+          "the wooden ladder-style plant stand",
+          "the potted spiky dracaena plant"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__shelf_and_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the floor covering",
+      "should_exclude": "rug",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the furniture without the rug"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.125,
+      "output_png": "results\\oct-2026\\guided_noverify\\reading_corner__without_rug.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\reading_corner__without_rug_preview.jpg",
+      "sam_scores": {
+        "excl:the white sheepskin rug": 0.9609375
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white sheepskin rug"
+        ],
+        "include": [],
+        "exclude": [
+          "the white sheepskin rug"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\reading_corner__without_rug\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_on_boxes.jpg",
+      "foreground": "just_the_sneakers",
+      "scenario": "narrow",
+      "difficulty": "medium",
+      "description": "Drop the packaging under the product",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + boxes",
+      "prompts": [
+        "only the sneakers"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.21799999999348,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__just_the_sneakers.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__just_the_sneakers_preview.jpg",
+      "sam_scores": {
+        "the blue and white Air Jordan sneakers with orange laces": 0.9453125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the blue and white Air Jordan sneakers with orange laces"
+        ],
+        "include": [
+          "the blue and white Air Jordan sneakers with orange laces"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__just_the_sneakers\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_on_boxes.jpg",
+      "foreground": "left_sneaker",
+      "scenario": "narrow",
+      "difficulty": "hard",
+      "description": "Separate one shoe from a touching pair",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + boxes",
+      "prompts": [
+        "only the sneaker on the left"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 15.172000000000025,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__left_sneaker.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__left_sneaker_preview.jpg",
+      "sam_scores": {
+        "the sneaker on the left": 0.58203125
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the sneaker on the left"
+        ],
+        "include": [
+          "the sneaker on the left"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__left_sneaker\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_on_boxes.jpg",
+      "foreground": "sneakers_and_top_box",
+      "scenario": "narrow",
+      "difficulty": "hard",
+      "description": "Split two stacked identical boxes",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + boxes",
+      "prompts": [
+        "the sneakers and only the top shoe box"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 14.85899999999674,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__sneakers_and_top_box.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__sneakers_and_top_box_preview.jpg",
+      "sam_scores": {
+        "the blue and white Nike sneakers with orange laces": 0.9609375,
+        "the black Nike shoe box with red logo": 0.9375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the blue and white Nike sneakers with orange laces",
+          "the black Nike shoe box with red logo"
+        ],
+        "include": [
+          "the blue and white Nike sneakers with orange laces",
+          "the black Nike shoe box with red logo"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_and_top_box\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_on_boxes.jpg",
+      "foreground": "sneakers_with_boxes",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep product plus packaging",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + boxes",
+      "prompts": [
+        "the sneakers with the shoe boxes under them"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.672000000005937,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__sneakers_with_boxes.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_on_boxes__sneakers_with_boxes_preview.jpg",
+      "sam_scores": {
+        "the two stacked Nike shoe boxes": 0.90625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the two stacked Nike shoe boxes"
+        ],
+        "include": [
+          "the two stacked Nike shoe boxes"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_on_boxes__sneakers_with_boxes\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_plant.jpg",
+      "foreground": "front_sneaker",
+      "scenario": "narrow",
+      "difficulty": "hard",
+      "description": "Separate one shoe from an overlapping pair",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + plant",
+      "prompts": [
+        "only the sneaker in front"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 12.813000000000045,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_plant__front_sneaker.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_plant__front_sneaker_preview.jpg",
+      "sam_scores": {
+        "the brown sneaker in front": 0.88671875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the brown sneaker in front"
+        ],
+        "include": [
+          "the brown sneaker in front"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__front_sneaker\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_plant.jpg",
+      "foreground": "just_the_plant",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to the prop, drop the product",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + plant",
+      "prompts": [
+        "only the potted plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.499999999999943,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_plant__just_the_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_plant__just_the_plant_preview.jpg",
+      "sam_scores": {
+        "the small white potted plant with green topiary": 0.90234375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the small white potted plant with green topiary"
+        ],
+        "include": [
+          "the small white potted plant with green topiary"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_plant.jpg",
+      "foreground": "just_the_sneakers",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Drop the decor prop next to the product",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + plant",
+      "prompts": [
+        "only the sneakers"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 13.172000000000025,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_plant__just_the_sneakers.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_plant__just_the_sneakers_preview.jpg",
+      "sam_scores": {
+        "the pair of brown Nike sneakers": 0.921875
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the pair of brown Nike sneakers"
+        ],
+        "include": [
+          "the pair of brown Nike sneakers"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__just_the_sneakers\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "sneakers_plant.jpg",
+      "foreground": "sneakers_and_plant",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Keep product plus prop",
+      "should_exclude": "",
+      "rmbg_would": "sneakers + plant",
+      "prompts": [
+        "the sneakers with the potted plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 13.952999999999975,
+      "output_png": "results\\oct-2026\\guided_noverify\\sneakers_plant__sneakers_and_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\sneakers_plant__sneakers_and_plant_preview.jpg",
+      "sam_scores": {
+        "the two-tier potted plant with white flowers": 0.9296875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the two-tier potted plant with white flowers"
+        ],
+        "include": [
+          "the two-tier potted plant with white flowers"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\sneakers_plant__sneakers_and_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "just_the_coffee",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to one item",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the cup of coffee"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.140999999999963,
+      "output_png": "results\\oct-2026\\guided_noverify\\watch_flatlay__just_the_coffee.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\watch_flatlay__just_the_coffee_preview.jpg",
+      "sam_scores": {
+        "the white coffee cup": 0.9609375
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the white coffee cup"
+        ],
+        "include": [
+          "the white coffee cup"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_coffee\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "just_the_watch",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow a flat lay to the hero product",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "only the watch"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.592999999999961,
+      "output_png": "results\\oct-2026\\guided_noverify\\watch_flatlay__just_the_watch.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\watch_flatlay__just_the_watch_preview.jpg",
+      "sam_scores": {
+        "the silver metal wristwatch": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the silver metal wristwatch"
+        ],
+        "include": [
+          "the silver metal wristwatch"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__just_the_watch\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "watch_and_glasses",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Keep two accessories from a flat lay",
+      "should_exclude": "",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the watch and the glasses"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 11.765999999999963,
+      "output_png": "results\\oct-2026\\guided_noverify\\watch_flatlay__watch_and_glasses.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\watch_flatlay__watch_and_glasses_preview.jpg",
+      "sam_scores": {
+        "the brown and blue eyeglasses": 0.921875,
+        "the silver metal wristwatch": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the silver metal wristwatch",
+          "the brown and blue eyeglasses"
+        ],
+        "include": [
+          "the silver metal wristwatch",
+          "the brown and blue eyeglasses"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__watch_and_glasses\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude the decor prop",
+      "should_exclude": "plant|succulent",
+      "rmbg_would": "unclear - no dominant subject",
+      "prompts": [
+        "the watch, glasses and coffee cup without the plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.687000000000012,
+      "output_png": "results\\oct-2026\\guided_noverify\\watch_flatlay__without_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\watch_flatlay__without_plant_preview.jpg",
+      "sam_scores": {
+        "excl:the potted succulent plant": 0.9296875
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the potted succulent plant"
+        ],
+        "include": [],
+        "exclude": [
+          "the potted succulent plant"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\watch_flatlay__without_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "just_the_person",
+      "scenario": "narrow",
+      "difficulty": "easy",
+      "description": "Narrow to just the person (RMBG default)",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "just the person in the yoga pose"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.812999999994645,
+      "output_png": "results\\oct-2026\\guided_noverify\\yoga_studio__just_the_person.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\yoga_studio__just_the_person_preview.jpg",
+      "sam_scores": {
+        "the woman in the yoga pose": 0.9765625
+      },
+      "vlm_decompose": {
+        "mode": "narrow",
+        "targets": [
+          "the woman in the yoga pose"
+        ],
+        "include": [
+          "the woman in the yoga pose"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step2_vlm.json",
+        "step3_sam_narrow": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step3_sam_narrow.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__just_the_person\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_candles",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include mat plus nearby props",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the candles"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 16.077999999994063,
+      "output_png": "results\\oct-2026\\guided_noverify\\yoga_studio__with_mat_and_candles.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\yoga_studio__with_mat_and_candles_preview.jpg",
+      "sam_scores": {
+        "the small decorative items beside the candle": 0.86328125,
+        "the purple galaxy-patterned yoga mat": 0.97265625,
+        "the white candle on the floor": 0.82421875
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the purple galaxy-patterned yoga mat",
+          "the white candle on the floor",
+          "the small decorative items beside the candle"
+        ],
+        "include": [
+          "the purple galaxy-patterned yoga mat",
+          "the white candle on the floor",
+          "the small decorative items beside the candle"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_candles\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "with_mat_and_plant",
+      "scenario": "include",
+      "difficulty": "medium",
+      "description": "Include multiple surrounding items RMBG would drop",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the mat and the plant"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.264999999999418,
+      "output_png": "results\\oct-2026\\guided_noverify\\yoga_studio__with_mat_and_plant.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\yoga_studio__with_mat_and_plant_preview.jpg",
+      "sam_scores": {
+        "the potted palm plant in white planter": 0.9296875,
+        "the galaxy-patterned yoga mat": 0.97265625
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the galaxy-patterned yoga mat",
+          "the potted palm plant in white planter"
+        ],
+        "include": [
+          "the galaxy-patterned yoga mat",
+          "the potted palm plant in white planter"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__with_mat_and_plant\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "scenario": "exclude",
+      "difficulty": "medium",
+      "description": "Exclude specific surrounding props",
+      "should_exclude": "candles",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person on the mat without the candles"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 9.531999999991967,
+      "output_png": "results\\oct-2026\\guided_noverify\\yoga_studio__without_candles.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\yoga_studio__without_candles_preview.jpg",
+      "sam_scores": {
+        "excl:the dark ritual object": 0.0,
+        "excl:the small glass bottle": 0.0,
+        "excl:the white candle": 0.890625
+      },
+      "vlm_decompose": {
+        "mode": "remove",
+        "targets": [
+          "the white candle",
+          "the small glass bottle",
+          "the dark ritual object"
+        ],
+        "include": [],
+        "exclude": [
+          "the white candle",
+          "the small glass bottle",
+          "the dark ritual object"
+        ],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step2_vlm.json",
+        "step3_sam_remove": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step3_sam_remove.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__without_candles\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "yoga_with_mat",
+      "scenario": "include",
+      "difficulty": "easy",
+      "description": "Include the mat RMBG might or might not keep",
+      "should_exclude": "",
+      "rmbg_would": "the woman",
+      "prompts": [
+        "the person with the yoga mat"
+      ],
+      "mode": "guided",
+      "verify": false,
+      "error": null,
+      "elapsed_s": 10.48399999999674,
+      "output_png": "results\\oct-2026\\guided_noverify\\yoga_studio__yoga_with_mat.png",
+      "preview_jpg": "results\\oct-2026\\guided_noverify\\yoga_studio__yoga_with_mat_preview.jpg",
+      "sam_scores": {
+        "the purple and pink galaxy-patterned yoga mat": 0.96484375
+      },
+      "vlm_decompose": {
+        "mode": "add",
+        "targets": [
+          "the purple and pink galaxy-patterned yoga mat"
+        ],
+        "include": [
+          "the purple and pink galaxy-patterned yoga mat"
+        ],
+        "exclude": [],
+        "error": null
+      },
+      "step_images": {
+        "step1_rmbg": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step1_rmbg.jpg",
+        "step2_vlm": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step2_vlm.json",
+        "step3_sam_add": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step3_sam_add.jpg",
+        "step4_combined_mask": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step4_combined_mask.jpg",
+        "step5_edge_refined": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step5_edge_refined.jpg",
+        "step6_final": "results\\oct-2026\\guided_noverify\\steps\\yoga_studio__yoga_with_mat\\step6_final.jpg"
+      },
+      "judge_verdicts": []
+    }
+  ]
+}

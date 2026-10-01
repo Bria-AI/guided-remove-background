@@ -131,8 +131,8 @@ def _parse_json(text: str) -> dict:
 
 
 ANTHROPIC_MODELS = {
-    "sonnet": "claude-sonnet-4-20250514",
-    "opus": "claude-opus-4-20250514",
+    "sonnet": "claude-sonnet-4-5",
+    "opus": "claude-opus-4-5",
 }
 
 DEFAULT_JUDGE_MODEL = "opus"

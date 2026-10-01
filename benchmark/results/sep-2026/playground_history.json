@@ -1,0 +1,164 @@
+[
+  {
+    "ok": true,
+    "preview_url": "results\\playground\\yoga_studio__141918_0017_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the galaxy-patterned yoga mat",
+      "the white candle on the floor",
+      "the small candle beside the white candle"
+    ],
+    "sam_scores": {
+      "the white candle on the floor": 0.82421875,
+      "the galaxy-patterned yoga mat": 0.97265625,
+      "the small candle beside the white candle": 0.8203125
+    },
+    "elapsed_s": 29.9,
+    "step_images": {
+      "step1_rmbg": "results\\playground\\steps\\yoga_studio__141918_0017\\step1_rmbg.jpg",
+      "step2_vlm": "results\\playground\\steps\\yoga_studio__141918_0017\\step2_vlm.json",
+      "step3_sam_add": "results\\playground\\steps\\yoga_studio__141918_0017\\step3_sam_add.jpg",
+      "step4_combined_mask": "results\\playground\\steps\\yoga_studio__141918_0017\\step4_combined_mask.jpg",
+      "step5_edge_refined": "results\\playground\\steps\\yoga_studio__141918_0017\\step5_edge_refined.jpg",
+      "step6_final": "results\\playground\\steps\\yoga_studio__141918_0017\\step6_final.jpg",
+      "step7_judge_0": "results\\playground\\steps\\yoga_studio__141918_0017\\step7_judge_0.json",
+      "step7_judge_1": "results\\playground\\steps\\yoga_studio__141918_0017\\step7_judge_1.json"
+    },
+    "image": "yoga_studio.jpg",
+    "prompt": "the person with the mat and the candles",
+    "judge_verdicts": [
+      {
+        "passed": false,
+        "error": null,
+        "issues": [
+          {
+            "type": "missing_item",
+            "description": "Only one candle is visible in the result, but the original image shows multiple candles that the user asked to keep",
+            "fix": "re-sam: white candles on floor"
+          }
+        ]
+      },
+      {
+        "passed": true,
+        "error": null,
+        "issues": []
+      }
+    ],
+    "timestamp": "2026-09-22T11:19:51.694155+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results\\playground\\yoga_studio__142031_7479_preview.jpg",
+    "vlm_mode": "add",
+    "vlm_targets": [
+      "the galaxy-patterned yoga mat",
+      "the white pillar candle on the left",
+      "the white pillar candle on the right"
+    ],
+    "sam_scores": {
+      "the white pillar candle on the left": 0.875,
+      "the white pillar candle on the right": 0.65234375,
+      "the galaxy-patterned yoga mat": 0.97265625
+    },
+    "elapsed_s": 43.1,
+    "step_images": {
+      "step1_rmbg": "results\\playground\\steps\\yoga_studio__142031_7479\\step1_rmbg.jpg",
+      "step2_vlm": "results\\playground\\steps\\yoga_studio__142031_7479\\step2_vlm.json",
+      "step3_sam_add": "results\\playground\\steps\\yoga_studio__142031_7479\\step3_sam_add.jpg",
+      "step4_combined_mask": "results\\playground\\steps\\yoga_studio__142031_7479\\step4_combined_mask.jpg",
+      "step5_edge_refined": "results\\playground\\steps\\yoga_studio__142031_7479\\step5_edge_refined.jpg",
+      "step6_final": "results\\playground\\steps\\yoga_studio__142031_7479\\step6_final.jpg",
+      "step7_judge_0": "results\\playground\\steps\\yoga_studio__142031_7479\\step7_judge_0.json",
+      "step7_judge_1": "results\\playground\\steps\\yoga_studio__142031_7479\\step7_judge_1.json"
+    },
+    "image": "yoga_studio.jpg",
+    "prompt": "the person with the mat and the 2 candles",
+    "judge_verdicts": [
+      {
+        "passed": false,
+        "error": null,
+        "issues": [
+          {
+            "type": "missing_item",
+            "description": "User asked for 2 candles but only 1 candle is visible in the result. The original image shows multiple candles but only one was kept.",
+            "fix": "re-sam: the two white candles"
+          }
+        ]
+      },
+      {
+        "passed": true,
+        "error": null,
+        "issues": []
+      }
+    ],
+    "timestamp": "2026-09-22T11:21:15.055224+00:00"
+  },
+  {
+    "ok": true,
+    "preview_url": "results\\playground\\art_table__094628_2488_preview.jpg",
+    "vlm_mode": "narrow",
+    "vlm_targets": [
+      "the wooden paint palette with mixed colors",
+      "the paintbrushes in the glass jar"
+    ],
+    "sam_scores": {
+      "the paintbrushes in the glass jar": 0.0,
+      "the wooden paint palette with mixed colors": 0.88671875
+    },
+    "elapsed_s": 34.1,
+    "step_images": {
+      "step1_rmbg": "results\\playground\\steps\\art_table__094628_2488\\step1_rmbg.jpg",
+      "step2_vlm": "results\\playground\\steps\\art_table__094628_2488\\step2_vlm.json",
+      "step3_sam_narrow": "results\\playground\\steps\\art_table__094628_2488\\step3_sam_narrow.jpg",
+      "step4_combined_mask": "results\\playground\\steps\\art_table__094628_2488\\step4_combined_mask.jpg",
+      "step5_edge_refined": "results\\playground\\steps\\art_table__094628_2488\\step5_edge_refined.jpg",
+      "step6_final": "results\\playground\\steps\\art_table__094628_2488\\step6_final.jpg",
+      "step7_judge_0": "results\\playground\\steps\\art_table__094628_2488\\step7_judge_0.json",
+      "step7_judge_1": "results\\playground\\steps\\art_table__094628_2488\\step7_judge_1.json",
+      "step7_judge_2": "results\\playground\\steps\\art_table__094628_2488\\step7_judge_2.json"
+    },
+    "image": "art_table.jpg",
+    "prompt": "keep only the palette and the brushes only",
+    "judge_verdicts": [
+      {
+        "passed": false,
+        "error": null,
+        "issues": [
+          {
+            "type": "missing_item",
+            "description": "The user asked to keep the brushes but they are completely absent from the result - only the palette is visible",
+            "fix": "re-sam: paintbrushes in glass jar"
+          }
+        ]
+      },
+      {
+        "passed": false,
+        "error": null,
+        "issues": [
+          {
+            "type": "missing_item",
+            "description": "The user asked for 'the brushes' but only one fan brush is visible. The original image shows multiple brushes in a container/jar that are missing from the result.",
+            "fix": "re-sam: paintbrushes in glass jar container"
+          }
+        ]
+      },
+      {
+        "passed": false,
+        "error": null,
+        "issues": [
+          {
+            "type": "missing_item",
+            "description": "The user asked for 'the brushes' but only one fan brush is visible. The original image shows multiple brushes in a container/jar that are missing from the result.",
+            "fix": "re-sam: paintbrushes in glass jar container"
+          }
+        ]
+      },
+      {
+        "passed": true,
+        "error": null,
+        "issues": []
+      }
+    ],
+    "timestamp": "2026-09-23T06:47:02.584274+00:00"
+  }
+]

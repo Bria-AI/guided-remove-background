@@ -7,8 +7,11 @@ benchmark/images/
 benchmark/results/
 benchmark/benchmark_report.html
 gallery.html
+benchmark/results/*/pairwise_run.out
+benchmark/results/*/review_shareable.html
 dist/
 build/
 .DS_Store
 !benchmark/results/may-2026/
 !benchmark/results/sep-2026/
+!benchmark/results/oct-2026/

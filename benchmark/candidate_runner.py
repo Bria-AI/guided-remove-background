@@ -46,7 +46,8 @@ log = logging.getLogger(__name__)
 
 CASES_CSV = Path(__file__).parent / "data" / "cases.csv"
 IMAGES_DIR = Path(__file__).parent / "images"
-RESULTS_DIR = Path(__file__).parent / "results"
+BENCHMARK_DIR = Path(__file__).parent
+RESULTS_DIR = BENCHMARK_DIR / "results"
 
 
 def load_cases(filter_str: str | None = None) -> list[dict]:
@@ -138,8 +139,8 @@ def run_one(case: dict, candidate_id: str, cand: dict) -> dict:
             "prompts": prompts,
             "mode": candidate_id,
             "error": None, "elapsed_s": elapsed_s,
-            "output_png": str(Path(output_png).relative_to(RESULTS_DIR.parent)),
-            "preview_jpg": str(Path(preview_jpg).relative_to(RESULTS_DIR.parent)),
+            "output_png": str(Path(output_png).relative_to(BENCHMARK_DIR)),
+            "preview_jpg": str(Path(preview_jpg).relative_to(BENCHMARK_DIR)),
             "sam_scores": sam_scores,
             "vlm_decompose": None,
             "step_images": {},
@@ -153,12 +154,17 @@ def run_one(case: dict, candidate_id: str, cand: dict) -> dict:
         }
 
 
-def run_candidate(candidate_id: str, cases: list[dict], concurrency: int) -> None:
+def run_candidate(candidate_id: str, cases: list[dict], concurrency: int, resume: bool = False) -> None:
     cand = CANDIDATES[candidate_id]
     meta_path = RESULTS_DIR / cand["file"]
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     all_raw: list[dict] = []
+    if resume and meta_path.exists():
+        # Recorded failures stay recorded (hard fails count); only never-attempted cases run.
+        all_raw = json.loads(meta_path.read_text())["results"]
+    done_keys = {(r["image"], r["foreground"]) for r in all_raw}
+    todo = [c for c in cases if (c["image"], c["foreground"]) not in done_keys]
     t0 = time.monotonic()
 
     def _flush_meta(done: bool = False) -> None:
@@ -177,10 +183,10 @@ def run_candidate(candidate_id: str, cases: list[dict], concurrency: int) -> Non
         meta_path.write_text(json.dumps(meta, indent=2, default=str))
 
     _flush_meta()
-    log.info("[%s] Running %d case(s) ...", candidate_id, len(cases))
+    log.info("[%s] Running %d case(s), %d already done ...", candidate_id, len(todo), len(all_raw))
 
     with ThreadPoolExecutor(max_workers=concurrency) as pool:
-        futures = {pool.submit(run_one, case, candidate_id, cand): case for case in cases}
+        futures = {pool.submit(run_one, case, candidate_id, cand): case for case in todo}
         for fut in as_completed(futures):
             result = fut.result()
             all_raw.append(result)
@@ -225,8 +231,8 @@ def run_alpha_pass_one(record: dict, candidate_id: str, cand: dict) -> dict:
             "prompts": record.get("prompts", []),
             "mode": candidate_id,
             "error": None, "elapsed_s": elapsed_s,
-            "output_png": str(Path(output_png).relative_to(RESULTS_DIR.parent)),
-            "preview_jpg": str(Path(preview_jpg).relative_to(RESULTS_DIR.parent)),
+            "output_png": str(Path(output_png).relative_to(BENCHMARK_DIR)),
+            "preview_jpg": str(Path(preview_jpg).relative_to(BENCHMARK_DIR)),
             "sam_scores": sam_scores,
             "vlm_decompose": None,
             "step_images": {},
@@ -299,8 +305,16 @@ def main() -> None:
     parser.add_argument("--filter", default=None, help="Substring filter on image column")
     parser.add_argument("--concurrency", type=int, default=2)
     parser.add_argument("--list", action="store_true", help="List available candidates and exit")
+    parser.add_argument("--resume", action="store_true",
+                        help="Keep results already in this candidate's run_meta file; run only the rest")
+    parser.add_argument("--results-dir", type=Path, default=None,
+                        help="Write outputs and run_meta here instead of benchmark/results/")
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
+
+    global RESULTS_DIR
+    if args.results_dir:
+        RESULTS_DIR = args.results_dir.resolve()
 
     if args.list:
         for cid, cand in CANDIDATES.items():
@@ -325,7 +339,7 @@ def main() -> None:
     if not cases:
         sys.exit("No cases matched. Check data/cases.csv and --filter.")
 
-    run_candidate(args.candidate, cases, args.concurrency)
+    run_candidate(args.candidate, cases, args.concurrency, resume=args.resume)
 
 
 if __name__ == "__main__":

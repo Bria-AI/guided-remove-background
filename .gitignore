@@ -4,11 +4,29 @@ __pycache__/
 *.egg-info/
 .venv/
 benchmark/images/
-benchmark/results/
 benchmark/benchmark_report.html
 gallery.html
 dist/
 build/
 .DS_Store
-!benchmark/results/may-2026/
-!benchmark/results/sep-2026/
+
+# Benchmark results: every candidate/run output dir is ignored by default (raw
+# per-case images, logs, etc. -- never committed). The three dated snapshots
+# below are the exception: their curated JSON/README/csv files are tracked.
+# `benchmark/results/*` (not `benchmark/results/`) is required for the `!`
+# negations below to actually work -- a trailing-slash directory pattern on
+# the parent blocks git from ever descending into it, even for new files
+# under a later `!` line; `*` only matches each immediate child, which an
+# exact-path `!` re-include can still override.
+benchmark/results/*
+!benchmark/results/may-2026
+!benchmark/results/sep-2026
+!benchmark/results/oct-2026
+
+# Even inside a curated snapshot, never commit raw/normalized per-case images,
+# per-run logs, or the large self-contained HTML export (share that file
+# directly with whoever needs it instead).
+benchmark/results/*/normalized/
+benchmark/results/*/logs/
+benchmark/results/*/pairwise_run.out
+benchmark/results/*/review_shareable.html

@@ -1,0 +1,59 @@
+image,scenario,foreground,prompts,should_exclude,rmbg_would,difficulty,description
+living_room.jpg,include,living_area_furniture,the sofa and coffee table with the rug,,unclear - no dominant subject,easy,Include specific furniture group
+living_room.jpg,exclude,everything_minus_kitchen,everything except the kitchen area,kitchen,unclear - no dominant subject,medium,Exclude the kitchen zone
+living_room.jpg,narrow,just_the_sofa_area,only the sofa and its cushions,,unclear - no dominant subject,medium,Narrow to just the main seating
+living_room.jpg,include,full_furnished_space,all the furniture including the staircase,,unclear - no dominant subject,hard,Include everything including structural elements
+smoothie_bowl.jpg,include,bowl_with_toppings,the smoothie bowl with the scattered berries around it,,unclear - no dominant subject,easy,Include bowl plus its surrounding fruit scatter
+smoothie_bowl.jpg,exclude,bowl_without_herbs,the bowl and fruits without the green herbs,herbs|dill|parsley,unclear - no dominant subject,medium,Exclude a specific ingredient type
+smoothie_bowl.jpg,narrow,just_the_bowl,only the smoothie bowl,,unclear - no dominant subject,easy,Narrow to just the central bowl
+smoothie_bowl.jpg,include,bowl_and_mango,the bowl with the mango halves,,unclear - no dominant subject,medium,Include bowl plus specific surrounding items
+art_table.jpg,include,painting_tools,the palette and the brushes,,unclear - no dominant subject,easy,Include the two main painting tools
+art_table.jpg,exclude,without_pastels,everything except the pastel set,pastel set|pastels,unclear - no dominant subject,medium,Exclude one tool category
+art_table.jpg,narrow,just_the_palette,only the paint palette,,unclear - no dominant subject,easy,Narrow to single item
+art_table.jpg,include,full_art_setup,the complete art setup with canvas and all tools,,unclear - no dominant subject,hard,Include everything on the table
+plant_shelf.jpg,include,pepper_and_mint,the pepper and mint pots,,unclear - no dominant subject,medium,Narrow to two specific pots from the row
+plant_shelf.jpg,exclude,without_small_pots,the herb pots without the two smallest ones,basil|oregano,unclear - no dominant subject,medium,Exclude the two smallest pots on the right
+plant_shelf.jpg,narrow,just_the_large_pots,only the two largest pots,,unclear - no dominant subject,medium,Narrow to the two tallest herb pots
+plant_shelf.jpg,include,mint_and_basil,the mint and basil pots with their labels,,unclear - no dominant subject,medium,Narrow to two specific named herbs
+kids_room.jpg,include,bed_and_toys,the daybed with the stuffed animals,,unclear - no dominant subject,easy,Include the sleep area with toys
+kids_room.jpg,exclude,without_desk_area,everything except the desk and computer,desk|iMac|computer,unclear - no dominant subject,medium,Exclude the work/study zone
+kids_room.jpg,narrow,bed_without_desk,the bed area without the desk and computer,,unclear - no dominant subject,medium,Narrow to the bed zone only
+desk_setup.jpg,include,laptop_and_plant,the laptop with the potted plant,,unclear - no dominant subject,easy,Include two main items together
+desk_setup.jpg,exclude,without_phone,everything except the smartphone,smartphone|phone,unclear - no dominant subject,medium,Exclude one peripheral item
+desk_setup.jpg,narrow,just_the_laptop,only the laptop,,unclear - no dominant subject,easy,Narrow to the obvious main object
+desk_setup.jpg,include,full_desk_setup,the entire desk setup including glasses and notebook,,unclear - no dominant subject,medium,Include all items as a group
+garden_patio.jpg,include,table_with_food,the table setup with the food and drinks,,unclear - no dominant subject,easy,Include the table contents
+garden_patio.jpg,exclude,without_pergola,the table and chairs without the overhead pergola,pergola|overhead structure,unclear - no dominant subject,hard,Exclude the architectural canopy
+garden_patio.jpg,narrow,table_without_chairs,only the table without the chairs,,unclear - no dominant subject,medium,Narrow the patio to table only
+garden_patio.jpg,include,full_patio_scene,the complete patio scene with the lantern and chairs,,unclear - no dominant subject,hard,Include everything including furniture and decor
+cafe_interior.jpg,include,seating_with_surfboard,the seating area with the surfboard on the wall,,unclear - no dominant subject,easy,Include seating plus wall decor
+cafe_interior.jpg,exclude,without_bar,everything except the bar counter area,bar counter|bottles|drinks display,unclear - no dominant subject,medium,Exclude the service zone
+cafe_interior.jpg,narrow,just_the_seating,just the dining table and chairs,,unclear - no dominant subject,medium,Narrow to the seating area only
+cafe_table.jpg,include,teapots_and_book,the glass teapots with the open book,,unclear - no dominant subject,medium,Narrow to specific items from cluttered table
+cafe_table.jpg,exclude,drinks_only,the drinks without the food items,cookies|fruit|pastries,unclear - no dominant subject,medium,Exclude food keep drinks
+cafe_table.jpg,narrow,just_the_teapots,only the glass teapots,,unclear - no dominant subject,medium,Narrow to specific drinkware
+office_meeting.jpg,include,people_and_table,the people with the table and laptops,,all people + table,easy,Include people plus furniture and tech
+office_meeting.jpg,exclude,without_tech,the people without any technology,laptops|phones,all people + table,medium,Exclude tech items from the scene
+office_meeting.jpg,narrow,just_the_handshake,only the two people shaking hands,,all people + table,hard,Narrow to specific people in the group
+office_meeting.jpg,include,with_cork_board,the people with the cork board behind them,,all people + table,medium,Include background element RMBG would drop
+person_dog.jpg,include,walk_scene,the person and dog with the path,,woman + dog,easy,Include subjects plus their walking surface
+person_dog.jpg,exclude,without_dog,the person walking without the dog,dog,woman + dog,medium,Remove part of foreground pair
+person_dog.jpg,narrow,just_the_dog,only the dog,,woman + dog,medium,Narrow to one foreground subject
+person_dog.jpg,include,with_autumn_leaves,the person and dog with the autumn leaves around them,,woman + dog,medium,Include surrounding scenery RMBG would drop
+cooking_scene.jpg,include,chef_and_stove,the chef with the stove and pots,,the chef,easy,Include person plus their active workspace
+cooking_scene.jpg,include,chef_with_countertop,the chef with the countertop,,the chef,medium,Include surface RMBG would likely drop
+cooking_scene.jpg,narrow,chef_and_dish,just the chef and the dish being prepared,,the chef,medium,Narrow to person plus their immediate task
+cooking_scene.jpg,exclude,chef_without_pans,the chef without the stove pans,pans|skillets on stove,the chef,medium,Exclude specific cooking equipment from foreground
+home_office.jpg,include,workspace_setup,the desk setup with the chair,,the woman,easy,Include the furniture arrangement around the person
+home_office.jpg,include,with_laptop,the woman with the laptop,,the woman,easy,Include one item RMBG might drop
+home_office.jpg,include,woman_with_rug,the woman with the rug on the floor,,the woman,medium,Include person plus background surface RMBG would drop
+home_office.jpg,exclude,without_lamp,the woman at her desk without the lamp behind her,lamp,the woman,medium,Exclude a peripheral element RMBG would include
+yoga_studio.jpg,include,yoga_with_mat,the person with the yoga mat,,the woman,easy,Include the mat RMBG might or might not keep
+yoga_studio.jpg,include,with_mat_and_plant,the person with the mat and the plant,,the woman,medium,Include multiple surrounding items RMBG would drop
+yoga_studio.jpg,include,with_mat_and_candles,the person with the mat and the candles,,the woman,medium,Include mat plus nearby props
+yoga_studio.jpg,narrow,just_the_person,just the person in the yoga pose,,the woman,easy,Narrow to just the person (RMBG default)
+yoga_studio.jpg,exclude,without_candles,the person on the mat without the candles,candles,the woman,medium,Exclude specific surrounding props
+patio_bar.jpg,include,friends_with_drinks,the friends with their beer glasses and the table,,the two women,easy,Include people plus table and drinks
+patio_bar.jpg,exclude,without_background,the people without the bar interior,bar shelves|background|store,the two women,medium,Exclude the commercial background
+patio_bar.jpg,exclude,without_third_person,the two friends without the third person,third person|background person,the two women,medium,Exclude peripheral person from edge
+patio_bar.jpg,include,with_bench,the friends with the wooden bench,,the two women,medium,Include seating RMBG would drop

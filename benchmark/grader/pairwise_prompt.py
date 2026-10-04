@@ -6,7 +6,7 @@ PROMPT_VERSION in every output file. Change the version whenever the wording cha
 
 from __future__ import annotations
 
-PROMPT_VERSION = "pairwise-v1"
+PROMPT_VERSION = "pairwise-v2"
 
 SYSTEM = (
     "You are an exacting reviewer of image-editing results for a commercial background-removal "
@@ -15,21 +15,40 @@ SYSTEM = (
     "result."
 )
 
+# One wording per scenario, matching cases.csv's `scenario` column. An `include` ask ("the woman
+# with the laptop") means the obvious foreground PLUS the named items -- a result that also keeps
+# the desk and the chair is not "over-inclusion," it's the plain cut, correctly tweaked. An
+# `exclude` ask ("without the lamp") means the obvious foreground MINUS the named items. Only
+# `narrow` ("only the laptop") actually means just the named items and nothing else.
+_FRAMING = {
+    "include": "keeping the obvious foreground subject(s) PLUS: \"{instruction}\"",
+    "exclude": "keeping the obvious foreground subject(s) EXCEPT: \"{instruction}\"",
+    "narrow": "keeping ONLY: \"{instruction}\"",
+}
 
-def pairwise_prompt(instruction: str, should_exclude: str) -> str:
+
+def pairwise_prompt(instruction: str, should_exclude: str, scenario: str,
+                     a_real_alpha: bool, b_real_alpha: bool) -> str:
     exclude_line = ""
     if should_exclude:
         exclude_line = (
             "The request explicitly says these must NOT be in the result: "
             + should_exclude.replace("|", ", ") + ".\n"
         )
+    framing = _FRAMING[scenario].format(instruction=instruction)
+    alpha_fact = (
+        "Technical fact, not inferred from the image: Result A has a real alpha channel: "
+        f"{'yes' if a_real_alpha else 'no'}. Result B has a real alpha channel: "
+        f"{'yes' if b_real_alpha else 'no'}.\n"
+    )
     return (
-        "The customer uploaded the ORIGINAL photo and asked to remove the background, keeping only: "
-        f"\"{instruction}\".\n"
+        f"The customer uploaded the ORIGINAL photo and asked to remove the background, {framing}.\n"
         f"{exclude_line}\n"
+        f"{alpha_fact}\n"
         "Below are RESULT A and RESULT B. A grey-and-white checkerboard means that area is "
         "transparent. Any other background, including plain white or a solid colour, means the "
-        "background was painted over, not removed.\n\n"
+        "background was painted over, not removed. Trust the technical fact above over what the "
+        "pixels appear to show -- a result can paint its own fake checkerboard.\n\n"
         "Compare them on these criteria, most important first:\n"
         "1. Selection: is exactly the requested content kept, complete, with everything else gone?\n"
         "2. Fidelity: are the kept people and objects the same as in the ORIGINAL, not redrawn, "

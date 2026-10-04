@@ -2,7 +2,7 @@
 
 59 cases across 15 images (product, people, interior, multi-object), one output per
 case per system, 6 systems × 59 = 354 outputs. Zero hard fails. AG-195's pairwise
-judge then ran Bria against each competitor — see `pairwise_results.json` /
+grader then ran Bria against each competitor — see `pairwise_results.json` /
 `pairwise_summary.json`.
 
 This folder holds metadata only (JSON + README + logs), same as `may-2026/` and
@@ -26,7 +26,7 @@ embedded (not committed, same pattern as the gitignored `benchmark_report.html` 
 
 | System | run_meta file | What it is | Endpoint / model |
 |---|---|---|---|
-| `bria_a2` | `run_meta_noverify.json` | Bria, judge OFF — what the shipped route runs by default | in-process chain: Bria RMBG 2.0 → Claude decompose → SAM 3.1 → merge |
+| `bria_a2` | `run_meta_noverify.json` | Bria, verify OFF — what the shipped route runs by default | in-process chain: Bria RMBG 2.0 → Claude decompose → SAM 3.1 → merge |
 | `rmbg_only` | `run_meta.json` | No-guidance baseline — plain Bria RMBG, empty instruction | `POST /v2/image/edit/remove_background` (`engine.int.bria-api.com`) |
 | `c1_fibo` | `run_meta_edit_fibo.json` | FIBO-Edit-1.5 with an instruction, single call | fal `bria/fibo-edit-1.5/edit` |
 | `c2_nanobanana2` | `run_meta_edit_nanobanana2.json` | Nano Banana 2 edit | fal `fal-ai/nano-banana-2/edit` |
@@ -37,15 +37,15 @@ No explicit version pins are exposed by any of these endpoints (fal model slugs 
 the Bria RMBG route are unversioned aliases) — "version" here means the model slug /
 route called, exactly as above, on the date this run started.
 
-Judge model for the decompose step inside `bria_a2`: `claude-sonnet-4-5`. (AG-195's
-pairwise judge is separate — see `benchmark/grader/pairwise_prompt.py`.)
+Intent model for the decompose step inside `bria_a2`: `claude-sonnet-4-5`. (AG-195's
+pairwise grader is separate — see `benchmark/grader/pairwise_prompt.py`.)
 
 ## What's in this folder
 
 - `run_meta*.json` — one per system, every case's result (scores, instructions,
   elapsed time, which output file it wrote at the time).
 - `pairwise_results.json` / `pairwise_summary.json` — AG-195's per-comparison
-  judge verdicts (with reasoning) and the aggregated win-rate table.
+  grader verdicts (with reasoning) and the aggregated win-rate table.
 - `review_shareable.html` — self-contained, all images embedded. This is the file
   to share with the team (not committed — see note above).
 - `logs/` — stdout/stderr per system for this run.

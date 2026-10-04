@@ -7,8 +7,8 @@ no-guidance baseline (rmbg_only), per the ticket.
 
 Reads outputs from an AG-194 results dir (normalized/<system>/<stem>__<fg>.png —
 fixed size, alpha preserved where real). Writes one row per comparison to
-pairwise_results.json in that same dir, plus a win-rate table (overall and by
-benchmark_class) to pairwise_summary.json and printed to stdout.
+pairwise_results.json in that same dir, plus a win-rate table (overall, by
+scenario, and by benchmark_class) to pairwise_summary.json and printed to stdout.
 
 Usage:
   uv run python benchmark/grader/run_pairwise.py --results-dir benchmark/results/oct-2026
@@ -77,16 +77,22 @@ def _checkerboard(size: tuple[int, int]) -> Image.Image:
     return board
 
 
-def image_block(path: Path) -> dict:
+def image_block(path: Path) -> tuple[dict, bool]:
     """Base64 image block for the Messages API. Claude's vision input flattens
     PNG alpha onto solid white before the model ever sees it (verified directly —
     a transparent/opaque test image came back as "no checkerboard, uniform white"
     regardless of the real alpha channel). So real transparency has to be made
     visible ourselves: composite RGBA onto a checkerboard here, same as the AG-178
     deck's thumbnails, instead of relying on the prompt's checkerboard instruction
-    to mean anything for an untouched alpha PNG."""
+    to mean anything for an untouched alpha PNG.
+
+    Also returns whether the source image actually has real alpha, so the caller
+    can tell the grader the fact as text -- a competitor that paints its own fake
+    checkerboard into flat RGB (Nano Banana 2 did this) is otherwise indistinguishable
+    from a real cutout once both are composited onto the same checkerboard pixels."""
     im = Image.open(path)
-    if im.mode in ("RGBA", "LA", "PA") or "transparency" in im.info:
+    has_real_alpha = im.mode in ("RGBA", "LA", "PA") or "transparency" in im.info
+    if has_real_alpha:
         im = im.convert("RGBA")
         bg = _checkerboard(im.size)
         bg.paste(im, (0, 0), im)
@@ -95,22 +101,27 @@ def image_block(path: Path) -> dict:
         im = im.convert("RGB")
     buf = io.BytesIO()
     im.save(buf, format="PNG")
-    return {
+    block = {
         "type": "image",
         "source": {"type": "base64", "media_type": "image/png", "data": base64.standard_b64encode(buf.getvalue()).decode()},
     }
+    return block, has_real_alpha
 
 
 def judge_one(client: anthropic.Anthropic, original: Path, result_a: Path, result_b: Path,
-              instruction: str, should_exclude: str) -> dict:
+              instruction: str, should_exclude: str, scenario: str) -> dict:
+    original_block, _ = image_block(original)
+    block_a, a_real_alpha = image_block(result_a)
+    block_b, b_real_alpha = image_block(result_b)
     content = [
         {"type": "text", "text": "ORIGINAL photo:"},
-        image_block(original),
+        original_block,
         {"type": "text", "text": "RESULT A:"},
-        image_block(result_a),
+        block_a,
         {"type": "text", "text": "RESULT B:"},
-        image_block(result_b),
-        {"type": "text", "text": pairwise_prompt(instruction, should_exclude)},
+        block_b,
+        {"type": "text", "text": pairwise_prompt(instruction, should_exclude, scenario,
+                                                   a_real_alpha, b_real_alpha)},
     ]
     resp = client.messages.create(
         model=MODEL,
@@ -145,7 +156,7 @@ def run_comparison(client: anthropic.Anthropic, case: dict, competitor_id: str,
 
     try:
         verdict = judge_one(client, IMAGES_DIR / case["image"], result_a, result_b,
-                             case["prompts"], case["should_exclude"])
+                             case["prompts"], case["should_exclude"], case["scenario"])
     except Exception as e:
         return {**base_row, "error": str(e)}
 
@@ -167,7 +178,9 @@ def run_comparison(client: anthropic.Anthropic, case: dict, competitor_id: str,
 
 def summarize(rows: list[dict]) -> dict:
     """Win rate (ties counted as half, matching the Product Holding one-pager's
-    convention) per competitor, one overall value — no benchmark_class breakdown."""
+    convention) per competitor: overall, plus a breakdown by scenario (include/
+    exclude/narrow) and by benchmark_class (people/product/interior/multi_object),
+    since every row already carries both fields."""
     by_competitor: dict[str, list[dict]] = defaultdict(list)
     for r in rows:
         if not r.get("error"):
@@ -186,25 +199,51 @@ def summarize(rows: list[dict]) -> dict:
             "tie_share": round(ties / n, 3),
         }
 
+    def breakdowns(comp_rows: list[dict]) -> dict:
+        return {
+            "overall": table_for(comp_rows),
+            "by_scenario": {
+                s: table_for([r for r in comp_rows if r["scenario"] == s])
+                for s in sorted({r["scenario"] for r in comp_rows})
+            },
+            "by_class": {
+                c: table_for([r for r in comp_rows if r["benchmark_class"] == c])
+                for c in sorted({r["benchmark_class"] for r in comp_rows})
+            },
+        }
+
     return {
         "bria_candidate": BRIA_SYSTEM,
         "bria_label": BRIA_LABEL,
         "competitors": {
-            comp_id: {"label": COMPETITORS[comp_id], "overall": table_for(comp_rows)}
+            comp_id: {"label": COMPETITORS[comp_id], **breakdowns(comp_rows)}
             for comp_id, comp_rows in by_competitor.items()
         },
     }
 
 
 def print_table(summary: dict) -> None:
-    print(f"\nBria candidate: {summary['bria_label']}  (system id: {summary['bria_candidate']})")
-    print(f"\n{'COMPETITOR':<40} {'N':>4} {'BRIA WIN%':>10} {'TIE%':>7} {'BRIA':>5} {'TIE':>5} {'COMP':>5}")
-    for comp_id, data in summary["competitors"].items():
-        o = data["overall"]
+    def row(label: str, o: dict, indent: str = "") -> None:
         if o["n"] == 0:
-            continue
-        print(f"{data['label']:<40} {o['n']:>4} {o['bria_win_rate_ties_half']*100:>9.1f}% "
+            return
+        print(f"{indent}{label:<40} {o['n']:>4} {o['bria_win_rate_ties_half']*100:>9.1f}% "
               f"{o['tie_share']*100:>6.1f}% {o['bria_wins']:>5} {o['ties']:>5} {o['competitor_wins']:>5}")
+
+    print(f"\nBria candidate: {summary['bria_label']}  (system id: {summary['bria_candidate']})")
+    header = f"\n{'COMPETITOR':<40} {'N':>4} {'BRIA WIN%':>10} {'TIE%':>7} {'BRIA':>5} {'TIE':>5} {'COMP':>5}"
+    print(header)
+    for comp_id, data in summary["competitors"].items():
+        row(data["label"], data["overall"])
+
+    for by_key, title in (("by_scenario", "BY SCENARIO"), ("by_class", "BY BENCHMARK CLASS")):
+        print(f"\n--- {title} ---")
+        for comp_id, data in summary["competitors"].items():
+            if not data[by_key]:
+                continue
+            print(f"\n{data['label']}:")
+            print(header)
+            for key, o in data[by_key].items():
+                row(key, o, indent="  ")
 
 
 def main() -> None:

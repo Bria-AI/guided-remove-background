@@ -6,20 +6,20 @@
       "label": "Plain remove background (no guidance)",
       "overall": {
         "n": 59,
-        "bria_wins": 40,
-        "ties": 10,
-        "competitor_wins": 9,
-        "bria_win_rate_ties_half": 0.763,
-        "tie_share": 0.169
+        "bria_wins": 41,
+        "ties": 11,
+        "competitor_wins": 7,
+        "bria_win_rate_ties_half": 0.788,
+        "tie_share": 0.186
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 6,
-          "ties": 2,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.583,
-          "tie_share": 0.167
+          "bria_wins": 7,
+          "ties": 3,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.708,
+          "tie_share": 0.25
         },
         "include": {
           "n": 22,
@@ -49,11 +49,11 @@
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 6,
-          "ties": 1,
-          "competitor_wins": 5,
-          "bria_win_rate_ties_half": 0.542,
-          "tie_share": 0.083
+          "bria_wins": 7,
+          "ties": 2,
+          "competitor_wins": 3,
+          "bria_win_rate_ties_half": 0.667,
+          "tie_share": 0.167
         },
         "people": {
           "n": 20,
@@ -112,26 +112,26 @@
       "by_class": {
         "interior": {
           "n": 11,
-          "bria_wins": 11,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
           "tie_share": 0.0
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 9,
+          "bria_wins": 11,
           "ties": 1,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.792,
+          "competitor_wins": 0,
+          "bria_win_rate_ties_half": 0.958,
           "tie_share": 0.083
         },
         "people": {
           "n": 20,
-          "bria_wins": 19,
+          "bria_wins": 18,
           "ties": 0,
-          "competitor_wins": 1,
-          "bria_win_rate_ties_half": 0.95,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.9,
           "tie_share": 0.0
         },
         "product": {
@@ -148,19 +148,19 @@
       "label": "GPT Image 2",
       "overall": {
         "n": 59,
-        "bria_wins": 50,
+        "bria_wins": 49,
         "ties": 0,
-        "competitor_wins": 9,
-        "bria_win_rate_ties_half": 0.847,
+        "competitor_wins": 10,
+        "bria_win_rate_ties_half": 0.831,
         "tie_share": 0.0
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 6,
+          "bria_wins": 5,
           "ties": 0,
-          "competitor_wins": 6,
-          "bria_win_rate_ties_half": 0.5,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.417,
           "tie_share": 0.0
         },
         "include": {
@@ -183,26 +183,26 @@
       "by_class": {
         "interior": {
           "n": 11,
-          "bria_wins": 11,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
           "tie_share": 0.0
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 9,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 3,
-          "bria_win_rate_ties_half": 0.75,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.833,
           "tie_share": 0.0
         },
         "people": {
           "n": 20,
-          "bria_wins": 18,
+          "bria_wins": 17,
           "ties": 0,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.9,
+          "competitor_wins": 3,
+          "bria_win_rate_ties_half": 0.85,
           "tie_share": 0.0
         },
         "product": {
@@ -219,19 +219,19 @@
       "label": "Nano Banana 2",
       "overall": {
         "n": 59,
-        "bria_wins": 53,
+        "bria_wins": 54,
         "ties": 0,
-        "competitor_wins": 6,
-        "bria_win_rate_ties_half": 0.898,
+        "competitor_wins": 5,
+        "bria_win_rate_ties_half": 0.915,
         "tie_share": 0.0
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 9,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 3,
-          "bria_win_rate_ties_half": 0.75,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.833,
           "tie_share": 0.0
         },
         "include": {
@@ -254,18 +254,18 @@
       "by_class": {
         "interior": {
           "n": 11,
-          "bria_wins": 11,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
           "tie_share": 0.0
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 9,
+          "bria_wins": 11,
           "ties": 0,
-          "competitor_wins": 3,
-          "bria_win_rate_ties_half": 0.75,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.917,
           "tie_share": 0.0
         },
         "people": {
@@ -290,19 +290,19 @@
       "label": "extract-object",
       "overall": {
         "n": 59,
-        "bria_wins": 25,
+        "bria_wins": 26,
         "ties": 19,
-        "competitor_wins": 15,
-        "bria_win_rate_ties_half": 0.585,
+        "competitor_wins": 14,
+        "bria_win_rate_ties_half": 0.602,
         "tie_share": 0.322
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 4,
+          "bria_wins": 5,
           "ties": 0,
-          "competitor_wins": 8,
-          "bria_win_rate_ties_half": 0.333,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.417,
           "tie_share": 0.0
         },
         "include": {
@@ -333,18 +333,18 @@
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 4,
+          "bria_wins": 6,
           "ties": 4,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.5,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.667,
           "tie_share": 0.333
         },
         "people": {
           "n": 20,
-          "bria_wins": 13,
+          "bria_wins": 12,
           "ties": 1,
-          "competitor_wins": 6,
-          "bria_win_rate_ties_half": 0.675,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.625,
           "tie_share": 0.05
         },
         "product": {

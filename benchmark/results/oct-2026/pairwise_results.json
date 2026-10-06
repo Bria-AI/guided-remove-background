@@ -91,74 +91,6 @@
     },
     {
       "image": "desk_setup.jpg",
-      "foreground": "without_phone",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps only the smartphone, the exact item the customer said must be excluded, and drops everything they wanted kept, so it inverts the request. Result B keeps the plant, laptop, glasses and notepad and correctly omits the phone, with a transparent background and faithful rendering of the objects. B's edges are reasonably clean, and its shadows and reflections are dropped.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4235,
-        "output_tokens": 163
-      }
-    },
-    {
-      "image": "desk_setup.jpg",
-      "foreground": "without_phone",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result B kept only the smartphone, which is exactly what the customer asked to exclude, and removed everything else (plant, laptop, glasses, notepad). That is a complete inversion of the request. Result A keeps the plant, laptop, glasses and notepad and drops the phone, so its selection is correct. However, A has no real alpha channel: the background is painted white and the desk is redrawn, and the scene appears restyled, recomposed and resized. Even so, A is far closer to what the customer wanted, while B delivers the forbidden object.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4234,
-        "output_tokens": 215
-      }
-    },
-    {
-      "image": "desk_setup.jpg",
-      "foreground": "without_phone",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps only the smartphone, the one thing the customer explicitly said must be removed, and drops the plant, laptop, glasses and notepad. That is the exact inverse of the request. Result B correctly excludes the phone and keeps the plant, laptop, glasses and notepad, though it also keeps the table surface. However, B has no real alpha channel: its checkerboard is painted on, with visible artifacts. The kept objects look faithful to the original. B is still far closer to what the customer asked for, while A's selection is fundamentally wrong.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4234,
-        "output_tokens": 219
-      }
-    },
-    {
-      "image": "desk_setup.jpg",
-      "foreground": "without_phone",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the plant, glasses, notepad and laptop and excludes the smartphone, which matches the request. However, it has no real alpha channel, so its checkerboard is painted on and the background was not actually removed. Result B is truly transparent but keeps only the smartphone, the exact item the customer said to exclude, and drops everything else. B's selection is a total failure, so A is still the more useful result despite its fake transparency.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4234,
-        "output_tokens": 179
-      }
-    },
-    {
-      "image": "desk_setup.jpg",
       "foreground": "just_the_laptop",
       "benchmark_class": "multi_object",
       "scenario": "narrow",
@@ -189,23 +121,6 @@
       "usage": {
         "input_tokens": 4191,
         "output_tokens": 175
-      }
-    },
-    {
-      "image": "desk_setup.jpg",
-      "foreground": "without_phone",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A barely removes anything: the blinds, wall and table are all still there apart from ragged edges on the right and bottom, and the forbidden smartphone is kept. Result B is the exact inverse of the request. It keeps only the smartphone, the one item that had to go, and deletes the plant, laptop, glasses and notepad that should have stayed. Neither is shippable, but A at least contains all the wanted objects, faithful to the original, while B contains nothing the customer wanted.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4235,
-        "output_tokens": 484
       }
     },
     {
@@ -567,23 +482,6 @@
     },
     {
       "image": "home_office.jpg",
-      "foreground": "without_lamp",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the wicker lamp at the upper left, which the customer explicitly asked to exclude. Result B removes the lamp and keeps the woman, chair, desk and items. Both preserve the kept content faithfully and have real transparency with similar edge quality, so B is clearly better on selection and overall.",
-      "selection_winner": "bria",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4238,
-        "output_tokens": 142
-      }
-    },
-    {
-      "image": "home_office.jpg",
       "foreground": "woman_with_rug",
       "benchmark_class": "people",
       "scenario": "include",
@@ -614,57 +512,6 @@
       "usage": {
         "input_tokens": 4210,
         "output_tokens": 488
-      }
-    },
-    {
-      "image": "home_office.jpg",
-      "foreground": "without_lamp",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the woman, chair, desk and desk items with the lamp, floor, rug and side furniture removed, and it has a real transparent background. Result B also drops the lamp but has no alpha channel: the background is painted white rather than removed. B also looks regenerated, with a table leg added and the chair and feet subtly redrawn. A's edges are somewhat rough around the table outline and chair, but it is a faithful, true cut-out, while B fails the core transparency requirement and alters details.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4237,
-        "output_tokens": 201
-      }
-    },
-    {
-      "image": "home_office.jpg",
-      "foreground": "without_lamp",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the same content (woman, chair, table with items) and drop the lamp, floor, and rug, so selection is essentially equal. Result A appears regenerated: the Picasso book text is garbled ('PICASSO' altered with extra mangled text), while B preserves the book title more faithfully. Crucially, A has no alpha channel and just paints the background white, whereas B has true transparency, so B wins on background removal and overall.",
-      "selection_winner": "tie",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4237,
-        "output_tokens": 182
-      }
-    },
-    {
-      "image": "home_office.jpg",
-      "foreground": "without_lamp",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the woman, chair, desk and desk items while excluding the lamp, so selection is essentially equivalent. Both appear faithful to the original with no visible redrawing of the face, logos or text. However, A has no alpha channel: its background is painted white rather than removed, which blends into the white desk. B is genuinely transparent with reasonably clean edges, so B is the shippable result.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4237,
-        "output_tokens": 169
       }
     },
     {
@@ -699,23 +546,6 @@
       "usage": {
         "input_tokens": 4207,
         "output_tokens": 169
-      }
-    },
-    {
-      "image": "home_office.jpg",
-      "foreground": "without_lamp",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "The request asks for the woman at her desk, which implies keeping the desk and the items on it while dropping the lamp. Result B does exactly that: the woman, chair, table and everything on it are kept, and the lamp and floor are cleanly transparent. Result A keeps only the woman and drops the desk entirely. Its cut-out is also crude, with angular clipped edges around the body and dark artifacts on the fingertips where the laptop keyboard was. Both have real transparency, but B's selection is correct and its details faithfully match the original, while A's are degraded.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4238,
-        "output_tokens": 372
       }
     },
     {
@@ -1025,74 +855,6 @@
       }
     },
     {
-      "image": "yoga_studio.jpg",
-      "foreground": "without_candles",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the person and the mat, removes the candles and the rest of the background, and has a real transparent alpha channel with reasonably clean edges. Result B also keeps the person and mat and drops the candles, but it replaces the background with a painted grey studio backdrop instead of removing it, and the colors look slightly restyled. A meets the core requirement of transparency while B does not.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4231,
-        "output_tokens": 163
-      }
-    },
-    {
-      "image": "yoga_studio.jpg",
-      "foreground": "without_candles",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "The request asks for the person on the mat; 'on the mat' identifies which person rather than asking for the mat itself. Result B keeps only the woman, while Result A also keeps the yoga mat, which is extra content. Neither result includes the candles. In both, the person is faithfully preserved with matching pose, face and colours, and both have real transparency and similarly clean edges. B's more exact selection makes it the better result to ship.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "tie",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4232,
-        "output_tokens": 334
-      }
-    },
-    {
-      "image": "yoga_studio.jpg",
-      "foreground": "without_candles",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the person and the mat while excluding the candles, so selection is essentially equal, though A shows faint ghostly remnants of the marble veins and window in its fake checkerboard. Fidelity of the person and mat looks equivalent in both. Critically, A has no real alpha channel, so its checkerboard is painted on and the background was not actually removed. B has true transparency and clean edges, making it the shippable result.",
-      "selection_winner": "bria",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4231,
-        "output_tokens": 177
-      }
-    },
-    {
-      "image": "yoga_studio.jpg",
-      "foreground": "without_candles",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the person and the yoga mat while excluding the candles, plant, and room, so selection is essentially equal. Fidelity is similar: neither appears redrawn, though B looks slightly brightened and overexposed while A preserves the original tones more closely. Decisively, A has a real transparent alpha channel, while B is painted onto a white background rather than having the background removed. A is the shippable result.",
-      "selection_winner": "tie",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4231,
-        "output_tokens": 171
-      }
-    },
-    {
       "image": "sneakers_on_boxes.jpg",
       "foreground": "just_the_sneakers",
       "benchmark_class": "product",
@@ -1124,23 +886,6 @@
       "usage": {
         "input_tokens": 5940,
         "output_tokens": 204
-      }
-    },
-    {
-      "image": "yoga_studio.jpg",
-      "foreground": "without_candles",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results remove the candles and keep the woman with identical fidelity, and both are cleanly cut out on real transparency with comparable edges. The only difference is that A keeps the yoga mat, while B drops it and leaves her floating. The request excludes only the candles, and the mat is an obvious foreground object she is balanced on, so A's selection better matches the request.",
-      "selection_winner": "bria",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4232,
-        "output_tokens": 491
       }
     },
     {
@@ -2012,23 +1757,6 @@
     },
     {
       "image": "dropper_bottles_rocks.jpg",
-      "foreground": "rocks_without_bottles",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps all three bottles and droppers, which the request explicitly excluded, and drops the right-hand rock entirely, so its selection is badly wrong. Result B keeps both rocks and removes the bottles, though it leaves white bottle-shaped silhouettes where the bottles overlapped the rocks. That flaw is real, but B is far closer to the requested content. The kept rock pixels in B match the original.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5984,
-        "output_tokens": 176
-      }
-    },
-    {
-      "image": "dropper_bottles_rocks.jpg",
       "foreground": "tallest_bottle",
       "benchmark_class": "product",
       "scenario": "narrow",
@@ -2059,40 +1787,6 @@
       "usage": {
         "input_tokens": 5947,
         "output_tokens": 560
-      }
-    },
-    {
-      "image": "dropper_bottles_rocks.jpg",
-      "foreground": "rocks_without_bottles",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the two rocks with real transparency, but where the bottles were removed it leaves large solid white bottle-shaped blobs. These read as leftover bottle silhouettes, not transparent holes, so the bottles are not truly gone. The rocks themselves are the original pixels, though the back rock's lower portion is cut oddly. Result B shows no bottles, but it is a completely regenerated scene: the rocks have different shapes, positions and lighting, the background is a painted grey studio backdrop, and there is no alpha channel. B fails fidelity and background removal entirely, while A preserves the real rocks with transparency despite its flawed white blobs.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5983,
-        "output_tokens": 256
-      }
-    },
-    {
-      "image": "dropper_bottles_rocks.jpg",
-      "foreground": "rocks_without_bottles",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the rocks with a real transparent background, but the bottles are left as white opaque silhouettes on the rocks rather than removed. The rocks also have missing chunks where the bottles stood, so the selection is flawed. Result B removes the bottles but regenerates the whole scene: the front rock is a completely different dark layered stone, the floor and background are repainted, and there is no transparency. A is far more faithful to the original rocks and actually removes the background, so it is the better ship despite the white bottle blobs.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5983,
-        "output_tokens": 208
       }
     },
     {
@@ -2127,40 +1821,6 @@
       "usage": {
         "input_tokens": 4190,
         "output_tokens": 185
-      }
-    },
-    {
-      "image": "dropper_bottles_rocks.jpg",
-      "foreground": "rocks_without_bottles",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the original rock pixels and has real transparency, but white bottle-shaped silhouettes remain where the bottles were. The rocks also have chunks cut out, so the selection is visibly broken and unusable. Result B shows both rocks cleanly with no bottle remnants, but the rocks look regenerated: the right slab has a noticeably different shape from the original. B also has no real alpha and sits on a painted white background. A wins on fidelity and background removal, but its glaring white ghost blobs and missing rock areas are worse for a customer than B's lack of transparency.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5983,
-        "output_tokens": 643
-      }
-    },
-    {
-      "image": "dropper_bottles_rocks.jpg",
-      "foreground": "rocks_without_bottles",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the two rocks and drop the visible bottle detail, but each leaves white bottle-shaped regions. In A these are large opaque silhouettes rising well above the rocks, so the bottles are still clearly outlined in the cut-out. B keeps far less of this residue, mostly where the bottles hid the rock surface, so it reads much more like rocks alone. The rock texture and colour are equally faithful to the original in both, and both have transparent backgrounds, but B's cleaner removal makes it the better result to ship.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "tie",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5984,
-        "output_tokens": 482
       }
     },
     {
@@ -2297,91 +1957,6 @@
       "usage": {
         "input_tokens": 4206,
         "output_tokens": 544
-      }
-    },
-    {
-      "image": "watch_flatlay.jpg",
-      "foreground": "without_plant",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the plant, which was explicitly excluded, and also leaves large patches of the wooden table around the watch and at the top right. That is a serious selection failure. Result B removes the plant and most of the wood, but it drops the coffee inside the cup, leaving only a hollow white rim. That is a major loss on a requested subject, though B still holds the forbidden content out, while A both includes a forbidden item and leaves background behind. Overall B's error is less severe than A's, though neither is shippable.",
-      "selection_winner": "bria",
-      "fidelity_winner": "competitor",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4243,
-        "output_tokens": 203
-      }
-    },
-    {
-      "image": "watch_flatlay.jpg",
-      "foreground": "without_plant",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A has no alpha channel; it repaints the scene on a white tabletop and rearranges the objects. The glasses are moved and reoriented, the watch is cropped, a cup handle is added, and the PULSAR clasp is gone, so it fails both fidelity and background removal. Result B has real transparency and keeps the watch and glasses faithfully with the plant removed. However, it drops the coffee surface inside the cup, keeping only the rim, and leaves wood texture visible through the glasses lenses. Despite those selection flaws, B is the only shippable cut-out of the original objects.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4242,
-        "output_tokens": 233
-      }
-    },
-    {
-      "image": "watch_flatlay.jpg",
-      "foreground": "without_plant",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A is a complete regeneration. The objects are rearranged and redrawn: the watch is resized and its strap changed, the glasses are repositioned and a cup handle is invented. The background is painted white rather than removed, and there is no alpha channel. Result B has real transparency and keeps the original watch and glasses in place, but it has serious flaws: the coffee inside the cup was removed (cut out as transparent), the glasses lenses still show the wood, and the cup is cropped. Despite B's selection errors, A fails fidelity and background removal entirely, so B is the more shippable cutout.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4242,
-        "output_tokens": 233
-      }
-    },
-    {
-      "image": "watch_flatlay.jpg",
-      "foreground": "without_plant",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the watch, glasses and complete coffee cup with the plant removed, but it has no alpha channel and the background is painted white. Result B is truly transparent, but it hollows out the coffee in the cup, leaving only the rim. It also leaves wood grain visible inside the glasses lenses, so its selection is badly broken. A's selection and fidelity are far better, which outweighs B's real transparency, though A's lack of alpha is a significant flaw.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4242,
-        "output_tokens": 192
-      }
-    },
-    {
-      "image": "watch_flatlay.jpg",
-      "foreground": "without_plant",
-      "benchmark_class": "product",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the watch, glasses, and cup and correctly remove the plant and wooden background with real transparency. Result A wrongly cuts out the coffee inside the cup, leaving only a hollow ring with a brown fringe, so the cup is incomplete and damaged. Result B keeps the full cup with its coffee intact, matching the original. Both show some wood visible through the glasses lenses, which is acceptable since it was visible through them in the original.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4243,
-        "output_tokens": 187
       }
     },
     {
@@ -2590,23 +2165,6 @@
     },
     {
       "image": "man_pug_mug.jpg",
-      "foreground": "man_without_mug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results look virtually identical: each keeps the man and the pug but also retains the white mug, which the customer explicitly asked to exclude. Both have real transparency, faithful subject rendering, and comparable clean edges. Neither is meaningfully better on any criterion, and both fail the selection requirement equally.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "tie",
-      "usage": {
-        "input_tokens": 5983,
-        "output_tokens": 143
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
       "foreground": "just_the_pug",
       "benchmark_class": "people",
       "scenario": "narrow",
@@ -2657,125 +2215,6 @@
       }
     },
     {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_mug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A removes the mug, but it does so by regenerating the scene. The man's arm is repositioned to his side holding the dog, so the pose has been redrawn. The background is painted solid white rather than made transparent. Result B keeps a real transparent background and preserves the original pose and details faithfully, but it fails the explicit exclusion by keeping the mug. On selection A wins; on fidelity and background removal B wins. Since the mug was explicitly forbidden and A is the only one that honors the request, though at the cost of a redrawn image without transparency, A is overall the better-matching but flawed result.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5982,
-        "output_tokens": 234
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_mug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A correctly removes the mug and keeps the man and pug, but it has no real alpha channel; the checkerboard is painted on, so the background was not actually removed. The hand shape is also plausibly reconstructed. Result B has real transparency and clean edges but keeps the mug, which the customer explicitly excluded. Selection favors A. However, A fails the core deliverable of transparency, which makes it unusable as a cutout, while B is a real cutout with one extra object.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5982,
-        "output_tokens": 194
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_mug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the white mug, which the customer explicitly asked to exclude, so it fails the selection requirement. Result B removes the mug and keeps the man and pug intact, though the hand where the mug was looks oddly cut, with the fingers partially missing or distorted. Both are otherwise identical in fidelity and transparency, and B's minor hand artifact is far less serious than A's failure to exclude the forbidden object.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5983,
-        "output_tokens": 179
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_pug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A removes the dog as requested, but it leaves a solid white dog-shaped silhouette pasted over the man's torso. That is crude, though it is the only result that follows the instruction to exclude the dog. Result B keeps the pug entirely, directly violating the explicit request. On selection A wins, since B includes forbidden content. On fidelity, B preserves the original more faithfully, while A's white blob is an obvious artifact. Overall, A at least honors the core instruction, whereas B fails it outright.",
-      "selection_winner": "bria",
-      "fidelity_winner": "competitor",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5980,
-        "output_tokens": 206
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_mug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A omits the mug as requested, but it does so by redrawing the man: his raised mug-holding arm is gone and replaced by an arm hanging at his side. It also has no alpha channel, so the background is painted white rather than removed. Result B is a faithful, genuinely transparent cut-out with clean edges on the man and the pug, but it keeps the mug the customer explicitly asked to exclude. A wins on selection and B on fidelity. Overall, B is the more usable deliverable because the mug is a single selection error, while A fails both fidelity and background removal.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5982,
-        "output_tokens": 647
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_pug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A removes the dog, but it regenerates the man with a changed pose: the right arm now hangs at his side instead of holding the dog. It also fills a solid grey background with no alpha, so the background is painted over, not removed. Result B has real transparency and keeps the original pixels of the man, but the dog is replaced by a large white silhouette blob over his torso, which is an obvious artifact. A's selection is cleaner, with no dog remnant and a complete person, but its fidelity is poor because of the redrawn arm and body. B is faithful where it keeps pixels and is actually transparent, yet the white dog-shaped hole makes it unusable. On balance, A's result looks more shippable visually despite the fidelity changes and missing transparency, while B's glaring blob is a severe defect.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5979,
-        "output_tokens": 297
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_pug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the real man from the original on a true transparent background, but the dog is replaced by a flat white dog-shaped blob that covers the shirt and spills past the body outline (legs and paws below the hem), which is a serious selection artifact. Result B removes the dog cleanly and shows a complete man, so it wins on selection. However, B is a regenerated image: the right arm now hangs at his side instead of cradling the dog, the shirt is redrawn, and the background is painted solid grey with no alpha. B therefore fails both fidelity and background removal, while A, despite its ugly artifact, preserves the original subject and delivers actual transparency.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5979,
-        "output_tokens": 695
-      }
-    },
-    {
       "image": "man_bench_mountains.jpg",
       "foreground": "man_with_bench",
       "benchmark_class": "people",
@@ -2790,40 +2229,6 @@
       "usage": {
         "input_tokens": 4209,
         "output_tokens": 157
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_pug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps a complete man with no trace of the dog, but it regenerated him: his right arm is redrawn into a new fist pose, and the background is painted white rather than made transparent. Result B has real transparency and keeps the man's original pixels. However, it leaves a large opaque white dog-shaped silhouette where the pug was, so the shirt and arm are broken by an obvious blob. B is truer to the original man, but its glaring silhouette makes it unshippable. A, despite its fidelity and transparency failures, gives a cleaner, more usable result.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5979,
-        "output_tokens": 573
-      }
-    },
-    {
-      "image": "man_pug_mug.jpg",
-      "foreground": "man_without_pug",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the man, the mug and the forearm across his body intact, but the dog is replaced by an opaque white dog-shaped silhouette rather than transparency. That ghost is visible, especially where the legs extend below the shirt hem. Result B makes the dog area transparent, but it also deletes the mug and the forearm that crossed the dog, leaving floating hands and a mutilated arm. B's damage to the man is more severe than A's white silhouette, so A is the slightly more shippable result, though both are flawed.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5980,
-        "output_tokens": 689
       }
     },
     {
@@ -2896,74 +2301,6 @@
     },
     {
       "image": "man_bench_mountains.jpg",
-      "foreground": "man_without_bench",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the man and remove the bench, with similar selection, though A shows slight remnants under the thighs and B's leg/seat area is similarly clean. Both appear to be the same pixels with similar colour shifts (more saturated/contrasty than the original), so fidelity is about equal. Crucially, B has no real alpha channel and paints a fake checkerboard with visible cloudy artifacts, while A has genuine transparency, making A the shippable result.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4228,
-        "output_tokens": 191
-      }
-    },
-    {
-      "image": "man_bench_mountains.jpg",
-      "foreground": "man_without_bench",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps obvious bench remnants: a dark seat slat under the man's thighs, the bench post beside his left hip, and a leg piece near his calves, which violates the explicit 'no bench' request. Result B removes nearly all of the bench, leaving at most tiny traces under the thighs, so it better matches the selection. Both preserve the man faithfully, with the same face, colours and pose, and both have real transparency. Their edges are of similar quality, though B's cut along the underside of the thighs is slightly rough.",
-      "selection_winner": "bria",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4229,
-        "output_tokens": 333
-      }
-    },
-    {
-      "image": "man_bench_mountains.jpg",
-      "foreground": "man_without_bench",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the man without the bench slats, though a small dark seat remnant appears under his thighs. The figure looks faithful to the original framing and scale, and the background is truly transparent. Result B also removes the bench mostly, but it is cropped and enlarged so the lower legs are cut off. It has no alpha channel and uses a painted white background, and the subject appears regenerated with altered details such as the tattoo and the overall rendering. A is clearly the better shippable result.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4228,
-        "output_tokens": 194
-      }
-    },
-    {
-      "image": "man_bench_mountains.jpg",
-      "foreground": "man_without_bench",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps only the man, removes the bench, and has a real transparent background. The figure matches the original, including the legs cut off where the plants hid the feet, though there is a slight dark remnant under the seat area. Result B also drops the bench but paints a white background instead of removing it, since it has no alpha channel. B also invents content: the lower legs are extended and brown boots are added that are not visible in the original, so the subject has been redrawn rather than cut out. A is clearly the shippable result.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4228,
-        "output_tokens": 327
-      }
-    },
-    {
-      "image": "man_bench_mountains.jpg",
       "foreground": "man_bench_and_grass",
       "benchmark_class": "people",
       "scenario": "include",
@@ -2994,23 +2331,6 @@
       "usage": {
         "input_tokens": 4212,
         "output_tokens": 196
-      }
-    },
-    {
-      "image": "man_bench_mountains.jpg",
-      "foreground": "man_without_bench",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both cut-outs keep the man with matching pose, colours and details, and both have real transparency with the bench slats removed. In B, a dark sliver of the bench seat appears to remain between the thighs under the hands. In A, that gap is cleanly transparent, so A better honours the 'without the bench' request. Fidelity and edge quality are otherwise essentially identical.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "tie",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4229,
-        "output_tokens": 332
       }
     },
     {
@@ -3232,91 +2552,6 @@
       "usage": {
         "input_tokens": 4193,
         "output_tokens": 232
-      }
-    },
-    {
-      "image": "courier_bench.jpg",
-      "foreground": "man_without_bag",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the forbidden delivery bag and also keeps the bicycle, so it directly violates the explicit exclusion. Result B removes the bag and bicycle, but it leaves an opaque white rectangle where the bag was. It also leaves small stray specks near the former bike area. That white patch is a serious fill and edge defect, though the kept man and bench are otherwise faithful. A's kept content is cleaner and more faithful, but B is the only one that honours the core request to exclude the bag.",
-      "selection_winner": "bria",
-      "fidelity_winner": "competitor",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4241,
-        "output_tokens": 509
-      }
-    },
-    {
-      "image": "courier_bench.jpg",
-      "foreground": "man_without_bag",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the man and bench with real transparency, but where the delivery bag was it leaves a large opaque white rectangle with a black edge, plus a stray artifact on the left. The bag is effectively replaced by a white blob, a glaring defect. Result B removes the bag cleanly, but it invents a bench backrest that doesn't exist in the original, which changes the bench's shape. It also has an opaque white background with no alpha. On selection, B is cleaner, since A leaves a bag-shaped white patch. On fidelity, A is more faithful, since B hallucinates a backrest. Overall, both are flawed, but A's white rectangle is unshippable, while B's paint-over background and invented backrest are equally disqualifying for a background-removal product. A at least delivers real transparency, so it edges out slightly.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4240,
-        "output_tokens": 307
-      }
-    },
-    {
-      "image": "courier_bench.jpg",
-      "foreground": "man_without_bag",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A removes the delivery bag cleanly, but it is a regenerated image: the bench has been redrawn with an invented backrest, the man's pose and proportions are altered, and the background is painted white with no real alpha. Result B keeps the original man and bench faithfully with true transparency, but leaves an opaque white rectangle where the bag was and has a few stray edge artifacts. On selection A is cleaner, while B wins clearly on fidelity and background removal. Overall B is the more salvageable deliverable, because A is not a genuine cut-out at all.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4203,
-        "output_tokens": 606
-      }
-    },
-    {
-      "image": "courier_bench.jpg",
-      "foreground": "man_without_bag",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A fully removes the delivery bag and plausibly fills in the man's jacket and the bench underneath, but it sits on a painted white background with no alpha channel, and the filled area is inpainted rather than original. Result B has real transparency and keeps original pixels for the man and bench, but the bag is replaced by a glaring opaque white rectangle with a dark edge, and there are stray artifacts. That leaves the bag's silhouette visibly in the result and fails the exclusion request. B's white block makes it unshippable, while A is at least a clean, usable subject image despite the missing transparency.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "bria",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4203,
-        "output_tokens": 622
-      }
-    },
-    {
-      "image": "courier_bench.jpg",
-      "foreground": "man_without_bag",
-      "benchmark_class": "people",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps just the man and removes the delivery bag; its main flaws are thin blue/teal halo lines where the bench and bag edges were cut away. Result B keeps the man and the bench, but the bag is replaced by an opaque white rectangle in the bag's shape, and there are stray artifacts near the left. Leaving a bag-shaped white block is a serious selection and fidelity failure. Overall, A's minor edge halos are far more shippable than B's leftover bag silhouette.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4241,
-        "output_tokens": 376
       }
     },
     {
@@ -3576,57 +2811,6 @@
     },
     {
       "image": "bedroom_desk.jpg",
-      "foreground": "without_shelves",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the chair and the bed with headboard and pillows, and both fully remove the wall shelves, desk, curtain and floor, so selection is effectively equal. Fidelity is also equivalent: colours, textures and shapes match the original in both. The difference is in the edges. B shows small stray specks and a rougher cut at the top-right of the headboard and along the left edge of the bed and headboard, while A's outline is smoother and cleaner. That makes A the slightly better result to ship.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4481,
-        "output_tokens": 307
-      }
-    },
-    {
-      "image": "bedroom_desk.jpg",
-      "foreground": "without_shelves",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the chair and bed while dropping the wall shelves, desk and other room elements, so selection is broadly similar. B has a few small artefacts, like a weird folded drape at the bed's left edge, while A has a slightly rough edge at the top-right of the headboard. B is not a true cutout: it paints a solid grey background instead of transparency, and its subjects look somewhat redrawn and smoothed, with a different bed edge and leg shading. A has a real alpha channel and preserves the original pixels faithfully, so A is clearly the better result to ship.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4443,
-        "output_tokens": 224
-      }
-    },
-    {
-      "image": "bedroom_desk.jpg",
-      "foreground": "without_shelves",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the bed and chair and remove the shelves, wall, desk and floor, so selection is essentially equal. A has no alpha channel and paints a white studio backdrop with a soft floor shadow, which fails background removal. B has real transparency with mostly clean edges, though there are some small artifacts at the headboard's top right and the bed edge. Fidelity is similar in both, with the subjects unchanged, so B wins overall because it actually delivers a transparent cut-out.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4480,
-        "output_tokens": 199
-      }
-    },
-    {
-      "image": "bedroom_desk.jpg",
       "foreground": "just_the_chair",
       "benchmark_class": "interior",
       "scenario": "narrow",
@@ -3644,23 +2828,6 @@
     },
     {
       "image": "bedroom_desk.jpg",
-      "foreground": "without_shelves",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the chair and bed and remove the shelves, wall, and floor, so the selection is essentially equal. A has a few small artifacts along the headboard's right edge, and B's edges look somewhat smoother. Fidelity is comparable, though B appears slightly re-rendered and smoothed. Crucially, B has no alpha channel and sits on painted white, so the background was not actually removed, while A is truly transparent. That makes A the shippable result.",
-      "selection_winner": "tie",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 4443,
-        "output_tokens": 190
-      }
-    },
-    {
-      "image": "bedroom_desk.jpg",
       "foreground": "just_the_chair",
       "benchmark_class": "interior",
       "scenario": "narrow",
@@ -3674,23 +2841,6 @@
       "usage": {
         "input_tokens": 4393,
         "output_tokens": 188
-      }
-    },
-    {
-      "image": "bedroom_desk.jpg",
-      "foreground": "without_shelves",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the chair and the bed, drop the wall shelves and the rest of the room, and leave a real transparent background, so selection and fidelity are essentially identical. The only visible difference is edge quality: B has small jagged artifacts along the top-right of the headboard and the left bed edge. A's headboard outline is straighter and cleaner, which gives A a slight edge overall.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 4481,
-        "output_tokens": 312
       }
     },
     {
@@ -4154,23 +3304,6 @@
     },
     {
       "image": "reading_corner.jpg",
-      "foreground": "without_rug",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A has no alpha channel and replaces the background with a painted grey studio backdrop, and it redraws and rearranges the scene. The chair is now complete with all legs, and the clothing rack is fully reconstructed and repositioned, which are clear fidelity failures. Result B gives a real transparent cutout of the chair, lamp, rack and plant, with the rug excluded. It keeps the original framing, including the chair cropped at the left edge and the rack cropped at the right, and its edges are somewhat soft. B is the far better shippable result.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5977,
-        "output_tokens": 218
-      }
-    },
-    {
-      "image": "reading_corner.jpg",
       "foreground": "shelf_and_plant",
       "benchmark_class": "interior",
       "scenario": "narrow",
@@ -4184,57 +3317,6 @@
       "usage": {
         "input_tokens": 5947,
         "output_tokens": 209
-      }
-    },
-    {
-      "image": "reading_corner.jpg",
-      "foreground": "without_rug",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Both results keep the armchair, floor lamp with side table, wooden rack and potted plant, and both remove the rug, wall and floor, leaving a real transparent background. The two cut-outs are virtually identical in fidelity and edge quality. The only visible difference is a tiny cord fragment near the lamp base, slightly longer in B, which is negligible. Neither result is meaningfully better than the other.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "tie",
-      "usage": {
-        "input_tokens": 5978,
-        "output_tokens": 246
-      }
-    },
-    {
-      "image": "reading_corner.jpg",
-      "foreground": "without_rug",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the armchair, lamp, plant stand and plant while excluding the rug and floor, so selection is essentially equivalent; A retains a small cord stub near the lamp base, which is minor. Fidelity is comparable, though B looks slightly smoothed and regenerated in places, while A's plant leaves look a bit rough. The decisive factor is that A has a real transparent alpha channel, whereas B has an opaque white background painted over and nothing actually removed. A is the shippable result.",
-      "selection_winner": "tie",
-      "fidelity_winner": "tie",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5977,
-        "output_tokens": 204
-      }
-    },
-    {
-      "image": "reading_corner.jpg",
-      "foreground": "without_rug",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps the armchair, the floor lamp/side table and the wooden shelf rack with its plant, and drops the rug as requested. Result B keeps the chair and lamp but loses almost the whole shelf rack: only a fragment of one shelf floats on its own, and the plant is gone. That is a severe selection failure. Both have real transparency and render the kept objects faithfully. A's edges around the plant leaves are a bit rough, but it is clearly the shippable result.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5978,
-        "output_tokens": 196
       }
     },
     {
@@ -4269,23 +3351,6 @@
       "usage": {
         "input_tokens": 5941,
         "output_tokens": 188
-      }
-    },
-    {
-      "image": "reading_corner.jpg",
-      "foreground": "without_rug",
-      "benchmark_class": "interior",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results keep the chair, lamp, rack and plant and exclude the rug, so selection is comparable, though A is slightly cleaner. B has redrawn the armchair: it is now a complete chair with a full left arm and legs, whereas in the original it is cut off at the frame edge. B also paints the background white instead of making it transparent. A preserves the original geometry and has a real alpha channel, with only minor edge softness in the plant leaves and a small cord fragment near the lamp base.",
-      "selection_winner": "bria",
-      "fidelity_winner": "bria",
-      "overall_winner": "bria",
-      "usage": {
-        "input_tokens": 5977,
-        "output_tokens": 378
       }
     },
     {
@@ -4477,40 +3542,6 @@
     },
     {
       "image": "breakfast_plate.jpg",
-      "foreground": "without_cutlery",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "rmbg_only",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A is a broken mask. The plate is shattered into fragments with holes, the food items are gone, the coffee cup body and handle are missing (only the liquid surface remains), and the remaining pieces look distorted. Result B keeps the plate, food, egg cup and coffee cleanly and faithfully, but it fails the explicit exclusion by retaining both the knife and the fork. B violates one constraint, while A destroys the requested subject, so B is the more usable result, though neither is correct.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5993,
-        "output_tokens": 200
-      }
-    },
-    {
-      "image": "breakfast_plate.jpg",
-      "foreground": "without_cutlery",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c1_fibo",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A removes the knife and fork and keeps the plate with its food and the coffee, but it has no alpha channel. The background is still a painted white tabletop rather than being removed, and the scene appears regenerated: the jam label text is garbled and the composition is reframed. Result B has real transparency, but its selection is badly broken. The plate is shredded into fragments with the food items punched out as holes, and only the coffee surface survives, without the cup. B is unusable as a cut-out, while A at least preserves the correct content recognizably, so A edges ahead despite its background failure.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5992,
-        "output_tokens": 225
-      }
-    },
-    {
-      "image": "breakfast_plate.jpg",
       "foreground": "plate_and_coffee",
       "benchmark_class": "multi_object",
       "scenario": "include",
@@ -4541,57 +3572,6 @@
       "usage": {
         "input_tokens": 5958,
         "output_tokens": 889
-      }
-    },
-    {
-      "image": "breakfast_plate.jpg",
-      "foreground": "without_cutlery",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c2_nanobanana2",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Result A keeps only fragmented pieces of the plate rim and the coffee surface. The food items, jar, egg cup, cup body and handle are all missing, so the selection is badly broken, though it does have real transparency. Result B correctly keeps the plate with all its contents and the coffee cup while excluding the knife and fork, but it has no alpha channel (white background) and shows some redraw artifacts, such as garbled jam label text. Despite B's lack of transparency and minor fidelity issues, it is far more usable than A's shattered cutout.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5992,
-        "output_tokens": 218
-      }
-    },
-    {
-      "image": "breakfast_plate.jpg",
-      "foreground": "without_cutlery",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "g2_extract_object_rmbg_on",
-      "error": null,
-      "bria_is_a": true,
-      "reasoning": "Both results correctly drop the knife and fork, and both have real transparency. Both also badly fragment the plate, cutting out the food, jar, ramekins and egg cup and leaving jagged holes. Result A also loses the coffee cup body and handle, keeping only the floating oval of coffee liquid. Result B keeps the complete mug with its handle, so it is clearly more complete and more faithful, even though its plate cut-out is just as poor as A's.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5993,
-        "output_tokens": 355
-      }
-    },
-    {
-      "image": "breakfast_plate.jpg",
-      "foreground": "without_cutlery",
-      "benchmark_class": "multi_object",
-      "scenario": "exclude",
-      "competitor": "c3_gptimage2",
-      "error": null,
-      "bria_is_a": false,
-      "reasoning": "Result A keeps the plate with all its food, the egg cup and the coffee mug, and correctly omits the knife and fork. However, it has no real alpha channel: the checkerboard is painted on. It also looks somewhat regenerated, with a garbled jam label and slightly altered shapes. Result B does have real transparency, but its selection is badly broken. The plate is shredded into fragments, all the food, the jam jar and the egg cup are missing, and the mug is reduced to just the coffee surface. B is unusable, while A at least presents the requested content recognisably, so A wins despite its fake background.",
-      "selection_winner": "competitor",
-      "fidelity_winner": "competitor",
-      "overall_winner": "competitor",
-      "usage": {
-        "input_tokens": 5992,
-        "output_tokens": 457
       }
     },
     {
@@ -5017,6 +3997,1026 @@
       "usage": {
         "input_tokens": 5943,
         "output_tokens": 392
+      }
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the plant, glasses, notepad and laptop, removes the smartphone, and has a real alpha channel with clean cutouts. Result B removes the smartphone too, but it keeps the whole desk surface and its reflections. Its checkerboard is painted on, with no real alpha channel, and it shows visible blotchy artifacts, so the background was not truly removed. Both preserve the objects faithfully, but A is clearly the shippable result.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4234,
+        "output_tokens": 189
+      }
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results keep the plant, glasses, notepad and laptop, remove the smartphone and desk/background, and have real transparency. They appear virtually identical in selection, fidelity (laptop screen, Dell logo and colours preserved), and edge quality. Neither shows a meaningful difference.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "tie",
+      "usage": {
+        "input_tokens": 4235,
+        "output_tokens": 139
+      }
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the plant, laptop, glasses and notepad and remove the smartphone, so selection is essentially equal. Fidelity is also comparable, with both preserving the objects without visible redrawing. However, Result A has no real alpha channel, and its faint checkerboard is painted on, so the background was not actually removed. Result B has true transparency with reasonably clean edges, making B the one a customer would ship.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4234,
+        "output_tokens": 176
+      }
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result B removes the smartphone and keeps the plant, glasses, notepad and laptop on a real transparent background. Its objects closely match the original's shapes and placement. Result A also drops the phone, but it has no alpha channel. It keeps the table and its reflections on a painted white background and looks regenerated, with the glasses and notepad moved and restyled. B is clearly better on selection, fidelity and background removal.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4234,
+        "output_tokens": 326
+      }
+    },
+    {
+      "image": "desk_setup.jpg",
+      "foreground": "without_phone",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A barely removed anything: the blinds, wall, desk surface, and even the smartphone are all still present, with only a ragged sliver at the right/bottom edges made transparent, so it fails both the background removal and the explicit exclusion of the phone. Result B keeps the plant, glasses, notepad, and laptop on a transparent background and correctly omits the smartphone. Both preserve the kept objects faithfully with no visible redrawing, though B's edges show some minor softness. B is clearly the shippable result.",
+      "selection_winner": "bria",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4235,
+        "output_tokens": 209
+      }
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps the wicker lamp in the upper left, which the customer explicitly asked to exclude, so it fails the core selection requirement. Result B removes the lamp while keeping the woman, chair, desk and items intact. Both preserve the original details faithfully and have real transparency with similar edge quality.",
+      "selection_winner": "bria",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4238,
+        "output_tokens": 141
+      }
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the woman, chair, desk and desk items and remove the lamp, floor and rug, so selection is essentially identical. Fidelity is also comparable, with the same content preserved. However, A has no alpha channel and paints the background solid white, while B has a real transparent background. B is the shippable result.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4237,
+        "output_tokens": 141
+      }
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the woman, chair, desk and desk items, removes the lamp and wood floor, and has a real alpha channel. Its fidelity is good, though the table's edge is somewhat rough and the table leg is lost. Result B also drops the lamp, but it paints the background solid white instead of making it transparent, with no alpha channel, and the scene looks redrawn: the tattoo is altered and the hair and details are changed. A is clearly the shippable result.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4237,
+        "output_tokens": 191
+      }
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the woman, chair, desk and desk items and correctly drop the lamp, the rug and the floor, so selection is essentially equal. Fidelity also looks equivalent: the person, laptop, books and the 'PICASSO' text are unchanged in both. The deciding factor is background removal. Result A has no alpha channel and its background is painted solid white rather than removed, while Result B has genuine transparency with reasonably clean edges. B is the result a customer could actually ship.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4237,
+        "output_tokens": 280
+      }
+    },
+    {
+      "image": "home_office.jpg",
+      "foreground": "without_lamp",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "The request is for the woman at her desk, without the lamp. Result B keeps the woman, the chair, the desk and all the desk items, and removes the lamp, floor and rug, which matches the request well. Result A keeps only the woman and removes the desk, the laptop and even the chair, leaving her floating with her hands typing on nothing, so it fails the 'at her desk' part. Both have real transparency and faithful pixels, but B's selection is far closer to what was asked.",
+      "selection_winner": "bria",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4238,
+        "output_tokens": 193
+      }
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results remove the candles, the plant and the room, and both have real transparency with similar clean edges around the woman. The request names the person, with 'on the mat' only describing where she is. Result B keeps exactly the person. Result A also keeps the large yoga mat, which is extra content that wasn't asked for. Fidelity of the person is identical in both, so B wins on selection and overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4232,
+        "output_tokens": 319
+      }
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the person and the mat with real transparency, and the candles, plant and room are all removed, so the selection matches the request with clean edges. Result B also keeps the person and mat without the candles, but it repaints the background as a grey studio wall and floor instead of removing it, and it has no alpha channel. Fidelity of the subject looks comparable in both, though B's regenerated scene risks subtle alterations. A clearly wins on background removal.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4231,
+        "output_tokens": 185
+      }
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the person and the yoga mat and exclude the candles, so selection is essentially equal. Result A has no real alpha channel, though: its checkerboard is painted on, and faint ghost marbling from the original wall shows through it, so the background was not actually removed. Result B has a genuine transparent background with a clean cut-out and comparable subject fidelity, which makes B the clear choice to ship.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4231,
+        "output_tokens": 173
+      }
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results keep the woman and the galaxy yoga mat and exclude the candles, so selection is essentially equal. B appears to have the subject at a slightly different scale/position, but both look faithful to the original's details. A has a real alpha channel with a true transparent background, while B has painted the background plain white with no alpha. That makes A clearly better for background removal and the better result to ship.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4231,
+        "output_tokens": 164
+      }
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A has real transparency and removes the bottles, but it keeps only the front rock with bottle-shaped holes cut into it. The back rock is almost entirely missing, leaving only stray thin line fragments, so the selection is badly incomplete. Result B shows two complete rocks with no bottles, but it has no alpha channel: the background is an opaque beige studio backdrop. The rocks are also clearly regenerated, with different shapes, lighting and arrangement, so it is a fabricated image rather than a cut-out of the original. A is a faithful but broken cut-out, while B is unfaithful and not background-removed. A is the more shippable starting point since its pixels are genuine and transparent.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5983,
+        "output_tokens": 266
+      }
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps all three bottles with droppers, which the customer explicitly excluded, and it also drops the large rear rock, so the selection is badly wrong. Result B removes the bottles and keeps the front rock, though it leaves bottle-shaped notches where the bottles stood, stray dropper/edge fragments, and it is also missing the rear rock. B is imperfect but far closer to the request, and its kept rock looks faithful to the original.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5984,
+        "output_tokens": 185
+      }
+    },
+    {
+      "image": "yoga_studio.jpg",
+      "foreground": "without_candles",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results correctly exclude the candles and keep the person intact with clean edges and real transparency. The request names the person, using \"on the mat\" only to locate her. B isolates just the woman, while A also keeps the yoga mat, which goes beyond the requested content. The person looks the same in both results and matches the original, so fidelity is even, with similar edge quality around the hands and hair.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4232,
+        "output_tokens": 442
+      }
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps only the front rock, and that rock has bottle-shaped holes cut out of it. The right rock is almost entirely missing apart from stray outline fragments, so the selection is badly incomplete with chunks missing, though it does have real transparency. Result B is a completely regenerated scene: different rocks (the front one is now dark slate), a new beige floor, and an opaque grey background with no alpha. That fails fidelity and background removal entirely, even though it has no bottles. A at least preserves real original pixels with genuine transparency, while B is not a cutout of the original at all, so A is the marginally more shippable starting point.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5983,
+        "output_tokens": 245
+      }
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps the full succulent plant and its pot, which the request explicitly excluded, and it also leaves wood patches. Result B removes the plant, leaving only small slivers of pot/wood fragments near the top. Both keep the watch, glasses and cup with faithful detail, but B leaves larger leftover wood background chunks around the watch, glasses and cup. A's inclusion of the forbidden plant is the more serious failure, so B is better on selection and overall despite its messy wood leftovers.",
+      "selection_winner": "bria",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4243,
+        "output_tokens": 205
+      }
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps only the front rock and drops almost all of the large rear rock, leaving only stray thin outline fragments. That is a major selection failure. Result B keeps both rocks with the bottle-shaped holes cut out, including the rear rock (with a small missing portion where the leaning bottle occluded it), so it matches the request much better. Both remove the bottles and droppers and keep the rock textures faithful, but A's missing rock and stray slivers make B clearly better overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5984,
+        "output_tokens": 196
+      }
+    },
+    {
+      "image": "dropper_bottles_rocks.jpg",
+      "foreground": "rocks_without_bottles",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps only the left rock, which has bottle-shaped holes cut into it, drops the right rock entirely, and leaves stray line artifacts, so its selection badly fails. Result B keeps both rocks complete, with the bottles and droppers removed and the occluded areas plausibly filled in. However, B has no real alpha channel; its background is painted plain white rather than removed. A's original pixels are untouched where kept, but missing chunks and a missing rock outweigh B's minor inpainting, so B wins on fidelity of the kept subject. Selection is the most important criterion, so B is more usable overall despite lacking transparency.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5983,
+        "output_tokens": 570
+      }
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A is a regenerated scene on a white backdrop with no alpha. The objects are redrawn and rearranged: the glasses are rotated and moved, the cup has a new handle, the watch has lost its PULSAR branding, and new shadows have been added. Result B has real transparency and removes the plant, but it leaves large chunks of wood table around the watch and glasses, plus stray fragments of the plant pot and wood near the top. Despite B's messy selection, A fails on fidelity and background removal, so B is the more shippable starting point, though neither is clean.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4242,
+        "output_tokens": 223
+      }
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A shows the watch, glasses and coffee cup with no plant on a clean background, but it is a regenerated scene, not a cut-out. The objects have been moved, resized and redrawn: the watch strap is shortened, the glasses are repositioned and a cup handle has been invented. Its white background is painted, with no alpha channel. Result B keeps the original objects faithfully on real transparency, but its selection is poor: large slabs of wood tabletop and stray fragments of the plant pot remain. B is a messy but genuine background removal of the actual objects, whereas A fails both fidelity and transparency, so B is the more defensible deliverable.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4242,
+        "output_tokens": 554
+      }
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps exactly the watch, glasses and coffee cup, with the plant and wooden table gone and clean, complete edges, but it has no alpha channel: the background is painted white rather than made transparent. Result B has real transparency, but its selection is badly wrong. Large irregular chunks of the wooden table remain around the watch, glasses and cup, along with stray fragments near where the plant pot was. Both render the kept objects faithfully, so fidelity is essentially even. B's leftover table chunks make it unusable, whereas A only fails on transparency, so A is the better result to ship.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4242,
+        "output_tokens": 485
+      }
+    },
+    {
+      "image": "watch_flatlay.jpg",
+      "foreground": "without_plant",
+      "benchmark_class": "product",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the watch, glasses and cup, but it also retains large irregular chunks of the wooden board and small fragments around where the plant pot was, so the background is only partially removed. Result B cleanly isolates the watch, glasses and coffee cup on transparency with no plant or wood remnants; the wood seen through the lenses is natural refraction. Fidelity of the kept objects is comparable in both, though B's edges and selection are far cleaner.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4243,
+        "output_tokens": 189
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results appear virtually identical: each keeps the man and the pug but also keeps the white mug, violating the explicit instruction to exclude the mug/cup. Fidelity, transparency and edge quality look the same in both, with the subjects unaltered and the background properly removed. Neither is meaningfully better than the other.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "tie",
+      "usage": {
+        "input_tokens": 5983,
+        "output_tokens": 146
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the mug as requested and keeps the man and the pug, but it fails background removal: there is no alpha channel, only a painted white background. It also redraws the scene, changing the man's mug-holding arm and overall pose. Result B is a faithful, properly transparent cut-out with clean edges, but it keeps the mug the customer explicitly said must not be there. Because selection is the top criterion, A's correct content edges it out narrowly despite its fidelity and transparency failures.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5982,
+        "output_tokens": 666
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the mug, which the request explicitly says must be excluded, so it fails selection. Result B removes the mug and keeps the man and the pug, but the hand that held the mug is left oddly cropped and shaped, appearing pinched and partially cut. Both otherwise preserve the man and the pug faithfully and have real transparency. B satisfies the core instruction despite the awkward hand, so it is the better result to ship.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5983,
+        "output_tokens": 180
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the mug as requested, keeping the man and pug, but it has no real alpha channel. Its checkerboard is painted on, with visible blocky artifacts, so the background was not actually removed. A's hand pose is also slightly altered where the mug was. Result B has true transparency and clean edges, but it keeps the mug, which the request explicitly excluded. That is a direct selection failure, though B is otherwise faithful to the original. Since A's background is fake and the file is unusable as a cutout, while B delivers a real transparent cutout with one wrong object kept, B is the more shippable result overall, despite A winning on selection.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5982,
+        "output_tokens": 246
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_mug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the mug as requested, but it does so by redrawing the man's arm into a lowered pose, which is a fidelity change. A also has no real alpha channel, so its white background was painted in rather than removed. Result B is faithful to the original and genuinely transparent, but it keeps the mug the customer explicitly asked to exclude, failing the most important criterion. Since selection matters most, A edges out B, despite its painted background and altered arm.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5982,
+        "output_tokens": 514
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A removes the pug as requested, leaving a white hole in the shirt where the dog was, but it keeps the man. It also has flaws: the mug is mostly cut away, there are small dark specks, and the dog-shaped area is filled white rather than reconstructed. Result B keeps the pug, which directly violates the explicit exclusion, so it fails the selection criterion outright. Both preserve the man faithfully, but A's damage to the mug and its painted white silhouette slightly hurt fidelity, while B is clean but wrong.",
+      "selection_winner": "bria",
+      "fidelity_winner": "competitor",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5980,
+        "output_tokens": 215
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A shows the man complete with no dog anywhere, but the whole image has been regenerated. His arm that held the dog now hangs at his side, the body is redrawn, and the background is solid grey with no real transparency. Result B keeps the original pixels and has real transparency, but removing the dog leaves a large dog-shaped hole through his torso and arms. The mug is also mostly lost and small dog fragments remain, so the man is badly incomplete. A wins on selection and B on fidelity and transparency, but B's gaping hole makes it unusable, so A is the more shippable result despite its flaws.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5979,
+        "output_tokens": 683
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the original pixels and has real transparency, but removing the dog leaves a huge pug-shaped hole through the man's torso and arm. It also has dark fringe residue, leftover dog fragments and a mostly missing mug, so the man is badly incomplete. Result B shows a complete man without the dog, but it is clearly regenerated: his free arm is redrawn hanging at his side and the background is a painted grey with no alpha channel. B wins on selection, while A wins on fidelity and transparency. Overall, B is the more usable picture of 'the man without the dog', though neither is truly shippable.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5979,
+        "output_tokens": 701
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the dog and leaves a complete, natural-looking man holding the mug. However, it fills the background with white instead of making it transparent, and it regenerates the arm and hand that held the dog. Result B has real transparency and keeps the man's original pixels, but cutting out the dog leaves a huge hole through his torso and arms, and most of the mug is gone. That makes B an unusable cut-out. Even with A's non-transparent background and repainted arm, A is the far more shippable result.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5979,
+        "output_tokens": 534
+      }
+    },
+    {
+      "image": "man_pug_mug.jpg",
+      "foreground": "man_without_pug",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results remove the pug but leave a dog-shaped hole in the man's torso, and both drop the white mug. A keeps the man's forearm and some of his trousers, while B also deletes the forearm that cradled the dog, cutting away a substantial part of the man himself. A's only flaw beyond the shared hole is a couple of tiny dog remnant specks on the belly area, which is far less damaging than B's missing arm. Colours and facial details are otherwise equivalent and the transparency is real in both.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5980,
+        "output_tokens": 691
+      }
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the man without the bench slats and has a real transparent background, though a small dark sliver of bench seat may remain under his thighs and the edges are slightly rough. Its colours look somewhat more saturated than the original but are otherwise faithful. Result B is cropped and zoomed in, cutting off the lower legs, and appears redrawn and restyled. It also has no alpha channel, only a painted white background, and a bench leg fragment is visible. A is clearly the better deliverable.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4228,
+        "output_tokens": 200
+      }
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results cut out the man and leave a real transparent background, but Result A keeps clear pieces of the bench: a dark seat slat under his thighs and a bench post beside his left knee, which the customer explicitly asked to remove. Result B removes nearly all of the bench, leaving at most a tiny sliver under the thighs. On fidelity the two look essentially identical, with the same slightly boosted contrast and colour on the man, so neither is better there. B wins overall because it honours the 'no bench' exclusion.",
+      "selection_winner": "bria",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4229,
+        "output_tokens": 310
+      }
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results keep only the man and remove the bench, so selection is similar. A has some small bench remnants near the seat and a ragged, slightly cut-off right shoe. B looks a bit cleaner at the seat, but its checkerboard is fake: there is no alpha channel, and visible smeared ghost artifacts are painted into the 'transparent' area. Fidelity is comparable, with both shifting colours slightly warmer, but A's real transparency makes it the shippable result.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4228,
+        "output_tokens": 196
+      }
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the man without the bench and has real transparency, though the cut is rough: legs are truncated at the bottom, a small dark seat remnant sits under the hands, and the colors look slightly altered. Result B shows the man with no bench, but the image has been regenerated. It invents boots and full lower legs that are hidden by plants in the original, enlarges and reframes the figure, and sits on painted white rather than a real alpha channel. A is faithful and actually transparent, while B fails on both fidelity and background removal.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4228,
+        "output_tokens": 209
+      }
+    },
+    {
+      "image": "man_bench_mountains.jpg",
+      "foreground": "man_without_bench",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the man and remove the background to real transparency, with identical, unaltered appearance, so fidelity is equal. Result B leaves a small dark sliver of the bench seat visible beneath and between the thighs. Result A cuts that area more cleanly and leaves no visible bench remnant. Edges are otherwise comparable, so A's cleaner exclusion of the bench gives it the edge.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "tie",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4229,
+        "output_tokens": 318
+      }
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps the teal delivery bag, which the customer explicitly said must be excluded, so it fails selection outright. Result B removes the bag, but it leaves a flat white/opaque rectangle where the bag was instead of making that area transparent or reconstructing the man's arm, jacket and bench behind it. That is a visible artifact. Still, B honors the exclusion while A ignores it, and both keep the man, bench and bicycle faithfully with similar edges, so B is the better result to ship despite the patch.",
+      "selection_winner": "bria",
+      "fidelity_winner": "competitor",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4241,
+        "output_tokens": 208
+      }
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A removes the bag but leaves an opaque white rectangle where it was, and it also keeps the bicycle, which was not requested. Result B cleanly drops both the bag and the bicycle, so its selection is closer to the request. However, B invents a full bench backrest that does not exist in the original, a serious fidelity failure. B also has no real alpha channel, only a painted white background, whereas A is genuinely transparent with otherwise faithful subjects. Despite A's white-patch artifact, B's fabricated content and missing transparency make A the more shippable result.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4240,
+        "output_tokens": 592
+      }
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the bag and the bike, so its selection is closer to the request. However, it is a regenerated image: the bench is redrawn as a completely different bench with a backrest, the man is re-rendered, and the white background is painted rather than truly transparent (no alpha). Result B keeps the original pixels with real transparency, but it wrongly keeps the bicycle and leaves an opaque white blob where the bag was, with a sliver of the bag's edge still visible. B's selection flaws are serious but fixable, while A's fabricated scene and lack of transparency fail the core product purpose, so B is the more usable result overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 4203,
+        "output_tokens": 786
+      }
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps only the man and fully removes the delivery bag, which matches the request. Its edges show some blue/teal fringing along the legs and arm where the bench and bag were. Result B also keeps the bench and the bicycle, which were not asked for. Worse, it replaces the bag with an opaque white blob instead of making that area transparent, an obvious artifact a customer could not ship. A's edge halos are a minor flaw by comparison, so A is clearly better overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4241,
+        "output_tokens": 397
+      }
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the chair and bed and remove the shelves, wall, desk and floor with real transparency. Result B, however, cut out most of the pillows, leaving a large transparent hole with stray fragments where the pillows should sit on the bed. Result A keeps the pillows intact, so the bed is complete and faithful to the original. A is clearly the shippable result.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4481,
+        "output_tokens": 158
+      }
+    },
+    {
+      "image": "courier_bench.jpg",
+      "foreground": "man_without_bag",
+      "benchmark_class": "people",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps exactly the man and bench, removes the delivery bag and bicycle, and plausibly fills in the jacket and arm behind the bag. Its major flaw is that it has no real alpha channel: the background is painted white, not transparent. Result B is genuinely transparent, but it keeps the bicycle and replaces the bag with a large opaque white rectangle, an unshippable artifact that both fails the selection and damages fidelity. A's missing transparency is serious, but B's glaring white patch and extra content are worse, so A is the better result overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4203,
+        "output_tokens": 554
+      }
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the chair and bed and drops the shelves, but it wrongly removes the pillows, leaving a large ragged hole with floating fragments in the middle of the bed. That is a major selection and edge failure. Result B keeps the chair, the bed and the pillows complete, with the shelves gone, and stays faithful to the original. However, B has no real alpha channel: its background is painted white rather than removed. Even so, A's mutilated bed is unshippable, so B is the better overall result despite failing the transparency requirement.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4443,
+        "output_tokens": 212
+      }
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the chair and bed with a real transparent background, but it has a severe defect: the pillows are almost entirely removed, leaving a large hole with jagged fragments in the middle of the bed, a major missing chunk of the subject. Result B keeps the chair, headboard, pillows and bedding completely, and the subjects look faithful to the original. However, B has no alpha channel and paints a flat grey backdrop instead of removing the background. For a customer, A's gaping hole in the bed is unshippable without manual repair, whereas B is a complete, correct selection that only lacks transparency, so B is preferable overall despite failing background removal.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4443,
+        "output_tokens": 250
+      }
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the chair and the bed and remove the shelves and walls, with real transparency. Result B, however, cut out most of the pillows, leaving a large transparent hole with jagged fragments where the pillows should be. That is a major missing chunk of the bed. Result A keeps the headboard, pillows and duvet intact with reasonably clean edges, so it is clearly the shippable one.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4481,
+        "output_tokens": 167
+      }
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Both results keep the armchair, floor lamp with side table, and wooden rack with potted plant, and both exclude the rug, wall and floor, with real transparency. The two are nearly identical in content, colours and edge quality. The one visible difference is at the lamp base: B keeps a slightly longer cord/stub segment beside the base, which is a negligible difference. Neither result is meaningfully better.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "tie",
+      "usage": {
+        "input_tokens": 5978,
+        "output_tokens": 172
+      }
+    },
+    {
+      "image": "bedroom_desk.jpg",
+      "foreground": "without_shelves",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A keeps the complete chair and bed, including all the pillows, with the shelves gone, but it has no alpha channel: the background is painted white rather than removed. Result B is genuinely transparent, but it cut out the entire pillow area, leaving a large hole with ragged debris in the middle of the bed. That is a severe selection and edge failure on the main subject. Because selection ranks highest and B's damage is glaring, A is the more usable result despite failing background removal.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 4480,
+        "output_tokens": 549
+      }
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A has no alpha channel. It replaced the background with a painted studio backdrop and appears to have regenerated and repositioned the furniture: the armchair is shown fully with altered proportions and the rack is complete and resized. That is a fidelity failure and not a true removal. Result B has a real transparent background and keeps the armchair, lamp, plant and rack with the rug gone, matching the original crops and positions, though some edges are a bit rough. B is clearly the shippable cutout.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5977,
+        "output_tokens": 198
+      }
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results keep the armchair, floor lamp, rack and plant while excluding the rug, but B's selection is less reliable because its content appears regenerated. A matches the original composition, with the armchair cropped at the left edge as in the photo. B shows a complete, redrawn armchair with both arms and legs fully visible, plus shifted proportions, so it is not a faithful cut-out. B also has no alpha channel and sits on painted white, while A is truly transparent with reasonably clean edges, apart from minor softness around the plant fronds.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5977,
+        "output_tokens": 360
+      }
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps all the furniture (armchair, floor lamp with side table, wooden rack with potted plant) and correctly excludes the rug, though the plant fronds and edges are somewhat rough. Result B keeps the chair and lamp but drops almost the entire rack and plant, leaving only a floating fragment of one shelf. That is a major selection failure. Both have real transparency and faithfully reproduce the kept objects, so A is clearly better overall.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5978,
+        "output_tokens": 190
+      }
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "rmbg_only",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A removes the knife and fork as requested and keeps the plate, food and coffee, though it leaves a bite-shaped hole in the plate's right edge where the cutlery overlapped. Result B keeps the knife and fork, directly violating the explicit exclusion. Fidelity of the kept objects is otherwise similar in both, but A's plate damage is a flaw. Overall, A follows the core instruction while B fails it.",
+      "selection_winner": "bria",
+      "fidelity_winner": "competitor",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5993,
+        "output_tokens": 180
+      }
+    },
+    {
+      "image": "reading_corner.jpg",
+      "foreground": "without_rug",
+      "benchmark_class": "interior",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Both results keep the armchair, lamp with side table, and the plant on its rack, and both drop the rug, so selection is essentially equal. A's plant leaves look somewhat smeared, but fidelity is otherwise similar, with B's plant looking a bit cleaner and possibly regenerated. Decisively, B has no alpha channel and sits on a painted white background, while A has real transparency. That makes A the shippable result.",
+      "selection_winner": "tie",
+      "fidelity_winner": "tie",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5977,
+        "output_tokens": 180
+      }
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c1_fibo",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A has no alpha channel. It repaints the scene on a white background and keeps the table. The plate and cup are regenerated, the jam label text is garbled, and the composition is shifted. The background was never removed. Result B has real transparency and correctly removes the knife and fork, keeping the plate, food and coffee with the original label text intact. However, it has large chunks cut out of the plate's lower right rim where the cutlery was. Despite those missing pieces, B actually performs the removal and is far more faithful, while A fails the core task.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5992,
+        "output_tokens": 212
+      }
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c3_gptimage2",
+      "error": null,
+      "bria_is_a": false,
+      "reasoning": "Result A removes the knife and fork and keeps the full plate and coffee intact, but it has no real alpha channel, so its checkerboard is painted on. Result B has true transparency, but it cuts out large irregular chunks of the plate's lower-right area where the cutlery was, leaving a badly damaged plate. Both keep the items faithful to the original, but B's missing plate pieces are a severe selection and edge failure. A's fake transparency is a serious flaw too, but its subject is intact, so A is more usable overall.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "competitor",
+      "overall_winner": "competitor",
+      "usage": {
+        "input_tokens": 5992,
+        "output_tokens": 210
+      }
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "g2_extract_object_rmbg_on",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A keeps the plate with all its food items (jam, cheese cups, egg cup, eggs, bagel) plus the coffee cup, and removes the knife and fork, though it leaves cutlery-shaped holes in the plate's right portion. Result B keeps the coffee cup but strips out all the food and items on the plate, leaving a badly fragmented plate rim full of holes. A's interpretation better matches 'the plate', and its defects are much smaller. Both have real transparency, and A preserves the original objects faithfully.",
+      "selection_winner": "bria",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5993,
+        "output_tokens": 213
+      }
+    },
+    {
+      "image": "breakfast_plate.jpg",
+      "foreground": "without_cutlery",
+      "benchmark_class": "multi_object",
+      "scenario": "exclude",
+      "competitor": "c2_nanobanana2",
+      "error": null,
+      "bria_is_a": true,
+      "reasoning": "Result A has a real alpha channel and removes the knife and fork, but it also cuts large chunks out of the plate's lower-right rim where the cutlery overlapped, leaving visible holes. Result B keeps the plate whole without the cutlery, so its selection is better. However, B garbles the jam-label text, alters the original by repainting the plate area, and has no transparency: the background is painted white rather than removed. Because B fails the core background-removal task and also changes details, A is the more usable result despite its damaged plate edge.",
+      "selection_winner": "competitor",
+      "fidelity_winner": "bria",
+      "overall_winner": "bria",
+      "usage": {
+        "input_tokens": 5992,
+        "output_tokens": 541
       }
     }
   ]

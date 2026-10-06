@@ -45,8 +45,8 @@ CASES_CSV = BENCHMARK_DIR / "data" / "cases.csv"
 IMAGES_DIR = BENCHMARK_DIR / "images"
 MODEL = "claude-opus-5-5"
 
-BRIA_SYSTEM = "bria_a2"
-BRIA_LABEL = "Bria (a2, judge off — shipped route default)"
+BRIA_SYSTEM = "h1_guided_v1_1"
+BRIA_LABEL = "Bria v1.1 (Gemini intent, in-house SAM 3 + RMBG, fal)"
 # competitor_id -> label used in the summary table. rmbg_only is "Bria against
 # plain remove background" per the ticket; the other four are AG-194's competitors.
 COMPETITORS = {

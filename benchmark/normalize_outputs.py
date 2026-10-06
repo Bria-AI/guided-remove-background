@@ -24,6 +24,7 @@ LONG_EDGE = 1024
 # system id -> run_meta file written by runner.py / candidate_runner.py
 SYSTEMS = {
     "bria_a2": "run_meta_noverify.json",
+    "h1_guided_v1_1": "run_meta_guided_v1_1.json",
     "rmbg_only": "run_meta.json",
     "c1_fibo": "run_meta_edit_fibo.json",
     "c2_nanobanana2": "run_meta_edit_nanobanana2.json",
@@ -62,7 +63,13 @@ def main() -> None:
                 failed += 1
                 continue
             dst = out_root / system / f"{Path(r['image']).stem}__{r['foreground']}.png"
-            normalize(BENCHMARK_DIR / r["output_png"], dst)
+            src = BENCHMARK_DIR / r["output_png"]
+            if not src.exists():
+                # Source already cleaned up since an earlier run; the normalized/
+                # copy from that run still exists, so this isn't a new failure --
+                # just nothing new to (re)normalize for this row.
+                continue
+            normalize(src, dst)
             written += 1
         print(f"[{system}] {written} normalized, {failed} hard fails kept as missing -> {out_root / system}")
 

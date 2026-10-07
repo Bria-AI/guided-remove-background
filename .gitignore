@@ -28,5 +28,10 @@ benchmark/results/*
 # directly with whoever needs it instead).
 benchmark/results/*/normalized/
 benchmark/results/*/logs/
+# Per-candidate raw-output directories (one PNG + preview JPG per case) -- same
+# "metadata only" rule as normalized/ above. Named explicitly, like the rest of
+# this file, rather than a broad glob: add the new candidate's directory name
+# here whenever a benchmark run writes one.
+benchmark/results/*/guided_v1_1/
 benchmark/results/*/pairwise_run.out
 benchmark/results/*/review_shareable.html

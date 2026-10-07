@@ -1,55 +1,143 @@
-# AG-194 / AG-195 benchmark run — October 2026
+# AG-194 / AG-195 benchmark run — v1.1 (October 2026)
 
-59 cases across 15 images (product, people, interior, multi-object), one output per
-case per system, 6 systems × 59 = 354 outputs. Zero hard fails. AG-195's pairwise
-grader then ran Bria against each competitor — see `pairwise_results.json` /
-`pairwise_summary.json`.
+Re-run of the same 59-case / 15-image set against **v1.1**: the shipped pipeline
+(RMBG baseline → Gemini intent decompose → per-target SAM → mode merge →
+per-added-object crop+RMBG-vs-SAM refinement) (`candidate: h1_guided_v1_1`,
+label "Bria v1.1 (Gemini intent, in-house SAM 3 + RMBG, fal)"). This replaces
+the earlier `bria_a2` run in this folder as Bria's entry in the pairwise
+comparison; `bria_a2`'s own numbers are kept byte-identical as `*.bria_a2.json`
+for reference, not deleted.
 
-This folder holds metadata only (JSON + README + logs), same as `may-2026/` and
-`sep-2026/` — no image files are committed. The actual output images aren't kept
-here; `run_meta*.json` records everything textual (scores, instructions, pass/fail,
-latency, which output file each case produced), but re-running `runner.py` /
-`candidate_runner.py` would call each API again and isn't guaranteed to reproduce
-pixel-identical outputs (these models aren't deterministic). What's kept instead is
-`review_shareable.html` — a self-contained export with all 413 images already
-embedded (not committed, same pattern as the gitignored `benchmark_report.html` /
-`candidates_report.html`) — share that file directly with whoever wants to look.
+- Date: 2026-10-06 (two batches — see "Two batches, not one" below)
+- Cases: `benchmark/data/cases.csv` (59 rows)
+- Images: `benchmark/data/catalog.py` (15 active images)
+- Grader: Claude Opus, pairwise, tie allowed — `benchmark/grader/pairwise_prompt.py`
+  (unchanged from the `bria_a2` run)
 
-- Started: 2026-10-01T10:28:59Z
-- Finished: 2026-10-01 (same session)
-- Cases: `benchmark/data/cases.csv` (59 rows, `benchmark_class` column groups by
-  product / people / interior / multi_object for AG-195's per-class win rates)
-- Images: `benchmark/data/catalog.py` (15 active images; 12 earlier images retired as
-  too busy, kept in the catalog for the Sep 2026 snapshot's reproducibility)
+## What ran, and against what
 
-## Systems and versions
+295 pairwise comparisons (59 cases × 5 competitors), 0 errors, reproduced
+exactly from `pairwise_results.json` (`"total": 295, "done": true`, zero
+non-null `error` fields).
 
 | System | run_meta file | What it is | Endpoint / model |
 |---|---|---|---|
-| `bria_a2` | `run_meta_noverify.json` | Bria, verify OFF — what the shipped route runs by default | in-process chain: Bria RMBG 2.0 → Claude decompose → SAM 3.1 → merge |
+| `h1_guided_v1_1` (Bria) | `run_meta_guided_v1_1.json` | v1.1, as above | fal `object_extraction` app, `/guided-remove-background` |
 | `rmbg_only` | `run_meta.json` | No-guidance baseline — plain Bria RMBG, empty instruction | `POST /v2/image/edit/remove_background` (`engine.int.bria-api.com`) |
 | `c1_fibo` | `run_meta_edit_fibo.json` | FIBO-Edit-1.5 with an instruction, single call | fal `bria/fibo-edit-1.5/edit` |
 | `c2_nanobanana2` | `run_meta_edit_nanobanana2.json` | Nano Banana 2 edit | fal `fal-ai/nano-banana-2/edit` |
 | `c3_gptimage2` | `run_meta_edit_gptimage2.json` | GPT Image 2 edit | fal `openai/gpt-image-2/edit` |
 | `g2_extract_object_rmbg_on` | `run_meta_extract_object_rmbg_on.json` | Bria extract-object, `remove_background` ON | fal `bria/object-extraction/extract-object` |
 
-No explicit version pins are exposed by any of these endpoints (fal model slugs and
-the Bria RMBG route are unversioned aliases) — "version" here means the model slug /
-route called, exactly as above, on the date this run started.
+Only `h1_guided_v1_1` changed from the prior `bria_a2` run in this folder; the
+five competitor systems are the same runs, not re-executed.
 
-Intent model for the decompose step inside `bria_a2`: `claude-sonnet-4-5`. (AG-195's
-pairwise grader is separate — see `benchmark/grader/pairwise_prompt.py`.)
+## Pipeline identity (what "v1.1" actually was)
+
+- **Gemini model**: `vertex_ai/gemini-3-flash-preview` (both the intent-decompose
+  step and the judge model default — `ObjectExtractionConfig.vlm_model` /
+  `.guided_judge_model` at the commits below).
+- **Judge/verify loop**: off (`guided_judge_enabled=False`, the default).
+- **fal app id**: not recorded, and not recoverable. This ran against an
+  ephemeral `fal run` dev session (env var `GUIDED_V1_1_FAL_MODEL`), which
+  serves at a throwaway app id (e.g. `bria/<uuid>/guided-remove-background`),
+  not a stable published path — that id was never logged and isn't persisted
+  anywhere. **This run is not byte-for-byte reproducible** for that reason;
+  what below is both recorded and genuinely reproducible is which
+  bria-everywhere commit was running inside that session.
+
+### Two batches, not one
+
+A narrow-mode bug was found and fixed partway through grading, and only the
+affected cases were re-run against the fixed pipeline — the final
+`run_meta_guided_v1_1.json` / `pairwise_results.json` mix outputs from two
+different bria-everywhere commits:
+
+| Batch | bria-everywhere commit | This repo's commit | Cases | When |
+|---|---|---|---|---|
+| Initial | `94878a0b` ("AG-206:log for test") | `52b0385` | 47 | 2026-10-06 09:26 |
+| Narrow-mode fix re-run | `433d7ccd` ("AG-206:fixes") | `b7a5cbe` ("fix issue in narrow cases") | 12 | 2026-10-06 10:59 |
+
+The bria-everywhere commit per batch is **inferred**, not logged at run time:
+the latest commit touching `guided_remove_background.py` / `guided_merge.py`
+as of each batch's own commit timestamp in *this* repo. The 12 re-run cases
+(all `*__without_*`, i.e. remove-mode) are listed in
+`run_meta_guided_v1_1.json`'s `bria_everywhere_pipeline.batches[1].cases`.
+
+## The gate (AG-190 — 15-case human edge check)
+
+AG-190's own point: the pairwise grader caught 1 of 58 edge artifacts on the
+May run where humans caught 7 of 13 — **a model alone cannot clear this route
+for production**. The verdicts below are an AI (Claude, vision) first pass
+over the 15 cases, done directly against the pixels, not a substitute for the
+human sign-off AG-190 / AG-192 actually require — treat them as a head start
+on that review, not the review itself.
+
+Sample: 15 cases from this run. Eleven are where plain remove background beat
+guided in this benchmark, all "only …" asks on product/tabletop shots; four
+are add/remove wins on people/interiors, to also look at the seam where an
+added object meets the plain cut. Inputs/prompts: `benchmark/data/cases.csv`.
+
+| Case | Verdict | What's wrong (if anything) |
+|---|---|---|
+| sneakers_on_boxes / just_the_sneakers | Pass | Clean edges, both shoes intact, laces fully preserved |
+| sneakers_on_boxes / sneakers_and_top_box | Pass | Clean, shoes+box contact edge intact |
+| sneakers_on_boxes / left_sneaker | **Fail** | Shoelace tip hard-truncated with a straight cut, not a natural taper |
+| sneakers_plant / front_sneaker | Pass | Clean, no halo |
+| dropper_bottles_rocks / just_the_bottles | Pass | Glass bottles handled cleanly, rocks correctly excluded |
+| watch_flatlay / just_the_coffee | **Fail** | Hollow object: the coffee's liquid surface is missing/transparent, only scattered foam flecks remain |
+| courier_bench / man_and_bag | **Fail** | Visible bluish halo/fringe along the whole body silhouette, worst on the legs |
+| breakfast_plate / plate_and_coffee | **Fail (severe)** | Plate shattered into disconnected fragments with jagged holes punched through it |
+| breakfast_plate / just_the_egg_cup | Pass (uncertain) | Edges themselves are clean; likely lost to plain on content/framing preference, not an edge defect — worth a second look |
+| laptop_pears / just_the_pears | Pass | Clean, stems preserved |
+| laptop_pears / lying_pear | Pass (minor) | Faint yellow halo sliver on one edge, small |
+| yoga_studio / with_mat_and_plant | Pass | Thin plant leaves held up well, no haloing |
+| home_office / without_lamp | Pass | Clean |
+| man_bench_mountains / man_with_bench | Pass | Clean, thin cigarette detail preserved |
+| bedroom_desk / chair_and_desk | **Fail** | Disconnected stray background fragments left dangling below the chair/desk — leftover background, not part of either kept object |
+
+**Result: 10/15 pass, 5 fail.** Three of the five fails are the originally
+reported losses to plain (`man_and_bag`, `plate_and_coffee`, the coffee-hollow
+case); `left_sneaker` and `chair_and_desk` surfaced in this pass and weren't
+previously called out.
+
+## Latency
+
+Per-case wall time, `elapsed_s` in `run_meta_guided_v1_1.json` (n=59):
+
+| p50 | p90 | mean | max |
+|---|---|---|---|
+| 18.6 s | 23.5 s | 19.7 s | 52.3 s |
+
+This is client-side time in the benchmark runner — upload to fal,
+`fal_client.subscribe()` (queue + inference), and the result download — not a
+server-side-only pipeline-compute figure, and measured through the ephemeral
+dev session above, not a stable deployed app. Expect it to differ (likely
+lower, warm/reserved capacity) once this runs behind a real `fal deploy`.
+
+## Images: not committed
+
+Same policy as `may-2026/` and `sep-2026/` and the rest of this folder: this
+is metadata only (JSON + README + logs). The 118 output files (59 PNG cutouts
++ 59 preview JPGs, 97.5 MB) this run produced are in
+`.gitignore` (`benchmark/results/*/guided_v1_1/`) and are not tracked.
+`run_meta_guided_v1_1.json` records everything textual (scores, instructions,
+pass/fail, latency, which output file each case wrote); re-running
+`candidate_runner.py` would call the API again and isn't guaranteed to
+reproduce pixel-identical outputs. `guided_v1_1_review.html` / `review.html`
+(self-contained exports with the images embedded, same pattern as the
+gitignored `benchmark_report.html` / `candidates_report.html`) are the files
+to share with whoever wants to look — not committed, share directly.
 
 ## What's in this folder
 
 - `run_meta*.json` — one per system, every case's result (scores, instructions,
-  elapsed time, which output file it wrote at the time).
-- `pairwise_results.json` / `pairwise_summary.json` — AG-195's per-comparison
-  grader verdicts (with reasoning) and the aggregated win-rate table.
-- `review_shareable.html` — self-contained, all images embedded. This is the file
-  to share with the team (not committed — see note above).
+  elapsed time, which output file it wrote at the time). `run_meta_guided_v1_1.json`
+  additionally carries the pipeline-identity and two-batch provenance above.
+- `pairwise_results.json` / `pairwise_summary.json` — the grader's per-comparison
+  verdicts (with reasoning) and the aggregated win-rate table, for `h1_guided_v1_1`.
+- `pairwise_results.bria_a2.json` / `pairwise_summary.bria_a2.json` — the prior
+  `bria_a2` run's own grading, kept byte-identical for reference.
+- `guided_v1_1_review.html` / `review.html` — self-contained, all images
+  embedded. Share these with the team (not committed — see note above).
 - `logs/` — stdout/stderr per system for this run.
-
-Alpha channel, confirmed directly on the files before they were removed: `bria_a2`,
-`rmbg_only` and `g2_extract_object_rmbg_on` produced real RGBA; `c1_fibo`,
-`c2_nanobanana2` and `c3_gptimage2` returned flat RGB with no alpha channel at all.

@@ -28,7 +28,8 @@ BENCHMARK_DIR = Path(__file__).parent
 CASES_CSV = BENCHMARK_DIR / "data" / "cases.csv"
 
 SYSTEMS = [
-    ("bria_a2", "Bria (judge off)"),
+    ("h1_guided_v1_1", "Bria v1.1 (Gemini intent, fal)"),
+    ("bria_a2", "Bria v1 research chain (Claude, local -- not shipped)"),
     ("rmbg_only", "RMBG baseline"),
     ("c1_fibo", "FIBO-Edit-1.5"),
     ("c2_nanobanana2", "Nano Banana 2"),

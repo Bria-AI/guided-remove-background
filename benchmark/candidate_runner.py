@@ -36,6 +36,7 @@ from PIL import Image
 from guided_remove_background.clients.bria_rmbg import call_rmbg
 from guided_remove_background.clients.fal_edit import call_edit_model
 from guided_remove_background.clients.fal_extract_object import call_extract_object
+from guided_remove_background.clients.fal_guided_v1_1 import call_guided_v1_1
 from guided_remove_background.pipelines.deterministic_retry import remove_bg_deterministic_retry
 from guided_remove_background.pipelines.rmbg_sam_direct import rmbg_sam_direct
 from guided_remove_background.processing.output import save_preview, save_result
@@ -112,6 +113,17 @@ def run_one(case: dict, candidate_id: str, cand: dict) -> dict:
             )
             if rgba is None:
                 raise RuntimeError("extract-object returned no image")
+            output_png = save_result(rgba, output_path)
+            preview_jpg = save_preview(rgba, output_path)
+            elapsed_s = time.monotonic() - t0
+            sam_scores = {}
+
+        elif cand["kind"] == "guided_v1_1":
+            t0 = time.monotonic()
+            instruction = " ".join(prompts)
+            rgba = call_guided_v1_1(image_path, instruction)
+            if rgba is None:
+                raise RuntimeError("guided v1.1 returned no image")
             output_png = save_result(rgba, output_path)
             preview_jpg = save_preview(rgba, output_path)
             elapsed_s = time.monotonic() - t0

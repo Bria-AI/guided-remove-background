@@ -98,6 +98,16 @@ ALL_CANDIDATES: dict[str, dict] = {
         "match": lambda r: True,
         "kind": "extract_object", "remove_background": True, "out_subdir": "extract_object_rmbg_on",
     },
+    # The real shipped v1.1 pipeline (AG-206): Gemini intent decompose + in-house SAM 3 +
+    # RMBG, all in-process on Bria's own GPUs via the object_extraction fal app's
+    # /guided-remove-background endpoint -- NOT this repo's own local remove_bg() (that's
+    # A1/A2, a different, Claude-based research implementation never shipped to prod).
+    "h1_guided_v1_1": {
+        "label": "H1 · Guided v1.1 (Gemini, fal)",
+        "file": "run_meta_guided_v1_1.json",
+        "match": lambda r: True,
+        "kind": "guided_v1_1", "out_subdir": "guided_v1_1",
+    },
 }
 
 # Candidates candidate_runner.py can actually execute (the rest are produced by runner.py).

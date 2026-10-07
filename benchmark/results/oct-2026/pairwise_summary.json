@@ -1,40 +1,40 @@
 {
-  "bria_candidate": "bria_a2",
-  "bria_label": "Bria (a2, judge off \u2014 shipped route default)",
+  "bria_candidate": "h1_guided_v1_1",
+  "bria_label": "Bria v1.1 (Gemini intent, in-house SAM 3 + RMBG, fal)",
   "competitors": {
     "rmbg_only": {
       "label": "Plain remove background (no guidance)",
       "overall": {
         "n": 59,
-        "bria_wins": 33,
-        "ties": 15,
-        "competitor_wins": 11,
-        "bria_win_rate_ties_half": 0.686,
-        "tie_share": 0.254
+        "bria_wins": 41,
+        "ties": 11,
+        "competitor_wins": 7,
+        "bria_win_rate_ties_half": 0.788,
+        "tie_share": 0.186
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 8,
-          "ties": 4,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 0.833,
-          "tie_share": 0.333
+          "bria_wins": 7,
+          "ties": 3,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.708,
+          "tie_share": 0.25
         },
         "include": {
           "n": 22,
-          "bria_wins": 10,
-          "ties": 10,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.682,
-          "tie_share": 0.455
+          "bria_wins": 11,
+          "ties": 7,
+          "competitor_wins": 4,
+          "bria_win_rate_ties_half": 0.659,
+          "tie_share": 0.318
         },
         "narrow": {
           "n": 25,
-          "bria_wins": 15,
+          "bria_wins": 23,
           "ties": 1,
-          "competitor_wins": 9,
-          "bria_win_rate_ties_half": 0.62,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.94,
           "tie_share": 0.04
         }
       },
@@ -42,159 +42,88 @@
         "interior": {
           "n": 11,
           "bria_wins": 8,
-          "ties": 3,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 0.864,
-          "tie_share": 0.273
+          "ties": 2,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.818,
+          "tie_share": 0.182
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 4,
-          "ties": 4,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.5,
-          "tie_share": 0.333
+          "bria_wins": 7,
+          "ties": 2,
+          "competitor_wins": 3,
+          "bria_win_rate_ties_half": 0.667,
+          "tie_share": 0.167
         },
         "people": {
           "n": 20,
-          "bria_wins": 13,
+          "bria_wins": 12,
           "ties": 6,
-          "competitor_wins": 1,
-          "bria_win_rate_ties_half": 0.8,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.75,
           "tie_share": 0.3
         },
         "product": {
           "n": 16,
-          "bria_wins": 8,
-          "ties": 2,
-          "competitor_wins": 6,
-          "bria_win_rate_ties_half": 0.562,
-          "tie_share": 0.125
-        }
-      }
-    },
-    "c3_gptimage2": {
-      "label": "GPT Image 2",
-      "overall": {
-        "n": 59,
-        "bria_wins": 45,
-        "ties": 0,
-        "competitor_wins": 14,
-        "bria_win_rate_ties_half": 0.763,
-        "tie_share": 0.0
-      },
-      "by_scenario": {
-        "exclude": {
-          "n": 12,
-          "bria_wins": 8,
-          "ties": 0,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.667,
-          "tie_share": 0.0
-        },
-        "include": {
-          "n": 22,
-          "bria_wins": 20,
-          "ties": 0,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.909,
-          "tie_share": 0.0
-        },
-        "narrow": {
-          "n": 25,
-          "bria_wins": 17,
-          "ties": 0,
-          "competitor_wins": 8,
-          "bria_win_rate_ties_half": 0.68,
-          "tie_share": 0.0
-        }
-      },
-      "by_class": {
-        "interior": {
-          "n": 11,
-          "bria_wins": 11,
-          "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
-          "tie_share": 0.0
-        },
-        "multi_object": {
-          "n": 12,
-          "bria_wins": 8,
-          "ties": 0,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.667,
-          "tie_share": 0.0
-        },
-        "people": {
-          "n": 20,
-          "bria_wins": 16,
-          "ties": 0,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.8,
-          "tie_share": 0.0
-        },
-        "product": {
-          "n": 16,
-          "bria_wins": 10,
-          "ties": 0,
-          "competitor_wins": 6,
-          "bria_win_rate_ties_half": 0.625,
-          "tie_share": 0.0
-        }
-      }
-    },
-    "c2_nanobanana2": {
-      "label": "Nano Banana 2",
-      "overall": {
-        "n": 59,
-        "bria_wins": 50,
-        "ties": 2,
-        "competitor_wins": 7,
-        "bria_win_rate_ties_half": 0.864,
-        "tie_share": 0.034
-      },
-      "by_scenario": {
-        "exclude": {
-          "n": 12,
-          "bria_wins": 10,
-          "ties": 0,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.833,
-          "tie_share": 0.0
-        },
-        "include": {
-          "n": 22,
-          "bria_wins": 20,
-          "ties": 0,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.909,
-          "tie_share": 0.0
-        },
-        "narrow": {
-          "n": 25,
-          "bria_wins": 20,
-          "ties": 2,
-          "competitor_wins": 3,
-          "bria_win_rate_ties_half": 0.84,
-          "tie_share": 0.08
-        }
-      },
-      "by_class": {
-        "interior": {
-          "n": 11,
-          "bria_wins": 11,
-          "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
-          "tie_share": 0.0
-        },
-        "multi_object": {
-          "n": 12,
-          "bria_wins": 10,
+          "bria_wins": 14,
           "ties": 1,
           "competitor_wins": 1,
-          "bria_win_rate_ties_half": 0.875,
+          "bria_win_rate_ties_half": 0.906,
+          "tie_share": 0.062
+        }
+      }
+    },
+    "c1_fibo": {
+      "label": "FIBO-Edit-1.5",
+      "overall": {
+        "n": 59,
+        "bria_wins": 55,
+        "ties": 1,
+        "competitor_wins": 3,
+        "bria_win_rate_ties_half": 0.941,
+        "tie_share": 0.017
+      },
+      "by_scenario": {
+        "exclude": {
+          "n": 12,
+          "bria_wins": 9,
+          "ties": 0,
+          "competitor_wins": 3,
+          "bria_win_rate_ties_half": 0.75,
+          "tie_share": 0.0
+        },
+        "include": {
+          "n": 22,
+          "bria_wins": 21,
+          "ties": 1,
+          "competitor_wins": 0,
+          "bria_win_rate_ties_half": 0.977,
+          "tie_share": 0.045
+        },
+        "narrow": {
+          "n": 25,
+          "bria_wins": 25,
+          "ties": 0,
+          "competitor_wins": 0,
+          "bria_win_rate_ties_half": 1.0,
+          "tie_share": 0.0
+        }
+      },
+      "by_class": {
+        "interior": {
+          "n": 11,
+          "bria_wins": 10,
+          "ties": 0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
+          "tie_share": 0.0
+        },
+        "multi_object": {
+          "n": 12,
+          "bria_wins": 11,
+          "ties": 1,
+          "competitor_wins": 0,
+          "bria_win_rate_ties_half": 0.958,
           "tie_share": 0.083
         },
         "people": {
@@ -207,39 +136,39 @@
         },
         "product": {
           "n": 16,
-          "bria_wins": 11,
-          "ties": 1,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.719,
-          "tie_share": 0.062
+          "bria_wins": 16,
+          "ties": 0,
+          "competitor_wins": 0,
+          "bria_win_rate_ties_half": 1.0,
+          "tie_share": 0.0
         }
       }
     },
-    "c1_fibo": {
-      "label": "FIBO-Edit-1.5",
+    "c3_gptimage2": {
+      "label": "GPT Image 2",
       "overall": {
         "n": 59,
-        "bria_wins": 55,
+        "bria_wins": 49,
         "ties": 0,
-        "competitor_wins": 4,
-        "bria_win_rate_ties_half": 0.932,
+        "competitor_wins": 10,
+        "bria_win_rate_ties_half": 0.831,
         "tie_share": 0.0
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
-          "bria_wins": 10,
+          "bria_wins": 5,
           "ties": 0,
-          "competitor_wins": 2,
-          "bria_win_rate_ties_half": 0.833,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.417,
           "tie_share": 0.0
         },
         "include": {
           "n": 22,
-          "bria_wins": 22,
+          "bria_wins": 21,
           "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.955,
           "tie_share": 0.0
         },
         "narrow": {
@@ -254,10 +183,81 @@
       "by_class": {
         "interior": {
           "n": 11,
-          "bria_wins": 11,
+          "bria_wins": 10,
           "ties": 0,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 1.0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
+          "tie_share": 0.0
+        },
+        "multi_object": {
+          "n": 12,
+          "bria_wins": 10,
+          "ties": 0,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.833,
+          "tie_share": 0.0
+        },
+        "people": {
+          "n": 20,
+          "bria_wins": 17,
+          "ties": 0,
+          "competitor_wins": 3,
+          "bria_win_rate_ties_half": 0.85,
+          "tie_share": 0.0
+        },
+        "product": {
+          "n": 16,
+          "bria_wins": 12,
+          "ties": 0,
+          "competitor_wins": 4,
+          "bria_win_rate_ties_half": 0.75,
+          "tie_share": 0.0
+        }
+      }
+    },
+    "c2_nanobanana2": {
+      "label": "Nano Banana 2",
+      "overall": {
+        "n": 59,
+        "bria_wins": 54,
+        "ties": 0,
+        "competitor_wins": 5,
+        "bria_win_rate_ties_half": 0.915,
+        "tie_share": 0.0
+      },
+      "by_scenario": {
+        "exclude": {
+          "n": 12,
+          "bria_wins": 10,
+          "ties": 0,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.833,
+          "tie_share": 0.0
+        },
+        "include": {
+          "n": 22,
+          "bria_wins": 20,
+          "ties": 0,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.909,
+          "tie_share": 0.0
+        },
+        "narrow": {
+          "n": 25,
+          "bria_wins": 24,
+          "ties": 0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.96,
+          "tie_share": 0.0
+        }
+      },
+      "by_class": {
+        "interior": {
+          "n": 11,
+          "bria_wins": 10,
+          "ties": 0,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.909,
           "tie_share": 0.0
         },
         "multi_object": {
@@ -290,70 +290,70 @@
       "label": "extract-object",
       "overall": {
         "n": 59,
-        "bria_wins": 29,
-        "ties": 15,
-        "competitor_wins": 15,
-        "bria_win_rate_ties_half": 0.619,
-        "tie_share": 0.254
+        "bria_wins": 26,
+        "ties": 19,
+        "competitor_wins": 14,
+        "bria_win_rate_ties_half": 0.602,
+        "tie_share": 0.322
       },
       "by_scenario": {
         "exclude": {
           "n": 12,
           "bria_wins": 5,
-          "ties": 3,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.542,
-          "tie_share": 0.25
+          "ties": 0,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.417,
+          "tie_share": 0.0
         },
         "include": {
           "n": 22,
-          "bria_wins": 19,
-          "ties": 2,
-          "competitor_wins": 1,
-          "bria_win_rate_ties_half": 0.909,
-          "tie_share": 0.091
+          "bria_wins": 16,
+          "ties": 4,
+          "competitor_wins": 2,
+          "bria_win_rate_ties_half": 0.818,
+          "tie_share": 0.182
         },
         "narrow": {
           "n": 25,
           "bria_wins": 5,
-          "ties": 10,
-          "competitor_wins": 10,
-          "bria_win_rate_ties_half": 0.4,
-          "tie_share": 0.4
+          "ties": 15,
+          "competitor_wins": 5,
+          "bria_win_rate_ties_half": 0.5,
+          "tie_share": 0.6
         }
       },
       "by_class": {
         "interior": {
           "n": 11,
-          "bria_wins": 5,
+          "bria_wins": 4,
           "ties": 6,
-          "competitor_wins": 0,
-          "bria_win_rate_ties_half": 0.727,
+          "competitor_wins": 1,
+          "bria_win_rate_ties_half": 0.636,
           "tie_share": 0.545
         },
         "multi_object": {
           "n": 12,
-          "bria_wins": 7,
-          "ties": 2,
-          "competitor_wins": 3,
+          "bria_wins": 6,
+          "ties": 4,
+          "competitor_wins": 2,
           "bria_win_rate_ties_half": 0.667,
-          "tie_share": 0.167
+          "tie_share": 0.333
         },
         "people": {
           "n": 20,
-          "bria_wins": 13,
-          "ties": 3,
-          "competitor_wins": 4,
-          "bria_win_rate_ties_half": 0.725,
-          "tie_share": 0.15
+          "bria_wins": 12,
+          "ties": 1,
+          "competitor_wins": 7,
+          "bria_win_rate_ties_half": 0.625,
+          "tie_share": 0.05
         },
         "product": {
           "n": 16,
           "bria_wins": 4,
-          "ties": 4,
-          "competitor_wins": 8,
-          "bria_win_rate_ties_half": 0.375,
-          "tie_share": 0.25
+          "ties": 8,
+          "competitor_wins": 4,
+          "bria_win_rate_ties_half": 0.5,
+          "tie_share": 0.5
         }
       }
     }

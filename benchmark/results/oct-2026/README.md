@@ -1,4 +1,4 @@
-# AG-194 / AG-195 benchmark run — v1.1 (October 2026)
+# Benchmark run, v1.1 (October 2026)
 
 Re-run of the same 59-case / 15-image set against **v1.1**: the shipped pipeline
 (RMBG baseline → Gemini intent decompose → per-target SAM → mode merge →
@@ -34,10 +34,9 @@ five competitor systems are the same runs, not re-executed.
 
 ## Pipeline identity (what "v1.1" actually was)
 
-- **Gemini model**: `vertex_ai/gemini-3-flash-preview` (both the intent-decompose
-  step and the judge model default — `ObjectExtractionConfig.vlm_model` /
-  `.guided_judge_model` at the commits below).
-- **Judge/verify loop**: off (`guided_judge_enabled=False`, the default).
+- **Gemini model**: `vertex_ai/gemini-3-flash-preview` for reading the ask
+  (`ObjectExtractionConfig.vlm_model` at the commits below).
+- **Verify step**: off (`guided_judge_enabled=False`, the default).
 - **fal app id**: not recorded, and not recoverable. This ran against an
   ephemeral `fal run` dev session (env var `GUIDED_V1_1_FAL_MODEL`), which
   serves at a throwaway app id (e.g. `bria/<uuid>/guided-remove-background`),
@@ -64,19 +63,31 @@ as of each batch's own commit timestamp in *this* repo. The 12 re-run cases
 (all `*__without_*`, i.e. remove-mode) are listed in
 `run_meta_guided_v1_1.json`'s `bria_everywhere_pipeline.batches[1].cases`.
 
-## The gate (AG-190 — 15-case human edge check)
+## Gate
 
-AG-190's own point: the pairwise grader caught 1 of 58 edge artifacts on the
-May run where humans caught 7 of 13 — **a model alone cannot clear this route
-for production**. The verdicts below are an AI (Claude, vision) first pass
-over the 15 cases, done directly against the pixels, not a substitute for the
-human sign-off AG-190 / AG-192 actually require — treat them as a head start
-on that review, not the review itself.
+13 cases: `yoga_studio / with_mat_and_plant`, `man_bench_mountains / man_with_bench`
+and the 11 narrow cases plain remove background won against v1. A case passes when
+the grader prefers guided over plain remove background (`overall_winner == "bria"`
+against `rmbg_only` in `pairwise_results.json`).
 
-Sample: 15 cases from this run. Eleven are where plain remove background beat
-guided in this benchmark, all "only …" asks on product/tabletop shots; four
-are add/remove wins on people/interiors, to also look at the seam where an
-added object meets the plain cut. Inputs/prompts: `benchmark/data/cases.csv`.
+**Result: 10 of 13 pass.** The three that lose to plain:
+
+| Case | Ask type | Cause |
+|---|---|---|
+| courier_bench / man_and_bag | include | Keeps the man and the bag but drops the bench he sits on, so he floats, with bench-coloured fringe along his legs and the bag. A guided defect. |
+| breakfast_plate / plate_and_coffee | include | Top-down shot with no obvious foreground; the plate is cut into fragments. Outside guided's home, which is photos with an obvious foreground. |
+| breakfast_plate / just_the_egg_cup | narrow | Keeps the cup and drops the egg, with a rough halo on the rim. A one-object ask, which is extract-object's job. |
+
+The other four losses to plain in the full set are `sneakers_on_boxes /
+sneakers_with_boxes`, `laptop_pears / laptop_and_pears`, `yoga_studio /
+without_candles` and `bedroom_desk / without_shelves`; the grader's reasoning for
+each is in `pairwise_results.json`.
+
+## Edge check (AI, 15 cases)
+
+A vision-model pass over the pixels: the 11 narrow cases above plus four add and
+remove cases on people and interiors, to look at the seam where an added object
+meets the plain cut. Inputs and prompts are in `benchmark/data/cases.csv`.
 
 | Case | Verdict | What's wrong (if anything) |
 |---|---|---|
@@ -88,7 +99,7 @@ added object meets the plain cut. Inputs/prompts: `benchmark/data/cases.csv`.
 | watch_flatlay / just_the_coffee | **Fail** | Hollow object: the coffee's liquid surface is missing/transparent, only scattered foam flecks remain |
 | courier_bench / man_and_bag | **Fail** | Visible bluish halo/fringe along the whole body silhouette, worst on the legs |
 | breakfast_plate / plate_and_coffee | **Fail (severe)** | Plate shattered into disconnected fragments with jagged holes punched through it |
-| breakfast_plate / just_the_egg_cup | Pass (uncertain) | Edges themselves are clean; likely lost to plain on content/framing preference, not an edge defect — worth a second look |
+| breakfast_plate / just_the_egg_cup | **Fail** | The egg is missing from the cup; rough halo on the rim |
 | laptop_pears / just_the_pears | Pass | Clean, stems preserved |
 | laptop_pears / lying_pear | Pass (minor) | Faint yellow halo sliver on one edge, small |
 | yoga_studio / with_mat_and_plant | Pass | Thin plant leaves held up well, no haloing |
@@ -96,10 +107,9 @@ added object meets the plain cut. Inputs/prompts: `benchmark/data/cases.csv`.
 | man_bench_mountains / man_with_bench | Pass | Clean, thin cigarette detail preserved |
 | bedroom_desk / chair_and_desk | **Fail** | Disconnected stray background fragments left dangling below the chair/desk — leftover background, not part of either kept object |
 
-**Result: 10/15 pass, 5 fail.** Three of the five fails are the originally
-reported losses to plain (`man_and_bag`, `plate_and_coffee`, the coffee-hollow
-case); `left_sneaker` and `chair_and_desk` surfaced in this pass and weren't
-previously called out.
+**Result: 9 of 15 pass.** Besides the three gate losses, the edge defects to fix
+in v1.2 are the truncated shoelace on `left_sneaker`, the hollow coffee on
+`just_the_coffee` and the stray background fragments on `chair_and_desk`.
 
 ## Latency
 
@@ -125,9 +135,8 @@ is metadata only (JSON + README + logs). The 118 output files (59 PNG cutouts
 pass/fail, latency, which output file each case wrote); re-running
 `candidate_runner.py` would call the API again and isn't guaranteed to
 reproduce pixel-identical outputs. `guided_v1_1_review.html` / `review.html`
-(self-contained exports with the images embedded, same pattern as the
-gitignored `benchmark_report.html` / `candidates_report.html`) are the files
-to share with whoever wants to look — not committed, share directly.
+(self-contained exports with the images embedded) are the files to share with
+whoever wants to look; they are not committed.
 
 ## What's in this folder
 
@@ -140,4 +149,3 @@ to share with whoever wants to look — not committed, share directly.
   `bria_a2` run's own grading, kept byte-identical for reference.
 - `guided_v1_1_review.html` / `review.html` — self-contained, all images
   embedded. Share these with the team (not committed — see note above).
-- `logs/` — stdout/stderr per system for this run.

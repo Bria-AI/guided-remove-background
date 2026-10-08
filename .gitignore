@@ -22,6 +22,7 @@ benchmark/results/*
 !benchmark/results/may-2026
 !benchmark/results/sep-2026
 !benchmark/results/oct-2026
+!benchmark/results/oct-2026-v032
 
 # Even inside a curated snapshot, never commit raw/normalized per-case images,
 # per-run logs, or the large self-contained HTML export (share that file
